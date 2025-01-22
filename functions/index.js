@@ -15,7 +15,7 @@ exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
   if (data.type === "mbway") {
     const options = {
       method: "POST",
-      url: "https://clientes.eupago.pt/clientes/rest_api/mbway/create",
+      url: "https://clientes.eupago.pt/api/v1.02/mbway/create",
       headers: {
         "accept": "application/json",
         "content-type": "application/json",
@@ -107,7 +107,7 @@ exports.moneyDonation = onDocumentUpdated(
       if (data.type === "mbway") {
         const options = {
           method: "POST",
-          url: "https://clientes.eupago.pt/clientes/rest_api/mbway/create",
+          url: "https://clientes.eupago.pt/api/v1.02/mbway/create",
           headers: {
             "accept": "application/json",
             "content-type": "application/json",
