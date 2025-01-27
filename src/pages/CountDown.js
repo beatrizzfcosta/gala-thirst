@@ -3,6 +3,7 @@ import { Container, Image, Button } from 'react-bootstrap';
 import logo from '../assets/gala_logo2025.png';
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/container1.png'; // Certifique-se de ter a imagem de fundo no caminho correto
+import '../style/pCountDown.css'
 
 export default function CountDown({ unavailable }) {
   const [days, setDays] = useState('00');
@@ -44,87 +45,68 @@ export default function CountDown({ unavailable }) {
   }, []);
 
   return (
-    <div className= "mx-auto flex flex-col justify-center items-center"
+    <div
+      className='background2'
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
-        width: '100%',
-        overflow: 'hidden',
-    }}>
-      <Container className="mx-auto px-14 py-7 flex flex-row justify-center home-page"  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                    zIndex: 1,
-                }}>
-        <div className="text-start mb-4 flex flex-col first-col " style={{ width: '50%', justifyContent:'center' }}>
-          <div className="flex flex-row countdown-container mb-5">
-            <div className="countdown-box font-bold flex flex-col mr-3">
-              <span className="text-white">{days}</span>
-              <span className="text-xs mt-2">DIAS</span>
-            </div>
-            <h1 className="text-2xl font-bold mt-1
-            ">
-              :
-            </h1>
-            <div className="countdown-box font-bold flex flex-col ml-3 mr-3
-            ">
-              <span className="text-white">{hours}</span>
-              <span className="text-xs mt-2">HORAS</span>
-            </div>
-            <h1 className="text-2xl font-bold mt-1
-            ">
-              :
-            </h1>
-            <div className="countdown-box font-bold flex flex-col ml-3 mr-3
-            ">
-              <span className="text-white">{minutes}</span>
-              <span className="text-xs mt-2">MINUTOS</span>
-            </div>
-            <h1 className="text-2xl font-bold mt-1
-            ">
-              :
-            </h1>
-            <div className="countdown-box font-bold flex flex-col ml-3 
-            ">
-              <span className="text-white">{seconds}</span>
-              <span className="text-xs mt-2">SEGUNDOS</span>
-            </div>
+      }}
+    >
+      <div className='overlay' />
+      <div className='row1'>
+        <div className="countdown">
+          <div className="countdown-box">
+            <span className="number">{days}</span>
+            <span className="title">DIAS</span>
           </div>
-          <h3 className="text-thirst-darker-grey mt-10 text-sm font-bold">A MAIOR ORGANIZAÇÃO JOVEM DO MUNDO COM A MISSÃO DE ACABAR COM A CRISE MUNDIAL DE ÁGUA APRESENTA</h3>
-          <h1 className="text-[#17CACE] text-4xl font-bold mt-4">SEGUNDA GALA THIRST PROJECT PORTUGAL</h1>
-          <h3 className="block mt-4 text-lg font-bold text-[#17CACE]">
-            22 de março | 20:00
-          </h3>
-          {unavailable ? (
-            <Link to="/bilhetes/comprar">
-              <Button
-                className="rounded-sm justify-center mt-5 bg-black px-20 py-2 text-sm font-semibold text-white shadow-md hover:bg-[#17CACE] hover:text-white ring-2 ring-black hover:ring-[#17CACE] mb-5"
-              >
-                RESERVAR O MEU LUGAR!
-              </Button>
-            </Link>
-          ) : (
-            <Link to="/doacoes">
-              <Button
-                className="rounded-sm justify-center mt-5 bg-thirst-blue px-20 py-2 text-sm font-semibold text-white shadow-md ring-2 ring-thirst-blue"
-              >
-                BILHETES ESGOTADOS | DOAR AGORA
-              </Button>
-            </Link>
-          )}
+          <h1 className="tab">
+            :
+          </h1>
+          <div className="countdown-box">
+            <span className="number">{hours}</span>
+            <span className="title">HORAS</span>
+          </div>
+          <h1 className="tab">
+            :
+          </h1>
+          <div className="countdown-box">
+            <span className="number">{minutes}</span>
+            <span className="title">MINUTOS</span>
+          </div>
+          <h1 className="tab">
+            :
+          </h1>
+          <div className="countdown-box">
+            <span className="number">{seconds}</span>
+            <span className="title">SEGUNDOS</span>
+          </div>
         </div>
-        <div 
-         style={{ width: '50%',justifyContent:'center', alignContent:'center'
-         }}>
-          <Image src={logo} alt="Thirst Gala" width={350} height={350} style={{ margin: "0 auto" }} />
-        </div>
-      </Container>
+        <h3 className="subtext">A MAIOR ORGANIZAÇÃO JOVEM DO MUNDO COM A MISSÃO DE ACABAR COM A CRISE MUNDIAL DE ÁGUA APRESENTA</h3>
+        <h1 className="text">II GALA THIRST PROJECT PORTUGAL</h1>
+        <h3 className="date">
+          22 de março | 20:00
+        </h3>
+        {unavailable ? (
+          <Link to="/bilhetes/comprar">
+            <Button
+              className="button2"
+            >
+              RESERVAR O MEU LUGAR!
+            </Button>
+          </Link>
+        ) : (
+          <Link to="/doacoes">
+            <Button
+              className="button2"
+            >
+              BILHETES ESGOTADOS | DOAR AGORA
+            </Button>
+          </Link>
+        )}
+      </div>
+      <div className="row2">
+        <Image src={logo} alt="Thirst Gala" width={350} height={350} />
+      </div>
+
     </div>
   );
 }

@@ -1,0 +1,128 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; 
+    margin-top: 2px;
+}
+
+.row-ticket{
+    flex: 1; 
+    padding: 32px; 
+}
+
+.title-ticket{
+    display: block; 
+    font-size: 12px; 
+    font-weight: bold; 
+    line-height: 24px; 
+    color: #000;
+}
+
+.line{
+    width: 100%; 
+    margin-top: 0.25rem; 
+    box-shadow: 0 0 0 1px #17CACE; 
+}
+
+.date-text {
+    display: block; 
+    margin-top: 16px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    color: #17CACE; 
+    text-align: center; 
+}
+
+.button-box{
+    margin-top: 20px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; 
+
+}
+
+.select-container{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+
+.button-select {
+    border-radius: 5px; 
+    background-color: #17CACE; 
+    padding: 4px; 
+    color: white; /* Define a cor do texto */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); /* Sombra média (equivalente a shadow-md no Tailwind) */
+    transition: background-color 0.2s ease; /* Transição suave para o hover */
+}
+
+.button-select:hover {
+    background-color: black; /* Altera a cor de fundo ao passar o mouse */
+}
+
+.button-select:focus-visible {
+    outline: 2px solid black; /* Borda visível ao focar (cor equivalente a indigo-600) */
+    outline-offset: 2px; /* Distância entre a borda de foco e o elemento */
+}
+
+.qtd{
+    border-radius: 5px; 
+    background-color: #c9c9c9; 
+    padding-left:40px;
+    padding-right:40px;
+    padding-top: 4px;
+    padding-bottom: 4px; 
+    margin-inline-end: 12px; 
+    margin-inline-start: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    align-items: center; 
+}
+
+.qtd-text{
+    font-weight: bold;
+    color:white;
+}
+
+.text-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-text{ 
+    font-size: small;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 24px;
+    color: #555;
+}
+
+.icon{
+    height: 20px;
+    width: 20px;
+}
+
+.error-text{
+    font-size: small;
+    margin-top: 21px; 
+    color: red;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.amount{
+    font-size: x-large;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; 
+    }
+}

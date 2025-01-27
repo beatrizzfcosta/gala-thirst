@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { PlusIcon, MinusIcon } from '@heroicons/react/20/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson } from '@fortawesome/free-solid-svg-icons'; // Import the specific solid icon you want to use
+import "../style/ticket.css"
 
 export default function Ticket({ setTicket, setContribution }) {
     const [tickets, setTickets] = useState(1);
@@ -20,13 +21,13 @@ export default function Ticket({ setTicket, setContribution }) {
     };
 
     const validateDonation = () => {
-        setTicket(prevTicket => ({...prevTicket, status: 'completed'}));
-        setContribution(prevContribution => ({...prevContribution, status: 'current', tickets: tickets}));
+        setTicket(prevTicket => ({ ...prevTicket, status: 'completed' }));
+        setContribution(prevContribution => ({ ...prevContribution, status: 'current', tickets: tickets }));
     }
 
     const generateTicketIcons = () => {
         const ticketIcons = [];
-    
+
         if (isSmallWindow) {
             for (let row = 0; row < 5; row++) {
                 const rowIcons = [];
@@ -37,7 +38,7 @@ export default function Ticket({ setTicket, setContribution }) {
                             <FontAwesomeIcon
                                 key={index}
                                 icon={faPerson}
-                                style={{ color: '#1bb7c5' }}
+                                style={{ color: '#17CACE' }}
                                 size="6x"
                                 className='me-2 mb-5'
                             />
@@ -94,10 +95,10 @@ export default function Ticket({ setTicket, setContribution }) {
                 );
             }
         }
-    
+
         return ticketIcons;
-    }; 
-    
+    };
+
     const updateWindowDimensions = () => {
         setIsSmallWindow(window.innerWidth < 400);
     };
@@ -116,68 +117,60 @@ export default function Ticket({ setTicket, setContribution }) {
     }, []);
 
     return (
-        <Container className="flex flex-col md:flex-row mx-auto mt-2">
-            <div className="flex-1 p-8">
-                <h3 className="block text-xs font-bold leading-6 text-gray-900">
+        <Container className="container">
+            <div className="row-ticket">
+                <h3 className="title-ticket">
                     NÚMERO DE BILHETES
                 </h3>
-                <div className="w-full mt-1 ring-1 ring-[#17CACE]"/>
-                <h3 className="block mt-4 text-md font-bold text-[#17CACE]" style={{ textAlign: 'center' }}>
+                <div className="line" />
+                <h3 className="date-text">
                     22 de Março | 20:00
                 </h3>
-                <Col className="mt-4 mb-4" >
-                    <Row style={{ display: 'flex', alignItems: 'center', justifyContent:'center' }}>
+                <Col className="select-container" >
+                    <Row style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Button
-                            className="rounded-md bg-[#c8f3f4] p-1 me-3 text-black shadow-md hover:bg-[#17CACE] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="button-select"
                             onClick={handleMinusChange}
                         >
-                            <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                            <MinusIcon className="icon" aria-hidden="true" />
                         </Button>
-                        <Button className="rounded-md bg-[#17CACE] px-10 py-1 me-3 text-white shadow-md" style={{ display: 'flex', alignItems: 'center' }}>
-                            <span className="text-black" style={{ fontSize: '13px' }}>
+                        <Button className="qtd">
+                            <span className="qtd-text">
                                 {tickets}
                             </span>
                         </Button>
                         <Button
-                            className="rounded-md bg-[#c8f3f4] p-1 text-black shadow-md hover:bg-[#17CACE] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="button-select"
                             onClick={handlePlusChange}
                         >
-                            <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                            <PlusIcon className="icon" aria-hidden="true" />
                         </Button>
                     </Row>
                     {maxTickets && (
-                        <p className="text-sm mt-2 text-red-600" id="email-error" style={{ textAlign: 'center' }}>
+                        <p className="error-text" id="email-error">
                             Limite máximo de bilhetes atingido
                         </p>
                     )}
                 </Col>
-                <h3 className="block text-xs mb-3 leading-6 text-gray-900" style={{ textAlign: 'center' }}>
-                    CADA BILHETE TEM UM PREÇO MÍNIMO DE 25€,
-                </h3>
-                <h3 className="block text-xs mb-5 leading-6 text-gray-900" style={{ textAlign: 'center' }}>
-                    O EQUIVALENTE A DAR ÁGUA A UMA PESSOA PARA O RESTO DA SUA VIDA.
-                </h3>
-
-                <h3 className="block text-xs font-bold leading-6 text-gray-900">
-                    VALOR A PAGAR
-                </h3>
-                <div className="w-full mt-1 mb-5 ring-1 ring-[#17CACE]"/>
-
-                <p className="text-2xl ml-2 font-bold"  style={{ textAlign: 'center' }}>
+                <div className="text-box">
+                    <h3 className="info-text">CADA BILHETE TEM UM PREÇO MÍNIMO DE 25€,</h3>
+                    <h3 className="info-text">O EQUIVALENTE A DAR ÁGUA A UMA PESSOA PARA O RESTO DA SUA VIDA.</h3>
+                </div>
+                <h3 className="title-ticket">VALOR A PAGAR</h3>
+                <div className="line" />
+                <p className="amount">
                     EUR€ {tickets * 25}
                 </p>
             </div>
-            <div className="flex-1 p-8">
-                <h3 className="block text-xs font-bold leading-6 text-gray-900">
-                    Nº VIDAS QUE ESTÁ A SALVAR
-                </h3>
-                <div className="w-full mt-1 mb-5 ring-1 ring-[#17CACE]"/>
+            <div className="row-ticket">
+                <h3 className="title-ticket">Nº VIDAS QUE ESTÁ A SALVAR</h3>
+                <div className="line" />
 
-                <div className="mt-5 flex flex-col items-center justify-center">
+                <div className="button-box">
                     {generateTicketIcons()}
                     <Button
-                        className="rounded-sm mt-8 bg-black px-10 py-2 text-sm font-semibold text-white shadow-md hover:bg-[#17CACE] hover:text-white ring-2 ring-black hover:ring-[#17CACE]"
-                        onClick={validateDonation}    
+                        className="button"
+                        onClick={validateDonation}
                     >
                         Continuar
                     </Button>

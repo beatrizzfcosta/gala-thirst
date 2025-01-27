@@ -26,12 +26,14 @@ const addTicketBuyer = async (ticketBuyer) => {
 
 const addDonation = async (donation) => {
   try {
+    console.log('Adicionando doação:', donation);
     const docRef = await addDoc(collection(db, 'afterGala'), donation);
     const docId = docRef.id;
+    console.log('Doação adicionada com ID:', docId);
     return docId;
   } catch (error) {
     console.error('Error adding document: ', error);
-    return false
+    return false;
   }
 };
 

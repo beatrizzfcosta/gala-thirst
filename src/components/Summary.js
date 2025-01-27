@@ -18,13 +18,13 @@ export default function Summary() {
                 <h3 className="block text-2xl mt-5 font-bold text-thirst-dark-grey">
                     A SUA COMPRA ESTÁ A MUDAR VIDAS!
                 </h3>
-                <h3 className="block mt-10 text-2xl text-thirst-blue">
+                <h3 className="block mt-10 text-2xl text-[#17CACE]">
                     Em nome do THIRST PROJECT PORTUGAL,
                 </h3>
-                <h3 className="block text-2xl mt-10 font-bold text-thirst-blue">
+                <h3 className="block text-2xl mt-10 font-bold text-[#17CACE]">
                     Obrigado por acreditar na nossa missão!
                 </h3>
-                <h3 className="block text-xl mt-10 text-thirst-blue">
+                <h3 className="block text-xl mt-10 text-[#17CACE]">
                     Assim que o pagamento for processado, iremos proceder à emissão do seu bilhete personalizado que será enviado para o endereço de e-mail indicado, no prazo máximo de 24horas.
                 </h3>
                 <div className="mt-10">

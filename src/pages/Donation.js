@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Donation from '../components/Donation';
 import Payment from '../components/Payment';
 import SummaryDonations from '../components/SummaryDonations';
-import { Container, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import logo from '../assets/gala_logo2025.png';
 import backgroundImage from '../assets/container1.png'; // Certifique-se de ter a imagem de fundo no caminho correto
+import '../style/header.css'
 
 export default function DonationPage() {
   const [donation, setDonation] = useState({ name: 'DOAÇÃO', status: 'current' });
@@ -12,44 +13,17 @@ export default function DonationPage() {
   const [summary, setSummary] = useState({ name: 'RESUMO', status: 'upcoming' });
 
   return (
-    <Container fluid className="mx-auto">
-      <div
-        className="text-center"
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '30%',
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            backgroundColor: '#fff',
-            opacity: 0.9, // Ajuste a opacidade conforme necessário
-            zIndex: 1,
-          }}
-        />
+    <div>
+      <div className="header" style={{ backgroundImage: `url(${backgroundImage})`, }}>
+        <div className='overlay-header' />
         {/* Logo */}
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 2,
-            padding: '20px 0',
-          }}
-        >
-          <Image src={logo} alt="Thirst Gala" width={200} height={200} style={{ margin: '0 auto' }} />
+        <div className="logo-header">
+          <Image className="img" src={logo} alt="Thirst Gala" width={200} height={200} style={{ margin: '0 auto' }} />
         </div>
       </div>
-
       {/* Barra azul */}
       <div
-        className="flex justify-center items-center text-white font-bold text-lg"
-        style={{ backgroundColor: '#17CACE', padding: '10px 0' }}
+        className="blue-bar"
       >
         {[donation, payment, summary]
           .filter((step) => step.status === 'current')
@@ -70,6 +44,6 @@ export default function DonationPage() {
         )}
         {summary.status === 'current' && <SummaryDonations />}
       </div>
-    </Container>
+    </div>
   );
 }

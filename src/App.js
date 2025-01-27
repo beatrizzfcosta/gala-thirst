@@ -14,10 +14,9 @@ function App() {
     <Router>
       <Routes>
         <Route path='/doacoes' element={<HomePage />} />
-        <Route path='/' element={<HomePage />} />
         <Route path='/doacoes/doar' element={<DonationPage />} />
-        <Route path='/bilhetes' element={<CountDown unavailable />} />
-        <Route path='/bilhetes/comprar' element={<CountDown unavailable />} />
+        <Route path='/' element={<CountDown unavailable />} />
+        <Route path='/bilhetes/comprar' element={<Ticket />} />
         <Route path='/comprar' element={<Ticket />} />
       </Routes>
     </Router>

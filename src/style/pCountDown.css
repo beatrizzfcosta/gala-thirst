@@ -1,0 +1,157 @@
+.background2 {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.row1 {
+    width: 60%;
+    align-content: center;
+    z-index: 3;
+    margin: 7%;
+}
+
+.countdown {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ajusta as caixas em telas pequenas */
+}
+
+.number {
+    color: #fff;
+}
+
+.title {
+    font-size: small;
+    line-height: 2;
+}
+
+.countdown-box {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza texto nos boxes */
+}
+
+.tab {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.subtext {
+    margin-top: 40px;
+    font-weight: bold;
+    color: #555;
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.date {
+    color: #17CACE;
+    font-weight: bolder;
+    font-size: large;
+    margin-bottom: 20px;
+}
+
+.row2 {
+    width: 40%;
+    align-content: center;
+    z-index: 3;
+}
+
+.button2 {
+    border-radius: 5px;
+    background-color: #17CACE;
+    margin-top: 10px;
+    padding: 10px 10px;
+    font-size: large;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    width: 80%; /* Ajusta a largura do botão para telas menores */
+    max-width: 300px; /* Limita a largura máxima */
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+   
+    margin-right: auto;
+}
+
+.button2:hover {
+    background-color: black;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 1024px) {
+    .row1 {
+        width: 90%; /* Ajusta largura da linha em telas menores */
+        margin: 5%;
+    }
+
+    .row2 {
+        width: 90%; /* Ajusta largura da linha em telas menores */
+        margin: 5%;
+    }
+
+    .subtext, .text, .date {
+        text-align: center; /* Centraliza texto */
+    }
+}
+
+@media (max-width: 768px) {
+    .background2 {
+        flex-direction: column; /* Empilha os elementos verticalmente */
+    }
+
+    .countdown {
+        gap: 10px; /* Reduz o espaço entre boxes */
+    }
+
+    .countdown-box {
+        font-size: 14px; /* Reduz tamanho do texto */
+    }
+
+    .subtext {
+        width: 100%; /* Ajusta largura do texto */
+    }
+
+    .button2 {
+        width: 100%; /* Botão ocupa largura total */
+        max-width: none; /* Remove limite de largura */
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 12px; /* Reduz tamanho da fonte */
+    }
+
+    .tab {
+        font-size: large; /* Ajusta tamanho do texto nos boxes */
+    }
+
+    .text {
+        font-size: x-large; /* Reduz tamanho do texto principal */
+    }
+
+    .subtext {
+        margin-top: 30px;
+    }
+
+    .number{
+        font-size: large;
+    }
+}
