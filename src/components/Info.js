@@ -7,7 +7,7 @@ import mbway from '../assets/mbway.png';
 import multibanco from '../assets/multibanco.png';
 import MultibancoModel from '../modals/MultibancoModel';
 import MbwayModel from '../modals/MbwayModel';
-
+import '../style/info.css'
 export default function Info({ setInfo, setSummary, contribution }) {
     const [emailError, setEmailError] = useState(false);
     const [names, setNames] = useState([]);
@@ -40,12 +40,12 @@ export default function Info({ setInfo, setSummary, contribution }) {
         const inputBoxes = [];
         for (let i = 1; i < contribution.tickets; i++) {
           inputBoxes.push(
-            <div key={i} className="relative mt-2 rounded-md shadow-sm">
+            <div key={i} className="container-contribution">
               <input
                 type="text"
                 name={`ticket-${i}`}
                 id={`ticket-${i}`}
-                className="block w-full rounded-sm border-0 py-1.5 pr-10 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                className="input-contribution2"
                 placeholder={`Nome do bilhete ${i + 1}`}
                 value={names[i] || ''}
                 onChange={(e) => handleNameChange(i, e.target.value)}
@@ -227,19 +227,19 @@ export default function Info({ setInfo, setSummary, contribution }) {
     }, []);
 
     return (
-        <Container className="flex flex-col md:flex-row mx-auto mt-2">
-            <div className="flex-1 p-8">
-                <h3 className="block text-xs font-bold leading-6 text-gray-900">
+        <Container className="container">
+            <div className="row-ticket">
+                <h3 className="title-ticket">
                     COMPLETE COM A SUA INFORMAÇÃO
                 </h3>
-                <div className="w-full mt-1 ring-1 ring-[#17CACE]"/>
+                <div className="line"/>
                 <div>
-                    <div className="relative mt-8 rounded-md shadow-sm">
+                    <div className="container-contribuition">
                         <input
                             type="text"
                             name="name"
                             id="name"
-                            className="block w-full rounded-sm border-0 py-1.5 pr-10 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                            className="input-contribution2"
                             placeholder="Nome"
                             aria-describedby="name"
                             value={names[0]}
@@ -247,20 +247,20 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         />
                     </div>
                     {contribution.tickets > 1 && (
-                        <div className="relative flex items-start">
-                            <div className="flex h-6 items-center">
+                        <div className="container-checkbox">
+                            <div className="container-checkbox-part">
                                 <input
                                     id="hide-name"
                                     aria-describedby="name"
                                     name="name"
                                     type="checkbox"
-                                    className="h-3 w-3 rounded-full text-[#17CACE]"
+                                    className="checkbox"
                                     style={{ boxShadow: 'none' }}
                                     onChange={() => { setCheckboxChecked(!checkboxChecked); if (!checkboxChecked) setNames([names[0]]); }}
                                 />
                             </div>
-                            <div className="ml-1 text-xxs leading-6">
-                                <label htmlFor="comments" className=" text-gray-900">
+                            <div className="container-checkbox-part">
+                                <label htmlFor="comments" className="select-text">
                                     ATRIBUIR NOMES INDIVIDUAIS A CADA BILHETE
                                 </label>
                             </div>
@@ -268,18 +268,18 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     )}
                     {checkboxChecked && renderInputBoxes()}
                     {namesError && (
-                        <p className="text-sm text-red-600" id="email-error">
+                        <p className="text-error" id="email-error">
                             Preencha todos os campos
                         </p>
                     )}
                 </div>
                 <div>
-                    <div className="relative mt-8 rounded-md shadow-sm">
+                    <div className="container-contribuition">
                         <input
                             type="email"
                             name="email"
                             id="email"
-                            className="block w-full rounded-sm border-0 py-1.5 pr-10 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                            className="input-contribution2"
                             placeholder="Email"
                             aria-invalid="true"
                             aria-describedby="email-error"

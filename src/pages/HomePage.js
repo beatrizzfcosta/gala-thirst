@@ -6,21 +6,21 @@ import backgroundImage from '../assets/container1.png'; // Certifique-se de ter 
 import '../style/homePage.css'
 export default function HomePage() {
     return (
-        <Container
+        <div
             className='background'
             style={{
                 backgroundImage: `url(${backgroundImage})`,
             }}
         >
             <div className='overlay'/>
-            <div className="container-img">         
+            <div className="container-img-homePage">         
                 <Image className="logo" src={logo} alt="Thirst Gala" width={350} height={350} />
             </div>
-            <div className="container-button">
+            <div className="container-button-homePage">
                 <Link to="/doacoes/doar">
-                    <Button>DOAR</Button>
+                    <Button className='button'>DOAR</Button>
                 </Link>
             </div>
-        </Container>
+        </div>
     )
 }

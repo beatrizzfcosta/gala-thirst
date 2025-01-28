@@ -1,0 +1,44 @@
+.input-contribution2 {
+    display: block; 
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    padding-top: 6px;
+    padding-bottom: 6px; 
+    padding-left: 10px; 
+    padding-right: 24px; 
+    color: black;
+    box-shadow: inset 0 0 0 2px #17CACE;
+    background-color: transparent; 
+    font-size: 14px; 
+    line-height: 24px; 
+    outline: none; 
+    transition: box-shadow 0.2s ease; 
+}
+
+.container-checkbox{
+    position: relative; 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 3px;
+}
+
+.container-checkbox-part{
+    display: flex;
+    height: 24px;
+    align-items: center;
+}
+
+.select-text{
+    font-size: small;
+    font-weight: bold;
+    line-height: 24px;
+    color: #555;
+}
+
+.checkbox{
+    height: 12px; 
+    width: 12px;
+    border-radius: 50%;
+    color: #17CACE;
+}

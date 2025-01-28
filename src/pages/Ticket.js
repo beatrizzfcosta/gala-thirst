@@ -12,7 +12,7 @@ export default function TicketPage() {
   const [ticket, setTicket] = useState({ name: 'BILHETE', status: 'current' });
   const [contribution, setContribution] = useState({ name: 'CONTRIBUIÇÃO', status: 'upcoming' });
   const [info, setInfo] = useState({ name: 'INFO & PAGAMENTO', status: 'upcoming' });
-  const [summary, setSummary] = useState({ name: '3. RESUMO', status: 'upcoming' });
+  const [summary, setSummary] = useState({ name: 'RESUMO', status: 'upcoming' });
 
   return (
     <div>

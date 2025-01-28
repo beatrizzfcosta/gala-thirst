@@ -20,11 +20,13 @@
     z-index: 1;
 }
 
-.container-img{
+.container-img-homePage{
     z-index: 2;
+    display: flex;
+    justify-content: center;
 }
 
-.container-button{
+.container-button-homePage{
     z-index: 2;
     display: flex;
     justify-content: center;

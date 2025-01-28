@@ -42,11 +42,17 @@
 
 }
 
-.select-container{
+.select-col{
     margin-top: 16px;
     margin-bottom: 16px;
 }
 
+.select-row{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
 
 .button-select {
     border-radius: 5px; 

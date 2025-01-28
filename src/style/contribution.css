@@ -1,0 +1,106 @@
+.container2{
+    margin: 0 auto; 
+    margin-top: 2px;
+}
+
+@media (min-width: 768px) {
+    .container2 {
+        flex-direction: row; 
+    }
+}
+
+@media (min-width: 1024px) {
+    .container2 {
+        max-width: 1024px;
+    }
+}
+
+.container-contribuition{
+    border-radius: 5px;
+    position: relative; 
+    margin-top: 20px; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.box-eur{
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    left: 0;
+    display: flex;
+    align-items: center; 
+    padding-left: 12px;
+}
+
+.eur {
+    color: #17CACE; /* Define a cor do texto */
+    font-weight: 500; /* Define o peso da fonte como médio (equivalente a font-medium no Tailwind) */
+}
+
+.input-contribution {
+    display: block; 
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    padding-top: 6px;
+    padding-bottom: 6px; 
+    padding-left: 56px; 
+    padding-right: 24px; 
+    color: #555;
+    font-weight: bold;
+    box-shadow: inset 0 0 0 2px #555; /* Cria um anel de 2px ao redor do elemento */
+    background-color: transparent; /* Define o fundo transparente, se necessário */
+    font-size: 14px; /* Define o tamanho da fonte como 14px (sm:text-sm no Tailwind) */
+    line-height: 24px; /* Define o espaçamento entre linhas como 24px (sm:leading-6 no Tailwind) */
+    outline: none; /* Remove o contorno padrão */
+    transition: box-shadow 0.2s ease; /* Adiciona uma transição suave ao foco */
+    margin-bottom: 12px;
+}
+
+.input-contribution:focus {
+    box-shadow: inset 0 0 0 2px #17CACE; /* Anel de foco de 2px com a cor personalizada */
+}
+
+.box-amount{
+    margin-top: 16px; 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.contribution-amount{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.button-container2{
+    margin-top: 2rem;
+    display: flez;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .eur {
+        font-size: 14px;
+    }
+}
+
+.container-contribuition2 {
+    border-radius: 5px;
+    position: relative; 
+    margin: 20px auto;
+    width: 300px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.info-text2{ 
+    font-size: medium;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 24px;
+    color: #555;
+    margin-top:32px;
+}

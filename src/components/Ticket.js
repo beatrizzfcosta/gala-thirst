@@ -126,8 +126,8 @@ export default function Ticket({ setTicket, setContribution }) {
                 <h3 className="date-text">
                     22 de Março | 20:00
                 </h3>
-                <Col className="select-container" >
-                    <Row style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Col className="select-col" >
+                    <Row className="select-row">
                         <Button
                             className="button-select"
                             onClick={handleMinusChange}
