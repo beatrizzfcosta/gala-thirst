@@ -7,6 +7,7 @@ import mbway from '../assets/mbway.png';
 import multibanco from '../assets/multibanco.png';
 import MultibancoModel from '../modals/MultibancoModel';
 import MbwayModel from '../modals/MbwayModel';
+
 import '../style/info.css'
 export default function Info({ setInfo, setSummary, contribution }) {
     const [emailError, setEmailError] = useState(false);
