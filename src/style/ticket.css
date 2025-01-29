@@ -12,7 +12,7 @@
 
 .title-ticket{
     display: block; 
-    font-size: 12px; 
+    font-size: medium; 
     font-weight: bold; 
     line-height: 24px; 
     color: #000;
@@ -112,7 +112,6 @@
 
 .error-text{
     font-size: small;
-    margin-top: 21px; 
     color: red;
     align-items: center;
     justify-content: center;

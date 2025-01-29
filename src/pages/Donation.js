@@ -8,9 +8,9 @@ import backgroundImage from '../assets/container1.png'; // Certifique-se de ter 
 import '../style/header.css'
 
 export default function DonationPage() {
-  const [donation, setDonation] = useState({ name: 'DOAÇÃO', status: 'current' });
-  const [payment, setPayment] = useState({ name: 'PAGAMENTO', status: 'upcoming' });
-  const [summary, setSummary] = useState({ name: 'RESUMO', status: 'upcoming' });
+  const [donation, setDonation] = useState({ name: 'DOAÇÃO', status: 'upcoming' });
+  const [payment, setPayment] = useState({ name: 'PAGAMENTO', status: 'current' });
+  const [summary, setSummary] = useState({ name: 'RESUMO', status: 'upcoming ' });
 
   return (
     <div>

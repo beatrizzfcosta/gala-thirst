@@ -268,7 +268,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     )}
                     {checkboxChecked && renderInputBoxes()}
                     {namesError && (
-                        <p className="text-error" id="email-error">
+                        <p className="error-text" id="email-error">
                             Preencha todos os campos
                         </p>
                     )}
@@ -287,51 +287,51 @@ export default function Info({ setInfo, setSummary, contribution }) {
                             onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError(false); }}
                         />
                         {emailError && (
-                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                            <div className="error-container">
+                                <ExclamationCircleIcon className="error-icon" aria-hidden="true" />
                             </div>
                         )}
                     </div>
                     {emailError && (
-                        <p className="text-sm mb-2 text-red-600" id="email-error">
+                        <p className="error-text" id="email-error">
                             Endereço de email inválido
                         </p>
                     )}
-                    <div className="relative flex items-start">
-                        <div className="flex h-6 items-center">
+                    <div className="container-checkbox">
+                        <div className="container-checkbox-part">
                             <input
                                 id="email"
                                 aria-describedby="email"
                                 name="email"
                                 type="checkbox"
-                                className="h-3 w-3 rounded-full text-[#17CACE]"
+                                className="checkbox"
                                 style={{ boxShadow: 'none' }}
                                 onChange={handleContactChange}
                             />
                         </div>
-                        <div className="ml-1 text-xxs leading-6">
-                            <label htmlFor="email" className="text-gray-900">
+                        <div className="container-checkbox-part">
+                            <label htmlFor="email" className="select-text">
                                 GOSTARIA DE SER CONTACTADO NO FUTURO
                             </label>
                         </div>
                     </div>
 
-                    <h3 className="block text-xs mt-7 font-bold leading-6 text-gray-900">
+                    <h3 className="title-ticket">
                         VALOR A PAGAR
                     </h3>
-                    <div className="w-full mt-1 ring-1 ring-[#17CACE]"/>
-                    <p className="text-2xl mt-5 font-bold text-black">
+                    <div className="line"/>
+                    <p className="amount">
                         EUR€ {contribution.total ? contribution.total : contribution.tickets * 25}
                     </p>
                 </div>
             </div>
-            <div className="flex-1 p-8">
-                <h3 className="block text-xs font-bold leading-6 text-gray-900">
+            <div className="row-ticket">
+                <h3 className="title-ticket">
                     PAGAMENTO - SELECIONE O MÉTODO
                 </h3>
-                <div className="w-full mt-1 ring-1 ring-[#17CACE]"/>
-                <div className="mx-auto mt-5 mb-5">
-                    <div className="flex items-center justify-center rounded-full">
+                <div className="line"/>
+                <div className="payment-methods-container">
+                    <div className="payment-methods">
                         <Button
                             className={`flex items-center ${paymentType === 'multibanco' ? 'bg-[#17CACE]' : 'bg-white/10'} me-3 rounded-lg p-1`}
                             onClick={() => { setPaymentType('multibanco'); if (paymentTypeError) setPaymentTypeError(false); }}
@@ -346,7 +346,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         </Button>
                     </div>
                     {paymentTypeError && (
-                        <p className="text-sm text-center mb-2 text-red-600" id="name-error">
+                        <p className="error-text" id="name-error">
                             Por favor selecione um método de pagamento
                         </p>
                     )}
@@ -359,12 +359,12 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 )}
                 {paymentType === 'mbway' && (
                     <>
-                        <div className="relative rounded-md shadow-sm">
+                        <div className="container-contribuition">
                             <input
                                 type="number"
                                 name="phone"
                                 id="dedication"
-                                className="block w-full mt-4 rounded-sm border-0 py-1.5 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                                className="input-contribution2"
                                 placeholder="Número de telefone (sem indicativo)"
                                 aria-describedby="phone"
                                 value={phone}
@@ -372,66 +372,66 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 onChange={(e) => { setPhone(e.target.value); if (phoneError) setPhoneError(false); }}
                             />
                             {phoneError && (
-                                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                        <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                    <div className="error-container">
+                                        <ExclamationCircleIcon className="error-icon" aria-hidden="true" />
                                     </div>
                                 )}
                         </div>
                         {phoneError && (
-                            <p className="text-sm text-center mb-2 text-red-600" id="name-error">
+                            <p className="error-text" id="name-error">
                                 Número inválido (caso tenha introduzido indicativo, retire-o)
                             </p>
                         )}
                     </>
                 )}
-                <div className="relative flex items-start mb-5">
-                    <div className="flex h-6 items-center">
+                <div className="container-checkbox">
+                    <div className="container-checkbox-part">
                         <input
                             id="nif"
                             aria-describedby="nif"
                             name="nif"
                             type="checkbox"
-                            className="h-3 w-3 rounded-full text-[#17CACE]"
+                            className="checkbox"
                             style={{ boxShadow: 'none' }}
                             onChange={handleNifChange}
                         />
                     </div>
-                    <div className="ml-1 text-xxs leading-6">
-                        <label htmlFor="email" className=" text-gray-900">
+                    <div className="container-checkbox-part">
+                        <label htmlFor="email" className="select-text">
                             DESEJO EMITIR FATURA
                         </label>
                     </div>
                 </div>
                 {isNif && (
                     <>
-                        <div className="relative rounded-md shadow-sm">
+                        <div className="container-contribuition">
                             <input
                                 type="text"
                                 name="name"
                                 id="dedication"
-                                className="block mt-1 w-full rounded-sm border-0 py-1.5 pr-10 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                                className="input-contribution2"
                                 placeholder="Nome de emissão da fatura"
                                 aria-describedby="name"
                                 value={nif.name}
                                 onChange={(e) => { setNif(prevName => ({...prevName, name: e.target.value })); if (nifError.address) setNifError(prevName => ({...prevName, name: false })); }}
                             />
                             {nifError.name && (
-                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                <div className="error-container">
+                                    <ExclamationCircleIcon className="error-icon" aria-hidden="true" />
                                 </div>
                             )}
                         </div>
                         {nifError.name && (
-                            <p className="text-sm mb-2 text-red-600" id="name-error">
+                            <p className="error-text" id="name-error">
                                 Nome inválido
                             </p>
                         )}
-                        <div className="relative rounded-md shadow-sm">
+                        <div className="container-contribuition">
                             <input
                                 type="number"
                                 name="nif"
                                 id="dedication"
-                                className="block w-full mt-4 rounded-sm border-0 py-1.5 pr-10 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                                className="input-contribution2"
                                 placeholder="NIF"
                                 aria-describedby="nif"
                                 value={nif.nif}
@@ -439,57 +439,57 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 onChange={(e) => { setNif(prevNif => ({...prevNif, nif: e.target.value })); if (nifError.nif) setNifError(prevNif => ({...prevNif, nif: false })); }}
                             />
                             {nifError.nif && (
-                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                <div className="error-container">
+                                    <ExclamationCircleIcon className="error-icon" aria-hidden="true" />
                                 </div>
                             )}
                         </div>
                         {nifError.nif && (
-                            <p className="text-sm mb-2 text-red-600" id="nif-error">
+                            <p className="error-text" id="nif-error">
                                 NIF inválido
                             </p>
                         )}
-                        <div className="relative rounded-md shadow-sm">
+                        <div className="container-contribuition">
                             <input
                                 type="text"
                                 name="address"
                                 id="dedication"
-                                className="block w-full mt-4 rounded-sm border-0 py-1.5 pr-10 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                                className="input-contribution2"
                                 placeholder="Morada"
                                 aria-describedby="address"
                                 value={nif.address}
                                 onChange={(e) => { setNif(prevAddress => ({...prevAddress, address: e.target.value })); if (nifError.address) setNifError(prevAddress => ({...prevAddress, address: false })); }}
                             />
                             {nifError.address && (
-                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                <div className="error-container">
+                                    <ExclamationCircleIcon className="error-icon" aria-hidden="true" />
                                 </div>
                             )}
                         </div>
                         {nifError.address && (
-                            <p className="text-sm mb-2 text-red-600" id="address-error">
+                            <p className="error-text" id="address-error">
                                 Morada inválida
                             </p>
                         )}
                     </>
                 )}
                 
-                <div className="relative flex items-start mt-4">
+                <div className="terms-container">
                     <Button
-                        className={`text-left ml-1 text-xxs leading-6 ${termsAccepted ? 'text-[#17CACE] font-bold' : 'text-gray-900'} hover:text-[#17CACE] hover:font-bold`}
+                        className="custom-button"
                         onClick={handleTermsChange}
                     >
                         ACEITO OS TERMOS E CONDIÇÕES DA GALA DO THIRST PROJECT PORTUGAL
                     </Button>
                 </div>
                 {termsError && (
-                    <p className="text-sm mb-2 text-red-600" id="address-error">
+                    <p className="error-text" id="address-error">
                         Aceite os termos e condições
                     </p>
                 )}
-                <div className="mt-5 flex flex-col items-center justify-center">
+                <div className="button-box">
                     <Button
-                        className={`rounded-sm mt-6 bg-black px-10 py-2 text-sm font-semibold text-white shadow-md ring-2 ring-black ${!blockButton ? 'hover:bg-[#17CACE] hover:text-white hover:ring-[#17CACE]' : ''}`}
+                        className="button"
                         onClick={validateDonation}
                         disabled={blockButton}
                     >
@@ -500,7 +500,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         )}
                     </Button>
                     {internalError && (
-                        <p className="text-sm mt-2 text-center text-red-600" id="address-error">
+                        <p className="text-error" id="address-error">
                             Ocorreu um erro interno. Por favor, tente novamente. Se o erro persistir por favor contacte-nos através do email gala@thirstproject.pt
                         </p>
                     )}

@@ -16,11 +16,16 @@
     transition: box-shadow 0.2s ease; 
 }
 
+.input-contribution2:focus {
+    box-shadow: inset 0 0 0 2px #555;
+}
+
 .container-checkbox{
     position: relative; 
     display: flex; 
     align-items: flex-start; 
     gap: 3px;
+    margin-bottom: 16px;
 }
 
 .container-checkbox-part{
@@ -41,4 +46,65 @@
     width: 12px;
     border-radius: 50%;
     color: #17CACE;
+}
+
+.payment-methods-container{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.payment-methods{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.error-container{
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 12px; 
+}
+
+.error-icon{
+    height: 20px; /* Equivalente a h-5 */
+    width: 20px; /* Equivalente a w-5 */
+    color: #ef4444; /* Equivalente a text-red-500 */
+}
+
+.terms-container{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 16px;
+}
+
+.custom-button {
+    text-align: left;
+    margin-left: 4px; /* Equivalente a ml-1 */
+    font-size: small; /* Equivalente a text-xxs */
+    line-height: 1.5rem; /* Equivalente a leading-6 */
+    color: #555; /* Cor padrão (text-gray-900) */
+    font-weight: bold;
+    background: none; /* Remove o fundo padrão do botão */
+    border: none; /* Remove borda padrão do botão */
+    cursor: pointer;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.custom-button:hover {
+    color: #17CACE; /* Cor de texto no hover */
+    font-weight: bold; /* Fonte mais pesada no hover */
+}
+
+.custom-button.selected {
+    color: #17CACE; /* Cor quando `termsAccepted` for true */
+    font-weight: bold; /* Fonte mais pesada quando `termsAccepted` for true */
 }

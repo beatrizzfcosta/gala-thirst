@@ -1,0 +1,34 @@
+.payment-button {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+
+.container-payment {
+        margin: 20px auto;
+}
+
+.button-group-payment {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+}
+
+.payment-button1 {
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        padding: 4px;
+        margin-right: 12px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+}
+
+.payment-button.selected {
+        background-color: #17CACE;
+}

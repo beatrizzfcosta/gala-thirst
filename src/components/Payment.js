@@ -6,7 +6,7 @@ import multibanco from '../assets/multibanco.png';
 import MultibancoModel from '../modals/MultibancoModel';
 import MbwayModel from '../modals/MbwayModel';
 import { getDonationById, editDonation } from '../firebase/firebase';
-
+import '../style/payment.css'
 export default function Payment({ setPayment, setSummary, payment }) {
     const [paymentType, setPaymentType] = useState('none');
     const [paymentTypeError, setPaymentTypeError] = useState(false);
@@ -132,11 +132,11 @@ export default function Payment({ setPayment, setSummary, payment }) {
 
     return (
         <>
-            <div className="flex-1 p-8">
-                <h3 className="block text-xs font-bold leading-6 text-gray-900">
+            <div className="container2">
+                <h3 className="title-ticket-extra">
                     PAGAMENTO - SELECIONE O MÉTODO
                 </h3>
-                <div className="w-full mt-1 ring-1 ring-thirst-gray"/>
+                <div className="line"/>
                 <div className="mx-auto mt-5 mb-5">
                     <div className="flex items-center justify-center rounded-full">
                         <Button
@@ -153,7 +153,7 @@ export default function Payment({ setPayment, setSummary, payment }) {
                         </Button>
                     </div>
                     {paymentTypeError && (
-                        <p className="text-sm text-center mb-2 text-red-600" id="name-error">
+                        <p className="error-text" id="name-error">
                             Por favor selecione um método de pagamento
                         </p>
                     )}
@@ -166,12 +166,12 @@ export default function Payment({ setPayment, setSummary, payment }) {
                 )}
                 {paymentType === 'mbway' && (
                     <>
-                        <div className="relative rounded-md shadow-sm">
+                        <div className="container-contribuition">
                             <input
                                 type="number"
                                 name="phone"
                                 id="dedication"
-                                className="block w-full mt-4 rounded-sm border-0 py-1.5 text-black-900 ring-2 ring-inset ring-[#17CACE] placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-[#17CACE] sm:text-sm sm:leading-6"
+                                className="input-contribution2"
                                 placeholder="Número de telefone (sem indicativo)"
                                 aria-describedby="phone"
                                 value={phone}
@@ -179,21 +179,21 @@ export default function Payment({ setPayment, setSummary, payment }) {
                                 onChange={(e) => { setPhone(e.target.value); if (phoneError) setPhoneError(false); }}
                             />
                             {phoneError && (
-                                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                                        <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+                                    <div className="error-container">
+                                        <ExclamationCircleIcon className="erro-icon" aria-hidden="true" />
                                     </div>
                                 )}
                         </div>
                         {phoneError && (
-                            <p className="text-sm text-center mb-2 text-red-600" id="name-error">
+                            <p className="error-text" id="name-error">
                                 Número inválido (caso tenha introduzido indicativo, retire-o)
                             </p>
                         )}
                     </>
                 )}
-                <div className="mt-5 flex flex-col items-center justify-center">
+                <div className="payment-button">
                     <Button
-                        className={`rounded-sm mt-6 bg-white/10 px-10 py-2 text-sm font-semibold text-black shadow-md ring-2 ring-[#17CACE] ${!blockButton ? 'hover:bg-[#17CACE] hover:text-white hover:ring-[#17CACE]' : ''}`}
+                        className="button"
                         onClick={validateDonation}
                         disabled={blockButton}
                     >
@@ -205,11 +205,11 @@ export default function Payment({ setPayment, setSummary, payment }) {
                     </Button>
                     {internalError && (
                         <>
-                            <p className="text-sm mt-5 text-center text-red-600" id="address-error">
+                            <p className="error-text" id="address-error">
                                 {paymentType === 'multibanco' ? 'Ocorreu um erro. Por favor, tente novamente.' :
                                 'Ocorreu um erro. Por favor, tente novamente ou verifique o limite de compras diárias do MBway.'}
                             </p>
-                            <p className="text-sm text-center text-red-600" id="address-error">
+                            <p className="error-text" id="address-error">
                                 Se o erro persistir por favor contacte-nos através do email gala@thirstproject.pt
                             </p>
                         </>
@@ -219,3 +219,19 @@ export default function Payment({ setPayment, setSummary, payment }) {
         </>
     )
 }
+
+/*<div class="container-payment">
+                    <div class="button-group-payment">
+                        <button class="payment-button1 multibanco" onClick={() => { setPaymentType('multibanco'); if (paymentTypeError) setPaymentTypeError(false); }}>
+                            <Image src={multibanco} alt="multibanco" width={40} height={40} />
+                        </button>
+                        <button class="payment-button1 mbway" onClick={() => { setPaymentType('mbway'); if (paymentTypeError) setPaymentTypeError(false); }}>
+                            <Image src={mbway} alt="mbway" width={40} height={40} />
+                        </button>
+                    </div>
+                {paymentTypeError && (
+                    <p className="error-text" id="name-error">
+                        Por favor selecione um método de pagamento
+                    </p>
+                )}
+            </div>*/

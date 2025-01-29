@@ -49,17 +49,18 @@
     padding-right: 24px; 
     color: #555;
     font-weight: bold;
-    box-shadow: inset 0 0 0 2px #555; /* Cria um anel de 2px ao redor do elemento */
+    box-shadow: inset 0 0 0 2px #17CACE;
     background-color: transparent; /* Define o fundo transparente, se necessário */
     font-size: 14px; /* Define o tamanho da fonte como 14px (sm:text-sm no Tailwind) */
     line-height: 24px; /* Define o espaçamento entre linhas como 24px (sm:leading-6 no Tailwind) */
     outline: none; /* Remove o contorno padrão */
     transition: box-shadow 0.2s ease; /* Adiciona uma transição suave ao foco */
     margin-bottom: 12px;
+    margin-top: 32px;
 }
 
 .input-contribution:focus {
-    box-shadow: inset 0 0 0 2px #17CACE; /* Anel de foco de 2px com a cor personalizada */
+    box-shadow: inset 0 0 0 2px #555; /* Anel de foco de 2px com a cor personalizada */
 }
 
 .box-amount{
