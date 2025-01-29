@@ -14,7 +14,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
     const [amount, setAmount] = useState(0);
     const [total, setTotal] = useState(contribution.tickets * 25);
     const [modalVisible, setModalVisible] = useState(false);
-    const [otherContribution, setOtherContribution] = useState(1);
+    const [otherContribution, setOtherContribution] = useState(0);
     const [percentage, setPercentage] = useState(0);
     const [otherContributionError, setOtherContributionError] = useState('');
     const [donationModalVisible, setDonationModalVisible] = useState(false);
