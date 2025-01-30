@@ -81,3 +81,25 @@
     color: #000;
     margin-top: 16px;
 }
+
+.back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.back-button:hover {
+    color: #f3f3f3;
+}
+
+.blue-bar {
+    display: flex;
+    align-items: center;
+    background-color: #17CACE;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+}

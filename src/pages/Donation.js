@@ -6,11 +6,24 @@ import { Image } from 'react-bootstrap';
 import logo from '../assets/gala_logo2025.png';
 import backgroundImage from '../assets/container1.png'; // Certifique-se de ter a imagem de fundo no caminho correto
 import '../style/header.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function DonationPage() {
-  const [donation, setDonation] = useState({ name: 'DOAÇÃO', status: 'current' });
+  const [donation, setDonation] = useState({ name: 'DOAÇÃO', status: 'upcomming' });
   const [payment, setPayment] = useState({ name: 'PAGAMENTO', status: 'upcomming' });
-  const [summary, setSummary] = useState({ name: 'RESUMO', status: 'upcoming ' });
+  const [summary, setSummary] = useState({ name: 'RESUMO', status: 'current' });
+
+  const goBack = () => {
+    if (summary.status === 'current') {
+      setSummary({ ...summary, status: 'upcoming' });
+      setPayment({ ...payment, status: 'current' });
+    } else if (payment.status === 'current') {
+      setPayment({ ...payment, status: 'upcoming' });
+      setDonation({ ...donation, status: 'current' });
+    }
+  };
 
   return (
     <div>
@@ -22,9 +35,12 @@ export default function DonationPage() {
         </div>
       </div>
       {/* Barra azul */}
-      <div
-        className="blue-bar"
-      >
+      <div className="blue-bar">
+      {donation.status !== 'current' && (
+          <button className="back-button" onClick={goBack}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        )}
         {[donation, payment, summary]
           .filter((step) => step.status === 'current')
           .map((step) => (
