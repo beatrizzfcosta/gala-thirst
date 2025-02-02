@@ -11,9 +11,9 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function DonationPage() {
-  const [donation, setDonation] = useState({ name: 'DOAÇÃO', status: 'upcomming' });
+  const [donation, setDonation] = useState({ name: 'DOAÇÃO', status: 'current' });
   const [payment, setPayment] = useState({ name: 'PAGAMENTO', status: 'upcomming' });
-  const [summary, setSummary] = useState({ name: 'RESUMO', status: 'current' });
+  const [summary, setSummary] = useState({ name: 'RESUMO', status: 'upcomming' });
 
   const goBack = () => {
     if (summary.status === 'current') {

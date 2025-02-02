@@ -3,12 +3,17 @@ const logger = require("firebase-functions/logger");
 const {
   onDocumentCreated, onDocumentUpdated,
 } = require("firebase-functions/v2/firestore");
+const functions = require("firebase-functions");
+
+
+require("dotenv").config(); // Carregar variáveis de ambiente do arquivo .env
+
 
 exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
   const docId = event.params.id;
   const snapshot = event.data;
   if (!snapshot) {
-    logger.info("No data associated with the event", {structuredData: true});
+    logger.info("No data associated with the event", { structuredData: true });
     return;
   }
   const data = snapshot.data();
@@ -21,7 +26,7 @@ exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
         "content-type": "application/json",
       },
       data: {
-        chave: process.env.EU_PAGO,
+        chave: process.env.EUPAGO_KEY,
         valor: data.total,
         alias: data.phone,
         email: data.email,
@@ -30,6 +35,9 @@ exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
         id: docId,
       },
     };
+
+    logger.info("Chave sendo enviada:", process.env.EUPAGO_KEY);
+
     try {
       const response = await axios.request(options);
       if (response.data.sucesso === true) {
@@ -44,7 +52,9 @@ exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
       }
     } catch (error) {
       snapshot.ref.update({
-        error: error,
+        error: error.response
+          ? `Error: ${error.response.status} - ${error.response.statusText} - ${JSON.stringify(error.response.data)}`
+          : error.message, // Mensagem detalhada ou genérica
       });
     }
   } else if (data.type === "multibanco") {
@@ -59,7 +69,7 @@ exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
         "content-type": "application/json",
       },
       data: {
-        chave: process.env.EU_PAGO,
+        chave: process.env.EUPAGO_KEY,
         valor: data.total,
         email: data.email,
         failOver: "1",
@@ -84,103 +94,112 @@ exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
       }
     } catch (error) {
       await snapshot.ref.update({
-        error: error,
+        error: error.response
+          ? `Error: ${error.response.status} - ${error.response.statusText} - ${JSON.stringify(error.response.data)}`
+          : error.message, // Mensagem detalhada ou genérica
       });
     }
   }
 });
 
 exports.moneyDonation = onDocumentUpdated(
-    "afterGala/{id}", async (event) => {
-      const docId = event.params.id;
-      const snapshot = event.data.after;
-      if (!snapshot) {
-        logger.info(
-            "No data associated with the event", {structuredData: true},
-        );
-        return;
-      }
-      const data = snapshot.data();
-      if (data.referenceCreated || data.error !== false) {
-        return;
-      }
-      if (data.type === "mbway") {
-        const options = {
-          method: "POST",
-          url: "https://clientes.eupago.pt/api/v1.02/mbway/create",
-          headers: {
-            "accept": "application/json",
-            "content-type": "application/json",
-          },
-          data: {
-            chave: process.env.EU_PAGO,
-            valor: data.total,
-            alias: data.phone,
-            email: data.email,
-            descricao: "Doação para Thirst Project",
-            contacto: data.phone,
-            id: docId,
-          },
-        };
-        try {
-          const response = await axios.request(options);
-          if (response.data.sucesso === true) {
-            await snapshot.ref.update({
-              referenceCreated: true,
-              error: false,
-            });
-          } else {
-            await snapshot.ref.update({
-              referenceCreated: false,
-              error: response.data.resposta,
-            });
-          }
-        } catch (error) {
-          snapshot.ref.update({
-            error: error,
-          });
-        }
-      } else if (data.type === "multibanco") {
-        const today = new Date();
-        const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-        const dataFimStr = tomorrow.toISOString().split("T")[0];
-        const options = {
-          method: "POST",
-          url: "https://clientes.eupago.pt/clientes/rest_api/multibanco/create",
-          headers: {
-            "accept": "application/json",
-            "content-type": "application/json",
-          },
-          data: {
-            chave: process.env.EU_PAGO,
-            valor: data.total,
-            email: data.email,
-            failOver: "1",
-            descricao: "Doação para Thirst Project",
-            data_fim: dataFimStr,
-            per_dup: 0,
-            id: docId,
-          },
-        };
-        try {
-          const response = await axios.request(options);
-          if (response.data.sucesso === true) {
-            await snapshot.ref.update({
-              referenceCreated: true,
-              referencia: response.data.referencia,
-              entidade: response.data.entidade,
-              error: false,
-            });
-          } else {
-            await snapshot.ref.update({
-              error: response.data.resposta,
-            });
-          }
-        } catch (error) {
+  "afterGala/{id}", async (event) => {
+    const docId = event.params.id;
+    const snapshot = event.data.after;
+    if (!snapshot) {
+      logger.info(
+        "No data associated with the event", { structuredData: true },
+      );
+      return;
+    }
+    const data = snapshot.data();
+    if (data.referenceCreated || data.error !== false) {
+      return;
+    }
+    if (data.type === "mbway") {
+      const options = {
+        method: "POST",
+        url: "https://clientes.eupago.pt/api/v1.02/mbway/create",
+        headers: {
+          "accept": "application/json",
+          "content-type": "application/json",
+        },
+        data: {
+          chave: process.env.EUPAGO_KEY,
+          valor: data.total,
+          alias: data.phone,
+          email: data.email,
+          descricao: "Doação para Thirst Project",
+          contacto: data.phone,
+          id: docId,
+        },
+      };
+
+      logger.info("Chave sendo enviada:", process.env.EUPAGO_KEY);
+
+      try {
+        const response = await axios.request(options);
+        if (response.data.sucesso === true) {
           await snapshot.ref.update({
-            error: error,
+            referenceCreated: true,
+            error: false,
+          });
+        } else {
+          await snapshot.ref.update({
+            referenceCreated: false,
+            error: response.data.resposta,
           });
         }
+      } catch (error) {
+        snapshot.ref.update({
+          error: error.response
+            ? `Error: ${error.response.status} - ${error.response.statusText} - ${JSON.stringify(error.response.data)}`
+            : error.message, // Mensagem detalhada ou genérica
+        });
       }
-    },
+    } else if (data.type === "multibanco") {
+      const today = new Date();
+      const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
+      const dataFimStr = tomorrow.toISOString().split("T")[0];
+      const options = {
+        method: "POST",
+        url: "https://clientes.eupago.pt/clientes/rest_api/multibanco/create",
+        headers: {
+          "accept": "application/json",
+          "content-type": "application/json",
+        },
+        data: {
+          chave: process.env.EUPAGO_KEY,
+          valor: data.total,
+          email: data.email,
+          failOver: "1",
+          descricao: "Doação para Thirst Project",
+          data_fim: dataFimStr,
+          per_dup: 0,
+          id: docId,
+        },
+      };
+      try {
+        const response = await axios.request(options);
+        if (response.data.sucesso === true) {
+          await snapshot.ref.update({
+            referenceCreated: true,
+            referencia: response.data.referencia,
+            entidade: response.data.entidade,
+            error: false,
+          });
+        } else {
+          await snapshot.ref.update({
+            error: response.data.resposta,
+          });
+        }
+      } catch (error) {
+        await snapshot.ref.update({
+          error: error.response
+            ? `Error: ${error.response.status} - ${error.response.statusText} - ${JSON.stringify(error.response.data)}`
+            : error.message, // Mensagem detalhada ou genérica
+        });
+      }
+    }
+  },
 );

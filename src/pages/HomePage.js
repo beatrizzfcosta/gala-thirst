@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Button } from 'react-bootstrap';
+import { Image, Button } from 'react-bootstrap';
 import logo from '../assets/gala_logo2025.png';
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/container1.png'; // Certifique-se de ter a imagem de fundo no caminho correto

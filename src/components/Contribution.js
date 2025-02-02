@@ -100,9 +100,6 @@ export default function Contribution({ contribution, setContribution, setInfo })
         else setTotal(25 * (tickets - contribution.tickets) + contribution.tickets * 25 + parseInt(value));
     }
 
-    const handleKeyPress = (event) => {
-        if (event.key === 'e') event.preventDefault();
-    };
 
     const generateTicketIcons = () => {
         const ticketIcons = [];

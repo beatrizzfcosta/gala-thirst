@@ -34,6 +34,7 @@
 
 .countdown-box {
     font-weight: bold;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza texto nos boxes */
@@ -104,6 +105,8 @@
     .row2 {
         width: 90%; /* Ajusta largura da linha em telas menores */
         margin: 5%;
+        display: flex;
+        justify-content: center;
     }
 
     .subtext, .text, .date {
@@ -118,6 +121,7 @@
 
     .countdown {
         gap: 10px; /* Reduz o espaço entre boxes */
+        justify-content: center
     }
 
     .countdown-box {
