@@ -24,9 +24,10 @@ exports.moneyRequest = onDocumentCreated("ticketBuyer/{id}", async (event) => {
       headers: {
         "accept": "application/json",
         "content-type": "application/json",
+        "Authorization": `ApiKey ${process.env.EUPAGO_KEY}`,
+        
       },
       data: {
-        chave: process.env.EUPAGO_KEY,
         valor: data.total,
         alias: data.phone,
         email: data.email,
@@ -113,9 +114,8 @@ exports.moneyDonation = onDocumentUpdated(
       return;
     }
     const data = snapshot.data();
-    if (data.referenceCreated || data.error !== false) {
-      return;
-    }
+   
+    logger.info("Dados recebidos no backend:", JSON.stringify(data));
     if (data.type === "mbway") {
       const options = {
         method: "POST",
@@ -123,19 +123,26 @@ exports.moneyDonation = onDocumentUpdated(
         headers: {
           "accept": "application/json",
           "content-type": "application/json",
+          "Authorization": `ApiKey ${process.env.EUPAGO_KEY}`,
         },
         data: {
-          chave: process.env.EUPAGO_KEY,
-          valor: data.total,
-          alias: data.phone,
-          email: data.email,
-          descricao: "Doação para Thirst Project",
-          contacto: data.phone,
-          id: docId,
+          payment: {
+            amount: {
+              currency: "EUR",
+              value: data.total,
+            },
+            identifier: docId, // Identificador do pagamento
+            customerPhone: data.phone,
+            countryCode: "351", // Código do país para Portugal
+          },
+          customer: {
+            email: data.email,
+          },
         },
       };
 
-      logger.info("Chave sendo enviada:", process.env.EUPAGO_KEY);
+      logger.info("Headers sendo enviados:", JSON.stringify(options.headers));
+      logger.info("Body sendo enviado:", JSON.stringify(options.data));
 
       try {
         const response = await axios.request(options);

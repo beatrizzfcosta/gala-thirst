@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Image, Button } from 'react-bootstrap';
 import logo from '../assets/gala_logo2025.png';
 import { Link } from 'react-router-dom';
-import backgroundImage from '../assets/container1.png'; // Certifique-se de ter a imagem de fundo no caminho correto
+import backgroundImage from '../assets/container1.png'; 
 import '../style/pCountDown.css'
 
 export default function CountDown({ unavailable }) {
@@ -86,14 +86,17 @@ export default function CountDown({ unavailable }) {
           22 de março | 20:00
         </h3>
         {unavailable ? (
-          <Link to="/bilhetes/comprar">
+          <div className="countdown-button" >
+          <Link  to="/bilhetes/comprar">
             <Button
               className="button2"
             >
               RESERVAR O MEU LUGAR!
             </Button>
           </Link>
+          </div>
         ) : (
+          <div className="countdown-button" >
           <Link to="/doacoes">
             <Button
               className="button2"
@@ -101,10 +104,14 @@ export default function CountDown({ unavailable }) {
               BILHETES ESGOTADOS | DOAR AGORA
             </Button>
           </Link>
+          </div>
         )}
       </div>
       <div className="row2">
-        <Image src={logo} alt="Thirst Gala" width={350} height={350} />
+        <div className="image-countdown" style={{
+        backgroundImage: `url(${logo})`,
+      }}> </div>
+       
       </div>
 
     </div>

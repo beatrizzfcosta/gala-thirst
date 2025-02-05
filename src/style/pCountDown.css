@@ -72,6 +72,11 @@
     z-index: 3;
 }
 
+.countdown-button{
+    display: flex;
+    justify-content: flex-start;
+}
+
 .button2 {
     border-radius: 5px;
     background-color: #17CACE;
@@ -81,7 +86,7 @@
     font-weight: bold;
     color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-    width: 80%; /* Ajusta a largura do botão para telas menores */
+
     max-width: 300px; /* Limita a largura máxima */
     text-align: center;
     display: block;
@@ -93,6 +98,12 @@
 
 .button2:hover {
     background-color: black;
+}
+
+.image-countdown{
+    width:350px;
+    height:350px;
+    background-size:cover
 }
 
 /* Media Queries para Responsividade */
@@ -107,20 +118,40 @@
         margin: 5%;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
     .subtext, .text, .date {
         text-align: center; /* Centraliza texto */
     }
+
+    .countdown{
+        justify-content: center
+    }
+
+    .countdown-button{
+        justify-content: center
+    }
+
+    .countdown-box{
+        line-height: 35px;
+        width: 55px;
+        height: 35px;
+    }
+    
+    .image-countdown{
+        width:300px;
+        height:300px;
+    }
 }
 
 @media (max-width: 768px) {
     .background2 {
-        flex-direction: column; /* Empilha os elementos verticalmente */
+        flex-direction: column-reverse
     }
 
     .countdown {
-        gap: 10px; /* Reduz o espaço entre boxes */
+        gap: 5px; /* Reduz o espaço entre boxes */
         justify-content: center
     }
 
