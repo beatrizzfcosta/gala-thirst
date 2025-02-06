@@ -12,7 +12,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
     const [isSmallWindow, setIsSmallWindow] = useState(window.innerWidth < 400);
     const [maxTickets, setMaxTickets] = useState(false);
     const [amount, setAmount] = useState(0);
-    const [total, setTotal] = useState(contribution.tickets * 25);
+    const [total, setTotal] = useState(contribution.tickets * 85);
     const [modalVisible, setModalVisible] = useState(false);
     const [otherContribution, setOtherContribution] = useState(0);
     const [percentage, setPercentage] = useState(0);
@@ -32,7 +32,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
     const handlePlusChange = () => {
         if (tickets < 10) {
             const currentVal = inputRef.current.value === '' ? 0 : parseFloat(inputRef.current.value)
-            setTotal(currentVal + (tickets + 1) * 25);
+            setTotal(currentVal + (tickets + 1) * 85);
             setTickets(tickets + 1);
         }
         else setMaxTickets(true);
@@ -42,7 +42,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
         setMaxTickets(false);
         if (tickets > contribution.tickets) {
             const currentVal = inputRef.current.value === '' ? 0 : parseFloat(inputRef.current.value)
-            setTotal(currentVal + (tickets - 1) * 25);
+            setTotal(currentVal + (tickets - 1) * 85);
             setTickets(tickets - 1);
         }
     };
@@ -96,8 +96,8 @@ export default function Contribution({ contribution, setContribution, setInfo })
     }
 
     const prepareAmount = (value) => {
-        if (value === '') setTotal(25 * (tickets - contribution.tickets) + contribution.tickets * 25);
-        else setTotal(25 * (tickets - contribution.tickets) + contribution.tickets * 25 + parseInt(value));
+        if (value === '') setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 85);
+        else setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 85 + parseInt(value));
     }
 
 
@@ -106,15 +106,15 @@ export default function Contribution({ contribution, setContribution, setInfo })
         if (isSmallWindow) {
             for (let row = 0; row < 5; row++) {
                 const rowIcons = [];
-                for (let col = 0; col < 2; col++) {
-                    const index = row * 2 + col;
+                for (let col = 0; col < 4; col++) {
+                    const index = row * 4 + col;
                     if (index < Math.floor(total / 25)) {
                         rowIcons.push(
                             <FontAwesomeIcon
                                 key={index}
                                 icon={faPerson}
                                 style={{ color: '#1bb7c5' }}
-                                size="6x"
+                                size="5x"
                                 className='me-2 mb-5'
                             />
                         );
@@ -131,7 +131,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                     }
                 }
                 ticketIcons.push(
-                    <div key={row} className="flex mt-2 justify-between flex-wrap">
+                    <div key={row} className="flex mt-2 justify-between">
                         {rowIcons}
                     </div>
                 );
@@ -164,7 +164,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                     }
                 }
                 ticketIcons.push(
-                    <div key={row} className="flex mt-2 md:justify-between flex-wrap">
+                    <div key={row} className="flex mt-2 md:justify-between">
                         {rowIcons}
                     </div>
                 );
@@ -242,7 +242,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                 />
                             </div>
                             <h3 className="title-ticket">
-                                RESUMO DA DOAÇÃO
+                                RESUMO DA COMPRA
                             </h3>
                             <div className="line" />
 

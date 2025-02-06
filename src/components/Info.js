@@ -475,19 +475,30 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     </>
                 )}
                 
-                <div className="terms-container">
-                    <Button
-                        className="custom-button"
-                        onClick={handleTermsChange}
-                    >
+                <div className="container-checkbox">
+                    <div className="container-checkbox-part">
+                        <input
+                            id="nif"
+                            aria-describedby="nif"
+                            name="nif"
+                            type="checkbox"
+                            className="checkbox"
+                            style={{ boxShadow: 'none' }}
+                            onChange={handleTermsChange}
+                        />
+                    </div>
+                    <div className="container-checkbox-part">
+                        <label htmlFor="email" className="select-text">
                         ACEITO OS TERMOS E CONDIÇÕES DA GALA DO THIRST PROJECT PORTUGAL
-                    </Button>
+                        </label>
+                        {termsError && (
+                         <p className="error-text" id="address-error">
+                            Aceite os termos e condições
+                        </p>
+                        )}
+                    </div>
                 </div>
-                {termsError && (
-                    <p className="error-text" id="address-error">
-                        Aceite os termos e condições
-                    </p>
-                )}
+               
                 <div className="button-box">
                     <Button
                         className="button"

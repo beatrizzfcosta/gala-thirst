@@ -8,16 +8,16 @@ import "../style/ticket.css"
 export default function Ticket({ setTicket, setContribution }) {
     const [tickets, setTickets] = useState(1);
     const [maxTickets, setMaxTickets] = useState(false);
-    const [isSmallWindow, setIsSmallWindow] = useState(window.innerWidth < 400);
+    const [isSmallWindow, setIsSmallWindow] = useState(window.innerWidth < 450);
 
     const handlePlusChange = () => {
-        if (tickets < 10) setTickets(tickets + 1);
+        if (tickets < 10) setTickets(tickets + 3);
         else setMaxTickets(true);
     };
 
     const handleMinusChange = () => {
         setMaxTickets(false);
-        if (tickets > 1) setTickets(tickets - 1);
+        if (tickets > 3) setTickets(tickets - 3);
     };
 
     const validateDonation = () => {
@@ -31,8 +31,41 @@ export default function Ticket({ setTicket, setContribution }) {
         if (isSmallWindow) {
             for (let row = 0; row < 5; row++) {
                 const rowIcons = [];
-                for (let col = 0; col < 2; col++) {
-                    const index = row * 2 + col;
+                for (let col = 0; col < 4; col++) {
+                    const index = row * 4 + col;
+                    if (index < tickets) {
+                        rowIcons.push(
+                            <FontAwesomeIcon
+                                key={index}
+                                icon={faPerson}
+                                style={{ color: '#17CACE' }}
+                                size="5x"
+                                className='me-2 mb-5'
+                            />
+                        );
+                    } else {
+                        rowIcons.push(
+                            <FontAwesomeIcon
+                                key={index}
+                                icon={faPerson}
+                                style={{ color: '#c9c9c9' }}
+                                size="5x"
+                                className='me-2 mb-5'
+                            />
+                        );
+                    }
+                }
+                ticketIcons.push(
+                    <div key={row} className="flex mt-2 justify-between ">
+                        {rowIcons}
+                    </div>
+                );
+            }
+        } else {
+            for (let row = 0; row < 2; row++) {
+                const rowIcons = [];
+                for (let col = 0; col < 5; col++) {
+                    const index = row * 5 + col;
                     if (index < tickets) {
                         rowIcons.push(
                             <FontAwesomeIcon
@@ -56,40 +89,7 @@ export default function Ticket({ setTicket, setContribution }) {
                     }
                 }
                 ticketIcons.push(
-                    <div key={row} className="flex mt-2 justify-between flex-wrap">
-                        {rowIcons}
-                    </div>
-                );
-            }
-        } else {
-            for (let row = 0; row < 2; row++) {
-                const rowIcons = [];
-                for (let col = 0; col < 5; col++) {
-                    const index = row * 5 + col;
-                    if (index < tickets) {
-                        rowIcons.push(
-                            <FontAwesomeIcon
-                                key={index}
-                                icon={faPerson}
-                                style={{ color: '#1bb7c5' }}
-                                size="6x"
-                                className='me-2 mb-5'
-                            />
-                        );
-                    } else {
-                        rowIcons.push(
-                            <FontAwesomeIcon
-                                key={index}
-                                icon={faPerson}
-                                style={{ color: '#c9c9c9' }}
-                                size="6x"
-                                className='me-2 mb-5'
-                            />
-                        );
-                    }
-                }
-                ticketIcons.push(
-                    <div key={row} className="flex mt-2 md:justify-between flex-wrap">
+                    <div key={row} className="flex mt-2 md:justify-between">
                         {rowIcons}
                     </div>
                 );
@@ -153,13 +153,13 @@ export default function Ticket({ setTicket, setContribution }) {
                     )}
                 </Col>
                 <div className="text-box">
-                    <h3 className="info-text">CADA BILHETE TEM UM PREÇO MÍNIMO DE 25€,</h3>
-                    <h3 className="info-text">O EQUIVALENTE A DAR ÁGUA A UMA PESSOA PARA O RESTO DA SUA VIDA.</h3>
+                    <h3 className="info-text">CADA BILHETE TEM UM PREÇO MÍNIMO DE 85€,</h3>
+                    <h3 className="info-text">O EQUIVALENTE A DAR ÁGUA A MAIS DE 3 PESSOAS O RESTO DA SUA VIDA.</h3>
                 </div>
                 <h3 className="title-ticket">VALOR A PAGAR</h3>
                 <div className="line" />
                 <p className="amount">
-                    EUR€ {tickets * 25}
+                    EUR€ {tickets * 85}
                 </p>
             </div>
             <div className="row-ticket">
