@@ -1,0 +1,369 @@
+[debug] [2025-02-09T16:30:29.534Z] ----------------------------------------------------------------------
+[debug] [2025-02-09T16:30:29.538Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\beatr\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-02-09T16:30:29.538Z] CLI Version:   13.29.2
+[debug] [2025-02-09T16:30:29.539Z] Platform:      win32
+[debug] [2025-02-09T16:30:29.539Z] Node Version:  v20.17.0
+[debug] [2025-02-09T16:30:29.539Z] Time:          Sun Feb 09 2025 16:30:29 GMT+0000 (Horário Padrão da Europa Ocidental)
+[debug] [2025-02-09T16:30:29.539Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-09T16:30:29.879Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-09T16:30:29.880Z] > authorizing via signed-in user (dtsi@thirstproject.pt)
+[debug] [2025-02-09T16:30:30.465Z] java version "21.0.5" 2024-10-15 LTS
+
+[debug] [2025-02-09T16:30:30.466Z] Java(TM) SE Runtime Environment (build 21.0.5+9-LTS-239)
+Java HotSpot(TM) 64-Bit Server VM (build 21.0.5+9-LTS-239, mixed mode, sharing)
+
+[debug] [2025-02-09T16:30:30.495Z] Parsed Java major version: 21
+[info] i  emulators: Starting emulators: functions, firestore, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, extensions"}}
+[debug] [2025-02-09T16:30:30.501Z] Checked if tokens are valid: true, expires at: 1739122112077
+[debug] [2025-02-09T16:30:30.501Z] Checked if tokens are valid: true, expires at: 1739122112077
+[debug] [2025-02-09T16:30:30.503Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst [none]
+[debug] [2025-02-09T16:30:31.311Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst 200
+[debug] [2025-02-09T16:30:31.311Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst {"projectNumber":"551601274824","projectId":"gala-thirst","lifecycleState":"ACTIVE","name":"gala-thirst","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-01-17T12:09:30.385618Z","parent":{"type":"organization","id":"500501231854"}}
+[debug] [2025-02-09T16:30:31.339Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-09T16:30:31.339Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-09T16:30:31.341Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-09T16:30:31.341Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9090}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9151}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-02-09T16:30:31.351Z] [hub] writing locator at C:\Users\beatr\AppData\Local\Temp\hub-gala-thirst.json
+[debug] [2025-02-09T16:30:31.366Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2025-02-09T16:30:31.375Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-09T16:30:31.375Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-09T16:30:31.375Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-09T16:30:31.376Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9090}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9151}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-02-09T16:30:31.384Z] defaultcredentials: writing to file C:\Users\beatr\AppData\Roaming\firebase\dtsi_thirstproject_pt_application_default_credentials.json
+[debug] [2025-02-09T16:30:31.389Z] Setting GAC to C:\Users\beatr\AppData\Roaming\firebase\dtsi_thirstproject_pt_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\beatr\\AppData\\Roaming\\firebase\\dtsi_thirstproject_pt_application_default_credentials.json"}}
+[debug] [2025-02-09T16:30:31.390Z] Checked if tokens are valid: true, expires at: 1739122112077
+[debug] [2025-02-09T16:30:31.390Z] Checked if tokens are valid: true, expires at: 1739122112077
+[debug] [2025-02-09T16:30:31.390Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig [none]
+[debug] [2025-02-09T16:30:31.783Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig 200
+[debug] [2025-02-09T16:30:31.783Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig {"projectId":"gala-thirst","storageBucket":"gala-thirst.firebasestorage.app"}
+[debug] [2025-02-09T16:30:31.815Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-02-09T16:30:31.816Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2025-02-09T16:30:31.816Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\beatr\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",9090,"--websocket_port",9151,"--project_id","gala-thirst","--rules","C:\\gala-thirst\\firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":9090} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\beatr\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",9090,\"--websocket_port\",9151,\"--project_id\",\"gala-thirst\",\"--rules\",\"C:\\\\gala-thirst\\\\firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9090}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2025-02-09T16:30:34.491Z] Feb 09, 2025 4:30:34 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9151
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:30:34 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\r\nINFO: Started WebSocket server on ws://127.0.0.1:9151\r\n"}}
+[debug] [2025-02-09T16:30:34.625Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2025-02-09T16:30:34.626Z] 127.0.0.1:9090
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:9090
+
+If you are running a Firestore in Datastore Mode project, run:
+
+   export DATASTORE_EMULATOR_HOST=127.0.0.1:9090
+
+Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:9090\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\r\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:9090\n\nIf you are running a Firestore in Datastore Mode project, run:\r\n\n   export DATASTORE_EMULATOR_HOST=127.0.0.1:9090\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\r\nDev App Server is now running.\n\r\n"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9151. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9151."}}
+[debug] [2025-02-09T16:30:34.806Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "C:\gala-thirst\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\gala-thirst\\functions\" for Cloud Functions..."}}
+[debug] [2025-02-09T16:30:34.821Z] Validating nodejs source
+[debug] [2025-02-09T16:30:36.298Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^13.1.0",
+    "firebase-functions": "^6.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-09T16:30:36.298Z] Building nodejs source
+[debug] [2025-02-09T16:30:36.299Z] Failed to find version of module node: reached end of search path C:\gala-thirst\functions\node_modules
+[warn] !  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-09T16:30:36.303Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-09T16:30:36.319Z] Found firebase-functions binary at 'C:\gala-thirst\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8403
+
+[debug] [2025-02-09T16:30:37.131Z] Got response from /__/functions.yaml {"endpoints":{"moneyRequestFinal":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EUPAGO_KEY"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"ticketBuyer/{id}"},"retry":false},"entryPoint":"moneyRequestFinal"},"moneyDonationFinal":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EUPAGO_KEY"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"afterGala/{id}"},"retry":false},"entryPoint":"moneyDonationFinal"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{},"params":[{"type":"secret","name":"EUPAGO_KEY"}]}
+[debug] [2025-02-09T16:30:42.193Z] defaultcredentials: writing to file C:\Users\beatr\AppData\Roaming\firebase\dtsi_thirstproject_pt_application_default_credentials.json
+[debug] [2025-02-09T16:30:42.194Z] Setting GAC to C:\Users\beatr\AppData\Roaming\firebase\dtsi_thirstproject_pt_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\beatr\\AppData\\Roaming\\firebase\\dtsi_thirstproject_pt_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: moneyRequestFinal, moneyDonationFinal. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: moneyRequestFinal, moneyDonationFinal."}}
+[debug] [2025-02-09T16:30:42.201Z] Found a v2 firestore trigger.
+[debug] [2025-02-09T16:30:42.201Z] addFirestoreTrigger "{\"eventType\":\"google.cloud.firestore.document.v1.created\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"ticketBuyer/{id}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2025-02-09T16:30:42.202Z] >>> [apiv2][query] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyRequestFinal-0 [none]
+[debug] [2025-02-09T16:30:42.202Z] >>> [apiv2][body] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyRequestFinal-0 "{\"eventType\":\"google.cloud.firestore.document.v1.created\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"ticketBuyer/{id}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2025-02-09T16:30:42.213Z] Feb 09, 2025 4:30:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:30:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:30:42.612Z] Feb 09, 2025 4:30:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:30:42 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:30:43.959Z] <<< [apiv2][status] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyRequestFinal-0 200
+[debug] [2025-02-09T16:30:43.959Z] <<< [apiv2][body] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyRequestFinal-0 {"eventType":"google.cloud.firestore.document.v1.created","database":"(default)","namespace":"(default)","document":{"value":"ticketBuyer/{id}","matchType":"PATH_PATTERN"}}
+[info] +  functions[us-central1-moneyRequestFinal]: firestore function initialized. {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mfirestore\u001b[22m function initialized."}}
+[debug] [2025-02-09T16:30:43.961Z] Found a v2 firestore trigger.
+[debug] [2025-02-09T16:30:43.961Z] addFirestoreTrigger "{\"eventType\":\"google.cloud.firestore.document.v1.created\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"afterGala/{id}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2025-02-09T16:30:43.961Z] >>> [apiv2][query] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyDonationFinal-0 [none]
+[debug] [2025-02-09T16:30:43.962Z] >>> [apiv2][body] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyDonationFinal-0 "{\"eventType\":\"google.cloud.firestore.document.v1.created\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":{\"value\":\"afterGala/{id}\",\"matchType\":\"PATH_PATTERN\"}}"
+[debug] [2025-02-09T16:30:43.982Z] <<< [apiv2][status] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyDonationFinal-0 200
+[debug] [2025-02-09T16:30:43.982Z] <<< [apiv2][body] POST http://127.0.0.1:9090/emulator/v1/projects/gala-thirst/eventarcTrigger?eventarcTriggerId=us-central1-moneyDonationFinal-0 {"eventType":"google.cloud.firestore.document.v1.created","database":"(default)","namespace":"(default)","document":{"value":"afterGala/{id}","matchType":"PATH_PATTERN"}}
+[info] +  functions[us-central1-moneyDonationFinal]: firestore function initialized. {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mfirestore\u001b[22m function initialized."}}
+[debug] [2025-02-09T16:30:43.989Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Firestore  │ 127.0.0.1:9090 │ http://127.0.0.1:4000/firestore  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9151
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-02-09T16:30:49.989Z] Feb 09, 2025 4:30:49 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:30:49 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\r\nINFO: Connected to new websocket client\r\n"}}
+[debug] [2025-02-09T16:30:49.991Z] Feb 09, 2025 4:30:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:30:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:44.127Z] Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:44.398Z] Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:44.421Z] Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:44.797Z] [work-queue] {"queuedWork":["/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0-2025-02-09T16:32:44.796Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-09T16:32:44.804Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0-2025-02-09T16:32:44.796Z"],"workRunningCount":1}
+[debug] [2025-02-09T16:32:44.806Z] Accepted request POST /functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0 --> us-central1-moneyDonationFinal-0
+[debug] [2025-02-09T16:32:44.809Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-02-09T16:32:44.811Z] [functions] Got req.url=/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0, mapping to path=/functions/projects/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0, mapping to path=/functions/projects/"}}
+[info] i  functions: Trying to access secret EUPAGO_KEY@latest {"metadata":{"emulator":{"name":"functions"},"message":"Trying to access secret EUPAGO_KEY@latest"}}
+[debug] [2025-02-09T16:32:44.819Z] Checked if tokens are valid: true, expires at: 1739122112077
+[debug] [2025-02-09T16:32:44.819Z] Checked if tokens are valid: true, expires at: 1739122112077
+[debug] [2025-02-09T16:32:44.820Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest:access [none]
+[debug] [2025-02-09T16:32:44.826Z] Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:45.129Z] Feb 09, 2025 4:32:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:45.263Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest:access 200
+[debug] [2025-02-09T16:32:45.263Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest:access {"name":"projects/551601274824/secrets/EUPAGO_KEY/versions/1","payload":{"data":"NGYyOC1lNThhLWYwMGUtOGY4NS05NTE3","dataCrc32c":"1477647948"}}
+[debug] [2025-02-09T16:32:45.283Z] [worker-pool] addWorker(us-central1-moneyDonationFinal) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-moneyDonationFinal)"}}
+[debug] [2025-02-09T16:32:45.285Z] [worker-pool] Adding worker with key us-central1-moneyDonationFinal, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-moneyDonationFinal, total=1"}}
+[debug] [2025-02-09T16:32:45.287Z] Feb 09, 2025 4:32:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:47.565Z] [runtime-status] [24084] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.1.0","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.1.0\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-02-09T16:32:47.569Z] [runtime-status] [24084] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.1","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.1\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-09T16:32:47.569Z] [runtime-status] [24084] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-02-09T16:32:47.571Z] [runtime-status] [24084] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.1","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.1\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-09T16:32:48.536Z] [runtime-status] [24084] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-02-09T16:32:48.537Z] [runtime-status] [24084] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.3.1","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.3.1\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}}"}}
+[debug] [2025-02-09T16:32:48.538Z] [runtime-status] [24084] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.1","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.1\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-09T16:32:48.550Z] [runtime-status] [24084] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.1.0","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.1.0\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-02-09T16:32:48.557Z] [runtime-status] [24084] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.1","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.1\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-02-09T16:32:48.558Z] [runtime-status] [24084] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"13.1.0","resolution":"C:\\gala-thirst\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"13.1.0\",\"resolution\":\"C:\\\\gala-thirst\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2025-02-09T16:32:48.637Z] [runtime-status] [24084] Functions runtime initialized. {"cwd":"C:\\gala-thirst\\functions","node_version":"20.17.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Functions runtime initialized. {\"cwd\":\"C:\\\\gala-thirst\\\\functions\",\"node_version\":\"20.17.0\"}"}}
+[debug] [2025-02-09T16:32:48.637Z] [runtime-status] [24084] Listening to port: \\?\pipe\fire_emu_2adaf8f5323ec5cd {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] Listening to port: \\\\?\\pipe\\fire_emu_2adaf8f5323ec5cd"}}
+[debug] [2025-02-09T16:32:48.704Z] [worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: IDLE"}}
+[debug] [2025-02-09T16:32:48.705Z] [worker-pool] submitRequest(triggerId=us-central1-moneyDonationFinal) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-moneyDonationFinal)"}}
+[info] i  functions: Beginning execution of "us-central1-moneyDonationFinal" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Beginning execution of \"us-central1-moneyDonationFinal\""}}
+[debug] [2025-02-09T16:32:48.706Z] [worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: BUSY"}}
+[debug] [2025-02-09T16:32:48.713Z] [runtime-status] [24084] RunCloudEvent {"specversion":"1.0","type":"google.cloud.firestore.document.v1.created","source":"//firestore.googleapis.com/projects/projects/gala-thirst/databases/(default)","id":"3f117f62-101e-43b1-84a3-ba456399d69c","subject":"documents/afterGala/IKP6BSj7y9ZxWmWzpQu2","time":"2025-02-09T16:32:44Z","datacontenttype":"application/protobuf","dataschema":"https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/firestore/v1/data.proto","location":"us-central1","project":"gala-thirst","database":"(default)","namespace":"(default)","document":"afterGala/IKP6BSj7y9ZxWmWzpQu2","data":{"type":"Buffer","data":[10,239,1,10,81,112,114,111,106,101,99,116,115,47,103,97,108,97,45,116,104,105,114,115,116,47,100,97,116,97,98,97,115,101,115,47,40,100,101,102,97,117,108,116,41,47,100,111,99,117,109,101,110,116,115,47,97,102,116,101,114,71,97,108,97,47,73,75,80,54,66,83,106,55,121,57,90,120,87,109,87,122,112,81,117,50,18,21,10,4,116,121,112,101,18,13,138,1,10,109,117,108,116,105,98,97,110,99,111,18,37,10,5,101,109,97,105,108,18,28,138,1,25,98,101,97,116,114,105,122,99,111,115,116,97,102,48,50,64,103,109,97,105,108,46,99,111,109,18,36,10,5,99,104,97,118,101,18,27,138,1,24,52,102,50,56,45,101,53,56,97,45,102,48,48,101,45,56,102,56,53,45,57,53,49,55,18,13,10,7,112,101,114,95,100,117,112,18,2,16,0,18,11,10,5,118,97,108,111,114,18,2,16,1,26,12,8,172,177,163,189,6,16,184,158,250,150,2,34,12,8,172,177,163,189,6,16,184,158,250,150,2,26,0]}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] RunCloudEvent {\"specversion\":\"1.0\",\"type\":\"google.cloud.firestore.document.v1.created\",\"source\":\"//firestore.googleapis.com/projects/projects/gala-thirst/databases/(default)\",\"id\":\"3f117f62-101e-43b1-84a3-ba456399d69c\",\"subject\":\"documents/afterGala/IKP6BSj7y9ZxWmWzpQu2\",\"time\":\"2025-02-09T16:32:44Z\",\"datacontenttype\":\"application/protobuf\",\"dataschema\":\"https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/firestore/v1/data.proto\",\"location\":\"us-central1\",\"project\":\"gala-thirst\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":\"afterGala/IKP6BSj7y9ZxWmWzpQu2\",\"data\":{\"type\":\"Buffer\",\"data\":[10,239,1,10,81,112,114,111,106,101,99,116,115,47,103,97,108,97,45,116,104,105,114,115,116,47,100,97,116,97,98,97,115,101,115,47,40,100,101,102,97,117,108,116,41,47,100,111,99,117,109,101,110,116,115,47,97,102,116,101,114,71,97,108,97,47,73,75,80,54,66,83,106,55,121,57,90,120,87,109,87,122,112,81,117,50,18,21,10,4,116,121,112,101,18,13,138,1,10,109,117,108,116,105,98,97,110,99,111,18,37,10,5,101,109,97,105,108,18,28,138,1,25,98,101,97,116,114,105,122,99,111,115,116,97,102,48,50,64,103,109,97,105,108,46,99,111,109,18,36,10,5,99,104,97,118,101,18,27,138,1,24,52,102,50,56,45,101,53,56,97,45,102,48,48,101,45,56,102,56,53,45,57,53,49,55,18,13,10,7,112,101,114,95,100,117,112,18,2,16,0,18,11,10,5,118,97,108,111,114,18,2,16,1,26,12,8,172,177,163,189,6,16,184,158,250,150,2,34,12,8,172,177,163,189,6,16,184,158,250,150,2,26,0]}}"}}
+[info] >  🔔 Evento recebido para documento: IKP6BSj7y9ZxWmWzpQu2 {"user":"🔔 Evento recebido para documento: IKP6BSj7y9ZxWmWzpQu2","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"\u001b[90m> \u001b[39m 🔔 Evento recebido para documento: IKP6BSj7y9ZxWmWzpQu2"}}
+[info] >  📄 Dados recebidos: {"type":"multibanco","email":"beatrizcostaf02@gmail.com","chave":"4f28-e58a-f00e-8f85-9517","per_dup":0,"valor":1} {"user":"📄 Dados recebidos: {\"type\":\"multibanco\",\"email\":\"beatrizcostaf02@gmail.com\",\"chave\":\"4f28-e58a-f00e-8f85-9517\",\"per_dup\":0,\"valor\":1}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"\u001b[90m> \u001b[39m 📄 Dados recebidos: {\"type\":\"multibanco\",\"email\":\"beatrizcostaf02@gmail.com\",\"chave\":\"4f28-e58a-f00e-8f85-9517\",\"per_dup\":0,\"valor\":1}"}}
+[debug] [2025-02-09T16:32:49.691Z] Feb 09, 2025 4:32:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected HTTP/2 connection.\r\n"}}
+[info] >  ❌ Erro no pagamento Multibanco para IKP6BSj7y9ZxWmWzpQu2: Os dados inseridos não são válidos {"user":"❌ Erro no pagamento Multibanco para IKP6BSj7y9ZxWmWzpQu2: Os dados inseridos não são válidos","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"\u001b[90m> \u001b[39m ❌ Erro no pagamento Multibanco para IKP6BSj7y9ZxWmWzpQu2: Os dados inseridos não são válidos"}}
+[debug] [2025-02-09T16:32:49.753Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-moneyDonationFinal" in 1047.3775ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finished \"us-central1-moneyDonationFinal\" in 1047.3775ms"}}
+[debug] [2025-02-09T16:32:49.756Z] [worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: IDLE"}}
+[debug] [2025-02-09T16:32:49.757Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-02-09T16:32:49.758Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-02-09T16:32:49.758Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-09T16:32:59.225Z] Feb 09, 2025 4:32:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Feb 09, 2025 4:32:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\nFeb 09, 2025 4:32:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:32:59.242Z] Feb 09, 2025 4:32:59 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:59 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose\r\nINFO: channel closed\r\n"}}
+[debug] [2025-02-09T16:32:59.244Z] Feb 09, 2025 4:32:59 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:32:59 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\r\nINFO: channel closed\r\n"}}
+[debug] [2025-02-09T16:33:57.053Z] Feb 09, 2025 4:33:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:33:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:33:57.081Z] Feb 09, 2025 4:33:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:33:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:33:57.138Z] Feb 09, 2025 4:33:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:33:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:34:17.157Z] Feb 09, 2025 4:34:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:34:45.390Z] Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:34:45.424Z] Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:34:45.445Z] Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:34:45.489Z] Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:34:45.494Z] [work-queue] {"queuedWork":["/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0-2025-02-09T16:34:45.494Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-09T16:34:45.495Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0-2025-02-09T16:34:45.494Z"],"workRunningCount":1}
+[debug] [2025-02-09T16:34:45.495Z] Accepted request POST /functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0 --> us-central1-moneyDonationFinal-0
+[debug] [2025-02-09T16:34:45.496Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-02-09T16:34:45.497Z] [functions] Got req.url=/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0, mapping to path=/functions/projects/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/functions/projects/gala-thirst/triggers/us-central1-moneyDonationFinal-0, mapping to path=/functions/projects/"}}
+[debug] [2025-02-09T16:34:45.498Z] [worker-pool] submitRequest(triggerId=us-central1-moneyDonationFinal) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-moneyDonationFinal)"}}
+[info] i  functions: Beginning execution of "us-central1-moneyDonationFinal" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Beginning execution of \"us-central1-moneyDonationFinal\""}}
+[debug] [2025-02-09T16:34:45.501Z] [worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: BUSY"}}
+[debug] [2025-02-09T16:34:45.512Z] [runtime-status] [24084] RunCloudEvent {"specversion":"1.0","type":"google.cloud.firestore.document.v1.created","source":"//firestore.googleapis.com/projects/projects/gala-thirst/databases/(default)","id":"05213d23-4fc6-4ebb-9208-cbaebe7be929","subject":"documents/afterGala/zjZmmkfMR1Z90iQZTMR4","time":"2025-02-09T16:34:45Z","datacontenttype":"application/protobuf","dataschema":"https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/firestore/v1/data.proto","location":"us-central1","project":"gala-thirst","database":"(default)","namespace":"(default)","document":"afterGala/zjZmmkfMR1Z90iQZTMR4","data":{"type":"Buffer","data":[10,210,1,10,81,112,114,111,106,101,99,116,115,47,103,97,108,97,45,116,104,105,114,115,116,47,100,97,116,97,98,97,115,101,115,47,40,100,101,102,97,117,108,116,41,47,100,111,99,117,109,101,110,116,115,47,97,102,116,101,114,71,97,108,97,47,122,106,90,109,109,107,102,77,82,49,90,57,48,105,81,90,84,77,82,52,18,21,10,4,116,121,112,101,18,13,138,1,10,109,117,108,116,105,98,97,110,99,111,18,11,10,5,116,111,116,97,108,18,2,16,1,18,37,10,5,101,109,97,105,108,18,28,138,1,25,98,101,97,116,114,105,122,99,111,115,116,97,102,48,50,64,103,109,97,105,108,46,99,111,109,18,22,10,16,114,101,102,101,114,101,110,99,101,67,114,101,97,116,101,100,18,2,8,0,26,12,8,165,178,163,189,6,16,144,157,163,216,1,34,12,8,165,178,163,189,6,16,144,157,163,216,1,26,0]}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[runtime-status] [24084] RunCloudEvent {\"specversion\":\"1.0\",\"type\":\"google.cloud.firestore.document.v1.created\",\"source\":\"//firestore.googleapis.com/projects/projects/gala-thirst/databases/(default)\",\"id\":\"05213d23-4fc6-4ebb-9208-cbaebe7be929\",\"subject\":\"documents/afterGala/zjZmmkfMR1Z90iQZTMR4\",\"time\":\"2025-02-09T16:34:45Z\",\"datacontenttype\":\"application/protobuf\",\"dataschema\":\"https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/firestore/v1/data.proto\",\"location\":\"us-central1\",\"project\":\"gala-thirst\",\"database\":\"(default)\",\"namespace\":\"(default)\",\"document\":\"afterGala/zjZmmkfMR1Z90iQZTMR4\",\"data\":{\"type\":\"Buffer\",\"data\":[10,210,1,10,81,112,114,111,106,101,99,116,115,47,103,97,108,97,45,116,104,105,114,115,116,47,100,97,116,97,98,97,115,101,115,47,40,100,101,102,97,117,108,116,41,47,100,111,99,117,109,101,110,116,115,47,97,102,116,101,114,71,97,108,97,47,122,106,90,109,109,107,102,77,82,49,90,57,48,105,81,90,84,77,82,52,18,21,10,4,116,121,112,101,18,13,138,1,10,109,117,108,116,105,98,97,110,99,111,18,11,10,5,116,111,116,97,108,18,2,16,1,18,37,10,5,101,109,97,105,108,18,28,138,1,25,98,101,97,116,114,105,122,99,111,115,116,97,102,48,50,64,103,109,97,105,108,46,99,111,109,18,22,10,16,114,101,102,101,114,101,110,99,101,67,114,101,97,116,101,100,18,2,8,0,26,12,8,165,178,163,189,6,16,144,157,163,216,1,34,12,8,165,178,163,189,6,16,144,157,163,216,1,26,0]}}"}}
+[info] >  🔔 Evento recebido para documento: zjZmmkfMR1Z90iQZTMR4 {"user":"🔔 Evento recebido para documento: zjZmmkfMR1Z90iQZTMR4","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"\u001b[90m> \u001b[39m 🔔 Evento recebido para documento: zjZmmkfMR1Z90iQZTMR4"}}
+[info] >  📄 Dados recebidos: {"type":"multibanco","total":1,"email":"beatrizcostaf02@gmail.com","referenceCreated":false} {"user":"📄 Dados recebidos: {\"type\":\"multibanco\",\"total\":1,\"email\":\"beatrizcostaf02@gmail.com\",\"referenceCreated\":false}","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"\u001b[90m> \u001b[39m 📄 Dados recebidos: {\"type\":\"multibanco\",\"total\":1,\"email\":\"beatrizcostaf02@gmail.com\",\"referenceCreated\":false}"}}
+[debug] [2025-02-09T16:34:45.542Z] Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[info] >  ✅ Pagamento Multibanco processado com sucesso para zjZmmkfMR1Z90iQZTMR4 {"user":"✅ Pagamento Multibanco processado com sucesso para zjZmmkfMR1Z90iQZTMR4","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"\u001b[90m> \u001b[39m ✅ Pagamento Multibanco processado com sucesso para zjZmmkfMR1Z90iQZTMR4"}}
+[debug] [2025-02-09T16:34:45.772Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-moneyDonationFinal" in 272.1474ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finished \"us-central1-moneyDonationFinal\" in 272.1474ms"}}
+[debug] [2025-02-09T16:34:45.774Z] [worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"[worker-us-central1-moneyDonationFinal-8df6565c-8cdb-446e-b0a4-32c78c1992c9]: IDLE"}}
+[debug] [2025-02-09T16:34:45.774Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-02-09T16:34:45.774Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-moneyDonationFinal"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-02-09T16:34:45.775Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-09T16:34:54.332Z] Feb 09, 2025 4:34:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Feb 09, 2025 4:34:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\nFeb 09, 2025 4:34:54 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:34:54.346Z] Feb 09, 2025 4:34:54 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:54 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\r\nINFO: channel closed\r\n"}}
+[debug] [2025-02-09T16:34:54.352Z] Feb 09, 2025 4:34:54 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:34:54 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose\r\nINFO: channel closed\r\n"}}
+[debug] [2025-02-09T16:36:36.879Z] Feb 09, 2025 4:36:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:36:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:36:36.907Z] Feb 09, 2025 4:36:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:36:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:36:36.942Z] Feb 09, 2025 4:36:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:36:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:36:40.358Z] Feb 09, 2025 4:36:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:36:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:37:40.409Z] Feb 09, 2025 4:37:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:37:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:38:40.444Z] Feb 09, 2025 4:38:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:38:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:39:40.467Z] Feb 09, 2025 4:39:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:39:40 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:40:25.961Z] Feb 09, 2025 4:40:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:40:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:41:26.000Z] Feb 09, 2025 4:41:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:41:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:42:26.017Z] Feb 09, 2025 4:42:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:42:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:43:11.962Z] Feb 09, 2025 4:43:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:43:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:44:11.999Z] Feb 09, 2025 4:44:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:44:11 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:44:28.591Z] Feb 09, 2025 4:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:44:28.596Z] Feb 09, 2025 4:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+Feb 09, 2025 4:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\nFeb 09, 2025 4:44:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:45:12.032Z] Feb 09, 2025 4:45:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:45:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:46:12.065Z] Feb 09, 2025 4:46:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:46:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:47:12.096Z] Feb 09, 2025 4:47:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:47:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:48:12.114Z] Feb 09, 2025 4:48:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:48:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:49:12.139Z] Feb 09, 2025 4:49:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:49:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:50:12.168Z] Feb 09, 2025 4:50:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:50:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:51:12.199Z] Feb 09, 2025 4:51:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:51:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:52:12.238Z] Feb 09, 2025 4:52:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:52:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:53:12.256Z] Feb 09, 2025 4:53:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:53:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:54:12.309Z] Feb 09, 2025 4:54:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:54:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:55:12.339Z] Feb 09, 2025 4:55:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:55:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:56:12.387Z] Feb 09, 2025 4:56:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:56:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:57:12.424Z] Feb 09, 2025 4:57:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:57:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:58:12.455Z] Feb 09, 2025 4:58:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:58:12 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[debug] [2025-02-09T16:58:54.424Z] Feb 09, 2025 4:58:54 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Feb 09, 2025 4:58:54 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\r\nINFO: Websocket client disconnected\r\n"}}

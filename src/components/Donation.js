@@ -93,16 +93,12 @@ export default function Donation({ setDonation, setPayment }) {
                 referencia: null,
                 entidade: null,
             }
-            const result = await addDonation(info);
 
-            if (result) {
-                setBlockButton(false);
-                setDonation(prevDonation => ({ ...prevDonation, status: 'completed' }));
-                setPayment(prevPayment => ({ ...prevPayment, status: 'current', info: info, infoId: result }));
-            } else {
-                setBlockButton(false);
-                setDonationError(true);
-            }
+            setDonation(prevDonation => ({ ...prevDonation, status: 'completed' }));
+            setPayment(prevPayment => ({ ...prevPayment, status: 'current', info: info }));
+
+            setBlockButton(false);
+
         }
     }
 
@@ -136,7 +132,7 @@ export default function Donation({ setDonation, setPayment }) {
                 <h3 className="title-ticket">
                     COMPLETE COM A SUA INFORMAÇÃO
                 </h3>
-                <div className="line"/>
+                <div className="line" />
                 <div>
                     <div className="relative mt-5 rounded-md shadow-sm">
                         <input
@@ -227,7 +223,7 @@ export default function Donation({ setDonation, setPayment }) {
                     <h3 className="title-ticket">
                         GOSTARIA DE DEIXAR UM COMENTÁRIO
                     </h3>
-                    <div className='line'/>
+                    <div className='line' />
                     <div className="comment">
                         <textarea
                             id="about"
@@ -244,7 +240,7 @@ export default function Donation({ setDonation, setPayment }) {
                 <h3 className="title-ticket">
                     QUAL O MONTANTE QUE DESEJA DOAR
                 </h3>
-                <div className="line"/>
+                <div className="line" />
                 <div className="container-button">
                     <div className="buttons-group">
                         <div className="cheaper">
@@ -252,7 +248,7 @@ export default function Donation({ setDonation, setPayment }) {
                             <Button className="custom-button-amount" onClick={() => prepareAmount(5)}>€5</Button>
                             <Button className="custom-button-amount" onClick={() => prepareAmount(10)}>€10</Button>
                         </div>
-                        <Button className="custom-button-amount"onClick={() => prepareAmount(25)}>€25</Button>
+                        <Button className="custom-button-amount" onClick={() => prepareAmount(25)}>€25</Button>
                     </div>
                 </div>
                 <div className="container-contribuition">

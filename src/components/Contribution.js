@@ -6,19 +6,21 @@ import { faPerson } from '@fortawesome/free-solid-svg-icons'; // Import the spec
 import AlertModal from '../modals/AlertModal';
 import DonationModal from '../modals/DonationModal';
 import '../style/contribution.css'
+import { use } from 'react';
 
 export default function Contribution({ contribution, setContribution, setInfo }) {
     const [tickets, setTickets] = useState(contribution.tickets);
     const [isSmallWindow, setIsSmallWindow] = useState(window.innerWidth < 400);
     const [maxTickets, setMaxTickets] = useState(false);
     const [amount, setAmount] = useState(0);
-    const [total, setTotal] = useState(contribution.tickets * 85);
+    const [total, setTotal] = useState(0);
     const [modalVisible, setModalVisible] = useState(false);
-    const [otherContribution, setOtherContribution] = useState(0);
+    const [otherContribution, setOtherContribution] = useState(2);
     const [percentage, setPercentage] = useState(0);
     const [otherContributionError, setOtherContributionError] = useState('');
     const [donationModalVisible, setDonationModalVisible] = useState(false);
     const [addLifePage, setAddLifePage] = useState(false);
+    const [number, setNumber] = useState(0);
 
     const inputRef = useRef(null);
 
@@ -30,26 +32,24 @@ export default function Contribution({ contribution, setContribution, setInfo })
     }
 
     const handlePlusChange = () => {
-        if (tickets < 10) {
-            const currentVal = inputRef.current.value === '' ? 0 : parseFloat(inputRef.current.value)
-            setTotal(currentVal + (tickets + 1) * 85);
+        if (total < 250) {
+            setTotal(total + 25);
             setTickets(tickets + 1);
-        }
-        else setMaxTickets(true);
+        } else setMaxTickets(true);
     };
 
     const handleMinusChange = () => {
         setMaxTickets(false);
-        if (tickets > contribution.tickets) {
-            const currentVal = inputRef.current.value === '' ? 0 : parseFloat(inputRef.current.value)
-            setTotal(currentVal + (tickets - 1) * 85);
+        if (total > 0) {
+            setTotal(total - 25);
             setTickets(tickets - 1);
         }
     };
 
+
     const validateDonation = () => {
         if (total > 250) {
-            setTotal(25 * (tickets - contribution.tickets) + contribution.tickets * 25);
+            setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 25);
             setModalVisible(true);
             inputRef.current.value = '';
             return;
@@ -186,6 +186,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
             window.removeEventListener('resize', updateWindowDimensions);
         };
     }, []);
+    
 
     return (
         <>
@@ -194,7 +195,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                     <Container className="container">
                         <div className="row-ticket">
                             <h3 className="title-ticket">
-                                QUANTAS VIDAS PRETENDE ADICIONAR?
+                                ALÉM DOS SEUS BILHETES, QUANTAS VIDAS A MAIS QUERES SALVAR?
                             </h3>
                             <div className="line" />
                             <Col className="select-col">
@@ -207,7 +208,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                     </Button>
                                     <Button className="qtd">
                                         <span className="qtd-text">
-                                            {tickets}
+                                            {Math.floor(total / 25)}
                                         </span>
                                     </Button>
                                     <Button
@@ -234,11 +235,14 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                     type="number"
                                     name="price"
                                     id="price"
-                                    className="input-contribution"
+                                    className="input-contribution-other"
                                     placeholder="Outro"
                                     min="0"
                                     ref={inputRef}
-                                    onChange={(e) => prepareAmount(e.target.value)}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        setTotal(value ? parseInt(value) : 0);
+                                    }}
                                 />
                             </div>
                             <h3 className="title-ticket">
@@ -248,31 +252,26 @@ export default function Contribution({ contribution, setContribution, setInfo })
 
                             <div className="box-amount">
                                 <p className="contribution-amount">
-                                    EUR€ {total}
+                                    EUR€ {contribution.tickets * 85 + total}
                                 </p>
                             </div>
                         </div>
-                        <div className="row-ticket">
-                            <h3 className="title-ticket">
-                                Nº VIDAS QUE ESTÁ A SALVAR
-                            </h3>
-                            <div className="line" />
 
+                        <div className="row-ticket">
                             <div className="button-box">
                                 {generateTicketIcons()}
                                 <p className="info-text">
                                     EQUIVALE A {Math.floor(total / 25)} {Math.floor(total / 25) === 1 ? "VIDA" : "VIDAS"}
                                 </p>
-
-
-                                <Button
-                                    className="button"
-                                    onClick={validateDonation}
-                                >
-                                    Continuar
-                                </Button>
-
                             </div>
+                            <Button
+                                className="button"
+                                onClick={validateDonation}
+                            >
+                                Continuar
+                            </Button>
+
+
                         </div>
                     </Container>
 
@@ -351,13 +350,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                             Para que a sua doação seja correntemente realizada deve, no momento que considerar oportuno, levantar a sua mão, para que a doação seja válida. Caso prefira uma doação mais “silenciosa” e discreta, poderá usar a nossa plataforma de doações online, que será disponibilizada durante o dia da gala.<br></br>
                             Para a realização do pagamento da respetiva doação, no final da gala, caso possível, será abordado por um membro do Thirst Project Portugal, para que este o auxilie no pagamento da doação ou ser-lhe-á enviado um email com o todas as instruções, para a realização do pagamento da mesma.
                         </p>
-                        <div className="flex mt-2 flex-col sm:flex-row justify-center sm:justify-between sm:px-10">
-                            <Button
-                                className="button"
-                                onClick={changePageDisplay}
-                            >
-                                VOLTAR
-                            </Button>
+                        <div className="container-buttons-contribution">
                             <Button
                                 className="button"
                                 onClick={() => setDonationModalVisible(true)}
@@ -366,9 +359,9 @@ export default function Contribution({ contribution, setContribution, setInfo })
                             </Button>
                             <Button
                                 className="button"
-                                onClick={() => { setOtherContribution(1); scrollToTop(); setAddLifePage(false); }}
+                                onClick={() => { setOtherContribution(0); scrollToTop(); setAddLifePage(false); }}
                             >
-                                DOAR MAIS AGORA
+                                DOAR AGORA
                             </Button>
                         </div>
                     </div>
@@ -376,7 +369,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
             }
             {
                 modalVisible && (
-                    <AlertModal setAddLifePage={setAddLifePage} setModalVisible={setModalVisible} setOtherContribution={setOtherContribution} />
+                    <AlertModal setAddLifePage={setAddLifePage} setModalVisible={setModalVisible} setOtherContribution={setOtherContribution} setTicket={contribution.tickets} />
                 )
             }
             {

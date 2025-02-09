@@ -62,15 +62,20 @@ const getTicketById = async (ticketId) => {
 const editDonation = async (donationId, type, phone) => {
   try {
     const docRef = doc(db, 'afterGala', donationId);
-    const updateData = type === 'mbway' ? { type, phone, error: false } : { type, error: false };
+    const updateData = { type, phone, error: false, updatedAt: new Date(), forceUpdate: Math.random(), } 
+    
+    console.log('🔍 Atualizando doação:', updateData); // Log para verificar a atualização
+    
     await updateDoc(docRef, updateData);
-    console.log('Doação editada:', updateData);
+    console.log('✅ Doação editada com sucesso:', donationId);
+    
     return true;
   } catch (error) {
-    console.error('Erro ao atualizar doação:', error);
+    console.error('❌ Erro ao atualizar doação:', error);
     return false;
   }
 };
+
 
 const getDonationById = async (donationId) => {
   try {

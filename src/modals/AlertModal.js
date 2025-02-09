@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-solid-svg-icons'; // Import the specific solid icon you want to use
 import '../style/modals.css'
 
-export default function AlertModal({setModalVisible, setAddLifePage, setOtherContribution, }) {
+export default function AlertModal({setModalVisible, setAddLifePage, setOtherContribution, setTicket}) {
     const [open, setOpen] = useState(true)
 
     const closeModal = () => {
@@ -80,12 +80,12 @@ export default function AlertModal({setModalVisible, setAddLifePage, setOtherCon
                                         >
                                             QUERO CONTRIBUIR MAIS DE 250€ PELA MINHA COMPRA
                                         </Button>
-                                        <Button
+                                        {/* <Button
                                             className="button-modal"
                                             onClick={setInfoPage}
                                         >
                                             SABER MAIS SOBRE AS DOAÇÕES NA GALA
-                                        </Button>
+                                        </Button> */}
                                         <Button
                                             className="button-modal"
                                             onClick={closeModal}

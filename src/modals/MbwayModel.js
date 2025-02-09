@@ -7,7 +7,6 @@ export default function MbwayModel({setMBwayModalVisible, changeFromMultibanco }
     const [open, setOpen] = useState(true)
   
     const closeModal = () => {
-        setOpen(false)
         setMBwayModalVisible(false)
     }
 
@@ -17,7 +16,7 @@ export default function MbwayModel({setMBwayModalVisible, changeFromMultibanco }
     }
 
     return (
-        <Transition.Root show={open} as={Fragment}>
+        <Transition.Root show={true} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={() => {}}>
                 <Transition.Child
                     as={Fragment}
@@ -62,7 +61,7 @@ export default function MbwayModel({setMBwayModalVisible, changeFromMultibanco }
                                             </div>
                                         </div>
                                         <Button
-                                            className="button-modal"
+                                            className="button-modal-mbway"
                                             onClick={changePage}
                                         >
                                             FECHAR

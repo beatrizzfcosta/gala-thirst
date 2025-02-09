@@ -12,7 +12,7 @@ export default function SummaryDonations() {
     }, []);
 
     return (
-        <div className="container2">
+        <div className="row-ticket">
             <h3 className="text1">
                 A SUA DOAÇÃO ESTÁ A MUDAR VIDAS!
             </h3>

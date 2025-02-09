@@ -103,6 +103,24 @@
     margin-bottom: 12px;
     line-height: 24px;
     color: #555;
+    text-align: center;
+}
+
+.info-text-2{ 
+    font-size: medium;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 24px;
+    color: #000;
+    text-align: center;
+}
+
+.vidas{ 
+    font-size: medium;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 24px;
+    color: #17CACE;
 }
 
 .icon{

@@ -108,7 +108,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
             const info = {
                 names: names,
                 tickets: contribution.tickets,
-                total: contribution.total ? contribution.total : contribution.tickets * 25,
+                total: contribution.total ? contribution.total : contribution.tickets * 85,
                 nif: nif,
                 email: email,
                 phone: phone,
@@ -322,7 +322,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     </h3>
                     <div className="line"/>
                     <p className="amount">
-                        EUR€ {contribution.total ? contribution.total : contribution.tickets * 25}
+                        EUR€ {contribution.total ? contribution.total : contribution.tickets * 85}
                     </p>
                 </div>
             </div>

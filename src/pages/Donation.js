@@ -36,7 +36,7 @@ export default function DonationPage() {
       </div>
       {/* Barra azul */}
       <div className="blue-bar">
-      {donation.status !== 'current' && (
+      {payment.status === 'current' && (
           <button className="back-button" onClick={goBack}>
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>

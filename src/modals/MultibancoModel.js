@@ -34,7 +34,7 @@ export default function MultibancoModel({setMBModalVisible, mbInfo, changeFromMu
         },
         {
           name: 'Valor',
-          role: `${mbInfo.valor}€`,
+          role: `${parseFloat(mbInfo.valor).toFixed(2)}€`,
         },
         {
           name: 'Prazo de Pagamento',
