@@ -7,6 +7,7 @@ import AlertModal from '../modals/AlertModal';
 import DonationModal from '../modals/DonationModal';
 import '../style/contribution.css'
 
+
 export default function Contribution({ contribution, setContribution, setInfo }) {
     const [isSmallWindow, setIsSmallWindow] = useState(window.innerWidth < 400);
     const [maxTickets, setMaxTickets] = useState(false);
@@ -18,7 +19,8 @@ export default function Contribution({ contribution, setContribution, setInfo })
     const [otherContributionError, setOtherContributionError] = useState('');
     const [donationModalVisible, setDonationModalVisible] = useState(false);
     const [addLifePage, setAddLifePage] = useState(false);
-
+    const [contributionAmount, setContributionAmount] = useState(0);
+  
     const inputRef = useRef(null);
 
     // const changePageDisplay = () => {
@@ -30,15 +32,15 @@ export default function Contribution({ contribution, setContribution, setInfo })
 
     const handlePlusChange = () => {
         if (total < 250) {
-
             setTotal(total + 25);
+            setContributionAmount(contributionAmount + 25);
         } else setMaxTickets(true);
     };
 
     const handleMinusChange = () => {
         setMaxTickets(false);
         if (total > 0) {
-
+            setContributionAmount(contributionAmount - 25);
             setTotal(total - 25);
         }
     };
@@ -56,12 +58,20 @@ export default function Contribution({ contribution, setContribution, setInfo })
     }
 
     const validateFreeDonation = () => {
-        if (amount < 85 * contribution.tickets + 250) setOtherContributionError(`O valor mínimo para doação livre é de ${contribution.tickets * 85 + 250}€`)
-        else {
-            setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: amount, futureDonation: false, futureDonationAmount: null }));
+        if (amount < 250) {
+            setOtherContributionError(`O valor mínimo para doação livre é de 250€`);
+        } else {
+            setContribution(prevContribution => ({
+                ...prevContribution,
+                status: 'completed',
+                total: amount, // Define amount como o único valor total
+                futureDonation: false,
+                futureDonationAmount: null
+            }));
             setInfo(prevInfo => ({ ...prevInfo, status: 'current' }));
         }
-    }
+    };
+    
 
     const validateDonationOnGala = (value) => {
         setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: amount, futureDonation: true, futureDonationAmount: value }));
@@ -82,15 +92,15 @@ export default function Contribution({ contribution, setContribution, setInfo })
 
     const setOtherContributionAmount = (value) => {
         setOtherContributionError('');
-        if (value === '') {
-            setAmount(0);
-            setPercentage(0);
-        }
-        else {
-            setAmount(value);
-            setPercentage(Math.round(value / 12000 * 100));
-        }
-    }
+    
+        const newAmount = value ? parseInt(value, 10) : 0;
+        
+        setAmount(newAmount); // Define o valor do amount
+        setTotal(newAmount); // Agora, total reflete apenas amount
+        
+        setPercentage(Math.round(newAmount / 12000 * 100));
+    };
+    
 
     // const prepareAmount = (value) => {
     //     if (value === '') setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 85);
@@ -238,6 +248,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                     ref={inputRef}
                                     onChange={(e) => {
                                         const value = e.target.value;
+                                        setContributionAmount(value ? parseInt(value) : 0);
                                         setTotal(value ? parseInt(value) : 0);
                                     }}
                                 />
@@ -268,7 +279,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                             <td className="info-text">1</td>
                                             <td className="info-text">Contribuição</td>
                                             <td className="info-text">-</td>
-                                            <td className="info-text">EUR€ {total}</td>
+                                            <td className="info-text">EUR€ {contributionAmount}</td>
                                         </tr>
                                     )}
                                     <tr className="line-row">
@@ -280,7 +291,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                         <td className="info-text"></td>
                                         <td className="info-text"></td>
                                         <td className="info-text"></td>
-                                        <td className="total-amount">EUR€ {contribution.tickets * 85 + total}</td>
+                                        <td className="total-amount">EUR€ {otherContribution === 1 ? amount : contribution.tickets * 85 + contributionAmount}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -313,7 +324,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                     <div className="container2">
                         <div className="row-ticket">
                             <h3 className="title-ticket">
-                                QUAL O MONTANTE QUE QUER DAR PELOS SEUS BILHETES?
+                                QUAL O MONTANTE QUE QUER DOAR?
                             </h3>
                             <div className="line" />
 
@@ -326,7 +337,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                     name="price"
                                     id="price"
                                     className="input-contribution"
-                                    placeholder="Outro"
+                                    placeholder="250"
                                     min="0"
                                     onChange={(e) => setOtherContributionAmount(e.target.value)}
                                 />
@@ -399,7 +410,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
             }
             {
                 modalVisible && (
-                    <AlertModal setAddLifePage={setAddLifePage} setModalVisible={setModalVisible} setOtherContribution={setOtherContribution} setTicket={contribution.tickets} />
+                    <AlertModal setAddLifePage={setAddLifePage} setModalVisible={setModalVisible} setOtherContribution={setOtherContribution} tickets={contribution.tickets}   />
                 )
             }
             {

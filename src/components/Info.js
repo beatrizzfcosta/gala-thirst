@@ -31,7 +31,8 @@ export default function Info({ setInfo, setSummary, contribution }) {
     const [mbModalVisible, setMBModalVisible] = useState(false);
     const [mbwayModalVisible, setMBwayModalVisible] = useState(false);
     const [paymentTypeError, setPaymentTypeError] = useState(false);
-    const [total, setTotal] = useState(contribution.total - contribution.tickets * 85);
+    const [total, setTotal] = useState(contribution.total - 
+        contribution.tickets * 85);
 
     // Adicione um estado para o código promocional
     const [promoCode, setPromoCode] = useState('');
@@ -48,25 +49,28 @@ export default function Info({ setInfo, setSummary, contribution }) {
     };
 
     const applyPromoCode = () => {
-        if (promoCode === 'TOTAL') {
-            setDiscountedPrice(0);
-            if (updatedTickets > 0) {
-                setPromoDetails({ originalPrice: 85, discountedPrice: 0 });
-                setUpdatedTickets(updatedTickets - 1);
-                setPromoApplied(true);
+        if (!promoApplied) {
+            if (promoCode === 'TOTAL') {
+                setDiscountedPrice(0);
+                if (updatedTickets > 0) {
+                    setPromoDetails({ originalPrice: 85, discountedPrice: 0 });
+                    setUpdatedTickets(updatedTickets - 1);
+                    setPromoApplied(true);
+                }
+            } else if (promoCode === 'PARCIAL') {
+                setDiscountedPrice(35);
+                if (updatedTickets > 0) {
+                    setPromoDetails({ originalPrice: 85, discountedPrice: 35 });
+                    setUpdatedTickets(updatedTickets - 1);
+                    setPromoApplied(true);
+                }
+            } else {
+                setDiscountedPrice(contribution.total || contribution.tickets * 85);
+                setPromoApplied(false);
             }
-        } else if (promoCode === 'PARCIAL') {
-            setDiscountedPrice(35);
-            if (updatedTickets > 0) {
-                setPromoDetails({ originalPrice: 85, discountedPrice: 35 });
-                setUpdatedTickets(updatedTickets - 1);
-                setPromoApplied(true);
-            }
-        } else {
-            setDiscountedPrice(contribution.total || contribution.tickets * 85);
-            setPromoApplied(false);
         }
     };
+    
 
     useEffect(() => {
         // Aplicar o código promocional automaticamente ao alterar o código
@@ -422,7 +426,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         value={promoCode}
                         onChange={handlePromoCodeChange}
                     />
-                    <Button className="button" onClick={applyPromoCode}>
+                    <Button className="button" onClick={applyPromoCode} disabled={promoApplied}>
                         Aplicar Código
                     </Button>
                 </div>

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-solid-svg-icons'; // Import the specific solid icon you want to use
 import '../style/modals.css'
 
-export default function AlertModal({setModalVisible, setAddLifePage, setOtherContribution, setTicket}) {
+export default function AlertModal({setModalVisible, setAddLifePage, setOtherContribution, tickets}) {
     const [open, setOpen] = useState(true)
 
     const closeModal = () => {
