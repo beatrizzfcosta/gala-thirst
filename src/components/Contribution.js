@@ -20,16 +20,15 @@ export default function Contribution({ contribution, setContribution, setInfo })
     const [otherContributionError, setOtherContributionError] = useState('');
     const [donationModalVisible, setDonationModalVisible] = useState(false);
     const [addLifePage, setAddLifePage] = useState(false);
-    const [number, setNumber] = useState(0);
 
     const inputRef = useRef(null);
 
-    const changePageDisplay = () => {
-        setOtherContribution(0);
-        scrollToTop();
-        setAmount(0);
-        setPercentage(0);
-    }
+    // const changePageDisplay = () => {
+    //     setOtherContribution(0);
+    //     scrollToTop();
+    //     setAmount(0);
+    //     setPercentage(0);
+    // }
 
     const handlePlusChange = () => {
         if (total < 250) {
@@ -59,7 +58,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
     }
 
     const validateFreeDonation = () => {
-        if (amount < 250) setOtherContributionError('O valor mínimo para doação livre é de 250€')
+        if (amount < 85*contribution.tickets + 250) setOtherContributionError(`O valor mínimo para doação livre é de ${contribution.tickets * 85 + 250}€`)
         else {
             setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: amount, futureDonation: false, futureDonationAmount: null }));
             setInfo(prevInfo => ({ ...prevInfo, status: 'current' }));
@@ -95,10 +94,10 @@ export default function Contribution({ contribution, setContribution, setInfo })
         }
     }
 
-    const prepareAmount = (value) => {
-        if (value === '') setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 85);
-        else setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 85 + parseInt(value));
-    }
+    // const prepareAmount = (value) => {
+    //     if (value === '') setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 85);
+    //     else setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 85 + parseInt(value));
+    // }
 
 
     const generateTicketIcons = () => {
