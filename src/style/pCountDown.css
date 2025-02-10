@@ -72,10 +72,7 @@
     z-index: 3;
 }
 
-.countdown-button{
-    display: flex;
-    justify-content: flex-start;
-}
+
 
 .button2 {
     border-radius: 5px;
@@ -86,7 +83,7 @@
     font-weight: bold;
     color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-
+    width:400px;
     max-width: 300px; /* Limita a largura máxima */
     text-align: center;
     display: block;

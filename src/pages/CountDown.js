@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Image, Button } from 'react-bootstrap';
 import logo from '../assets/gala_logo2025.png';
 import { Link } from 'react-router-dom';
-import backgroundImage from '../assets/container1.png'; 
+import backgroundImage from '../assets/container1.png';
 import '../style/pCountDown.css'
 
 export default function CountDown({ unavailable }) {
@@ -87,31 +87,34 @@ export default function CountDown({ unavailable }) {
         </h3>
         {unavailable ? (
           <div className="countdown-button" >
-          <Link  to="/bilhetes/comprar">
-            <Button
-              className="button2"
-            >
-              RESERVAR O MEU LUGAR!
-            </Button>
-          </Link>
+            <Link to="/bilhetes/comprar">
+              <Button
+                className="button2"
+              >
+                RESERVAR O MEU LUGAR!
+              </Button>
+            </Link>
+            <Link to="/doacoes/doar">
+              <Button className='button2'>DOAR AGORA</Button>
+            </Link>
           </div>
         ) : (
           <div className="countdown-button" >
-          <Link to="/doacoes">
-            <Button
-              className="button2"
-            >
-              BILHETES ESGOTADOS | DOAR AGORA
-            </Button>
-          </Link>
+            <Link to="/doacoes">
+              <Button
+                className="button2"
+              >
+                BILHETES ESGOTADOS | DOAR AGORA
+              </Button>
+            </Link>
           </div>
         )}
       </div>
       <div className="row2">
         <div className="image-countdown" style={{
-        backgroundImage: `url(${logo})`,
-      }}> </div>
-       
+          backgroundImage: `url(${logo})`,
+        }}> </div>
+
       </div>
 
     </div>
