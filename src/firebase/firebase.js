@@ -89,4 +89,46 @@ const getDonationById = async (donationId) => {
   }
 };
 
-export { db, addTicketBuyer, addDonation, getTicketById, updatePaymentReference, editDonation, getDonationById };
+const validatePromoCode = async (promoCode) => {
+  try {
+    const promoRef = doc(db, 'promoCodes', promoCode);
+    const promoSnap = await getDoc(promoRef);
+    if (!promoSnap.exists()) return { valid: false, discount: 0 };
+    const promoData = promoSnap.data();
+    if (promoData.used) return { valid: false, discount: 0 };
+    return { valid: true, discount: promoData.discount };
+  } catch (error) {
+    console.error('Erro ao validar código promocional:', error);
+    return { valid: false, discount: 0 };
+  }
+};
+
+// Função para validar o código promocional e calcular o valor ajustado
+export const checkPromoCode = async (promoCode, numTickets) => {
+  const db = getFirestore();
+  const promoRef = doc(db, "promoCodes", promoCode); // Referencia o documento usando o código promocional como ID
+
+  try {
+    const promoDoc = await getDoc(promoRef);
+    
+    if (promoDoc.exists()) {
+      const promoData = promoDoc.data();
+      
+      // Verifica o tipo do código promocional e retorna o valor ajustado
+      if (promoCode === 'TOTAL') {
+        return 0;  // Preço total reduzido para 0€
+      } else if (promoCode === 'PARCIAL') {
+        return 35 * numTickets;  // Preço parcial (35€ por bilhete), ajustado pela quantidade de bilhetes
+      } else {
+        return null;  // Código inválido
+      }
+    } else {
+      return null;  // Código promocional não encontrado
+    }
+  } catch (error) {
+    console.error("Erro ao verificar o código promocional:", error);
+    return null;
+  }
+};
+
+export { db, validatePromoCode, addTicketBuyer, addDonation, getTicketById, updatePaymentReference, editDonation, getDonationById };

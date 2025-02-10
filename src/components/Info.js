@@ -1,21 +1,21 @@
 import { Container, Button, Image } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
-import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
+import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
 import TermsModal from '../modals/TermsModal';
-import { addTicketBuyer, getTicketById } from '../firebase/firebase';
+import { addTicketBuyer, getTicketById, checkPromoCode } from '../firebase/firebase';
 import mbway from '../assets/mbway.png';
 import multibanco from '../assets/multibanco.png';
 import MultibancoModel from '../modals/MultibancoModel';
 import MbwayModel from '../modals/MbwayModel';
+import '../style/info.css';
 
-import '../style/info.css'
 export default function Info({ setInfo, setSummary, contribution }) {
     const [emailError, setEmailError] = useState(false);
     const [names, setNames] = useState([]);
     const [email, setEmail] = useState('');
-    const [nif, setNif] = useState({nif: '', name: '', address: ''});
+    const [nif, setNif] = useState({ nif: '', name: '', address: '' });
     const [isNif, setIsNif] = useState(false);
-    const [nifError, setNifError] = useState({nif: false, name: false, address: false});
+    const [nifError, setNifError] = useState({ nif: false, name: false, address: false });
     const [checkboxChecked, setCheckboxChecked] = useState(false);
     const [namesError, setNamesError] = useState(false);
     const [futureContact, setFutureContact] = useState(false);
@@ -31,6 +31,39 @@ export default function Info({ setInfo, setSummary, contribution }) {
     const [mbModalVisible, setMBModalVisible] = useState(false);
     const [mbwayModalVisible, setMBwayModalVisible] = useState(false);
     const [paymentTypeError, setPaymentTypeError] = useState(false);
+    
+    // Adicione um estado para o código promocional
+    const [promoCode, setPromoCode] = useState('');
+    const [discountedPrice, setDiscountedPrice] = useState(contribution.total || 85);
+
+    // Função para lidar com a verificação do código promocional
+    const handlePromoCodeChange = async (event) => {
+        const code = event.target.value;
+        setPromoCode(code);
+        
+        const discount = await checkPromoCode(code);
+        
+        if (discount !== null) {
+        setDiscountedPrice(discount);
+        } else {
+        setDiscountedPrice(contribution.total || 85);  // Se o código for inválido, retorna o preço original
+        }
+    };
+
+    const applyPromoCode = () => {
+        if (promoCode === 'TOTAL') {
+            setDiscountedPrice(0); // O código TOTAL reduz o preço para 0€
+        } else if (promoCode === 'PARCIAL') {
+            setDiscountedPrice(35); // O código PARCIAL reduz o preço para 35€
+        } else {
+            setDiscountedPrice(contribution.total || contribution.tickets * 85); // Se o código não for válido, mantemos o preço original
+        }
+    };
+
+    useEffect(() => {
+        // Aplicar o código promocional automaticamente ao alterar o código
+        applyPromoCode();
+    }, [promoCode]);
 
     const changeFromMultibanco = () => {
         setInfo(prevInfo => ({...prevInfo, status: 'completed' }));
@@ -40,19 +73,19 @@ export default function Info({ setInfo, setSummary, contribution }) {
     const renderInputBoxes = () => {
         const inputBoxes = [];
         for (let i = 1; i < contribution.tickets; i++) {
-          inputBoxes.push(
-            <div key={i} className="container-contribution">
-              <input
-                type="text"
-                name={`ticket-${i}`}
-                id={`ticket-${i}`}
-                className="input-contribution2"
-                placeholder={`Nome do bilhete ${i + 1}`}
-                value={names[i] || ''}
-                onChange={(e) => handleNameChange(i, e.target.value)}
-              />
-            </div>
-          );
+            inputBoxes.push(
+                <div key={i} className="container-contribution">
+                    <input
+                        type="text"
+                        name={`ticket-${i}`}
+                        id={`ticket-${i}`}
+                        className="input-contribution2"
+                        placeholder={`Nome do bilhete ${i + 1}`}
+                        value={names[i] || ''}
+                        onChange={(e) => handleNameChange(i, e.target.value)}
+                    />
+                </div>
+            );
         }
         return inputBoxes;
     };
@@ -62,7 +95,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
         let updatedNames = [...names];
         updatedNames[index] = value;
         setNames(updatedNames);
-      };
+    };
 
     const validateDonation = async () => {
         setBlockButton(true);
@@ -75,6 +108,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
         const validEmail = emailRegex.test(email);
         setEmailError(!validEmail);
         if (!validEmail) setBlockButton(false);
+
         if (paymentType === 'mbway') {
             if (phone.length !== 9 || !/^\d+$/.test(phone)) {
                 setPhoneError(true);
@@ -83,24 +117,23 @@ export default function Info({ setInfo, setSummary, contribution }) {
         }
         if (isNif) {
             if (nif.nif.length !== 9 || !/^\d+$/.test(nif.nif)) {
-                setNifError(prevNif => ({...prevNif, nif: true }));
+                setNifError((prevNif) => ({ ...prevNif, nif: true }));
                 setBlockButton(false);
             }
             if (nif.name.trim() === '') {
-                setNifError(prevName => ({...prevName, name: true }));
+                setNifError((prevName) => ({ ...prevName, name: true }));
                 setBlockButton(false);
             }
             if (nif.address.trim() === '') {
-                setNifError(prevAddress => ({...prevAddress, address: true }));
+                setNifError((prevAddress) => ({ ...prevAddress, address: true }));
                 setBlockButton(false);
             }
         }
-
         if (paymentType === 'none') {
             setBlockButton(false);
             setPaymentTypeError(true);
         }
-        if ((names.length !== contribution.tickets && checkboxChecked) || names.some(name => name.trim() === '') || names.length === 0) {
+        if ((names.length !== contribution.tickets && checkboxChecked) || names.some((name) => name.trim() === '') || names.length === 0) {
             setNamesError(true);
             setBlockButton(false);
         }
@@ -108,7 +141,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
             const info = {
                 names: names,
                 tickets: contribution.tickets,
-                total: contribution.total ? contribution.total : contribution.tickets * 85,
+                total: contribution.total ? contribution.total : contribution.tickets * 25,
                 nif: nif,
                 email: email,
                 phone: phone,
@@ -122,8 +155,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 type: paymentType,
                 referencia: null,
                 entidade: null,
-            }
-
+            };
             const result = await addTicketBuyer(info);
             if (paymentType === 'mbway') {
                 setTimeout(async() => {
@@ -230,6 +262,21 @@ export default function Info({ setInfo, setSummary, contribution }) {
     return (
         <Container className="container">
             <div className="row-ticket">
+                <h3 className="title-ticket">INSIRA O SEU CÓDIGO PROMOCIONAL</h3>
+                <div className="container-contribution">
+                    <input
+                        type="text"
+                        name="promoCode"
+                        id="promoCode"
+                        className="input-contribution2"
+                        placeholder="Código promocional"
+                        value={promoCode}
+                        onChange={handlePromoCodeChange}
+                    />
+                    <Button className="button" onClick={applyPromoCode}>
+                    Aplicar Código
+                    </Button>
+                </div>
                 <h3 className="title-ticket">
                     COMPLETE COM A SUA INFORMAÇÃO
                 </h3>
@@ -322,7 +369,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     </h3>
                     <div className="line"/>
                     <p className="amount">
-                        EUR€ {contribution.total ? contribution.total : contribution.tickets * 85}
+                        EUR€ {contribution.total ? contribution.total : contribution.tickets * 25}
                     </p>
                 </div>
             </div>
