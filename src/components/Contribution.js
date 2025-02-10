@@ -6,10 +6,8 @@ import { faPerson } from '@fortawesome/free-solid-svg-icons'; // Import the spec
 import AlertModal from '../modals/AlertModal';
 import DonationModal from '../modals/DonationModal';
 import '../style/contribution.css'
-import { use } from 'react';
 
 export default function Contribution({ contribution, setContribution, setInfo }) {
-    const [tickets, setTickets] = useState(contribution.tickets);
     const [isSmallWindow, setIsSmallWindow] = useState(window.innerWidth < 400);
     const [maxTickets, setMaxTickets] = useState(false);
     const [amount, setAmount] = useState(0);
@@ -32,33 +30,33 @@ export default function Contribution({ contribution, setContribution, setInfo })
 
     const handlePlusChange = () => {
         if (total < 250) {
+
             setTotal(total + 25);
-            setTickets(tickets + 1);
         } else setMaxTickets(true);
     };
 
     const handleMinusChange = () => {
         setMaxTickets(false);
         if (total > 0) {
+
             setTotal(total - 25);
-            setTickets(tickets - 1);
         }
     };
 
 
     const validateDonation = () => {
         if (total > 250) {
-            setTotal(85 * (tickets - contribution.tickets) + contribution.tickets * 25);
+            setTotal(85 * (contribution.tickets) + total);
             setModalVisible(true);
             inputRef.current.value = '';
             return;
         }
-        setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: total, futureDonation: false, futureDonationAmount: null }));
+        setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: total + contribution.tickets * 85, futureDonation: false, futureDonationAmount: null }));
         setInfo(prevInfo => ({ ...prevInfo, status: 'current' }));
     }
 
     const validateFreeDonation = () => {
-        if (amount < 85*contribution.tickets + 250) setOtherContributionError(`O valor mínimo para doação livre é de ${contribution.tickets * 85 + 250}€`)
+        if (amount < 85 * contribution.tickets + 250) setOtherContributionError(`O valor mínimo para doação livre é de ${contribution.tickets * 85 + 250}€`)
         else {
             setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: amount, futureDonation: false, futureDonationAmount: null }));
             setInfo(prevInfo => ({ ...prevInfo, status: 'current' }));
@@ -185,7 +183,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
             window.removeEventListener('resize', updateWindowDimensions);
         };
     }, []);
-    
+
 
     return (
         <>
@@ -249,12 +247,45 @@ export default function Contribution({ contribution, setContribution, setInfo })
                             </h3>
                             <div className="line" />
 
-                            <div className="box-amount">
-                                <p className="contribution-amount">
-                                    EUR€ {contribution.tickets * 85 + total}
-                                </p>
-                            </div>
+                            <table className="summary-table">
+                                <thead>
+                                    <tr>
+                                        <th>QTD</th>
+                                        <th>Item</th>
+                                        <th>Valor Unitário</th>
+                                        <th>Valor Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className="info-text">{contribution.tickets}</td>
+                                        <td className="info-text">Ticket</td>
+                                        <td className="info-text">EUR€ 85</td>
+                                        <td className="info-text">EUR€ {contribution.tickets * 85}</td>
+                                    </tr>
+                                    {total > 0 && (
+                                        <tr>
+                                            <td className="info-text">1</td>
+                                            <td className="info-text">Contribuição</td>
+                                            <td className="info-text">-</td>
+                                            <td className="info-text">EUR€ {total}</td>
+                                        </tr>
+                                    )}
+                                    <tr className="line-row">
+                                            <td colSpan="4">
+                                                <hr className="summary-divider" />
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <td className="info-text"></td>
+                                        <td className="info-text"></td>
+                                        <td className="info-text"></td>
+                                        <td className="total-amount">EUR€ {contribution.tickets * 85 + total}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+
 
                         <div className="row-ticket">
                             <div className="button-box">

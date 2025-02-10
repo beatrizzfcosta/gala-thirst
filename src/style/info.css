@@ -28,6 +28,15 @@
     margin-bottom: 16px;
 }
 
+.container-checkbox-term{
+    position: relative; 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 3px;
+    margin-bottom: 16px;
+    margin-top: 20px;
+}
+
 .container-checkbox-part{
     display: flex;
     height: 24px;

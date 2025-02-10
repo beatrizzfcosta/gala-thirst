@@ -31,32 +31,40 @@ export default function Info({ setInfo, setSummary, contribution }) {
     const [mbModalVisible, setMBModalVisible] = useState(false);
     const [mbwayModalVisible, setMBwayModalVisible] = useState(false);
     const [paymentTypeError, setPaymentTypeError] = useState(false);
-    
+    const [total, setTotal] = useState(contribution.total - contribution.tickets * 85);
+
     // Adicione um estado para o código promocional
     const [promoCode, setPromoCode] = useState('');
     const [discountedPrice, setDiscountedPrice] = useState(contribution.total || 85);
+    const [updatedTickets, setUpdatedTickets] = useState(contribution.tickets);
+    const [promoApplied, setPromoApplied] = useState(false);
+    const [promoDetails, setPromoDetails] = useState({});
 
     // Função para lidar com a verificação do código promocional
     const handlePromoCodeChange = async (event) => {
         const code = event.target.value;
         setPromoCode(code);
-        
-        const discount = await checkPromoCode(code);
-        
-        if (discount !== null) {
-        setDiscountedPrice(discount);
-        } else {
-        setDiscountedPrice(contribution.total || 85);  // Se o código for inválido, retorna o preço original
-        }
+
     };
 
     const applyPromoCode = () => {
         if (promoCode === 'TOTAL') {
-            setDiscountedPrice(0); // O código TOTAL reduz o preço para 0€
+            setDiscountedPrice(0);
+            if (updatedTickets > 0) {
+                setPromoDetails({ originalPrice: 85, discountedPrice: 0 });
+                setUpdatedTickets(updatedTickets - 1);
+                setPromoApplied(true);
+            }
         } else if (promoCode === 'PARCIAL') {
-            setDiscountedPrice(35); // O código PARCIAL reduz o preço para 35€
+            setDiscountedPrice(35);
+            if (updatedTickets > 0) {
+                setPromoDetails({ originalPrice: 85, discountedPrice: 35 });
+                setUpdatedTickets(updatedTickets - 1);
+                setPromoApplied(true);
+            }
         } else {
-            setDiscountedPrice(contribution.total || contribution.tickets * 85); // Se o código não for válido, mantemos o preço original
+            setDiscountedPrice(contribution.total || contribution.tickets * 85);
+            setPromoApplied(false);
         }
     };
 
@@ -66,8 +74,8 @@ export default function Info({ setInfo, setSummary, contribution }) {
     }, [promoCode]);
 
     const changeFromMultibanco = () => {
-        setInfo(prevInfo => ({...prevInfo, status: 'completed' }));
-        setSummary(prevSummary => ({...prevSummary, status: 'current' }));
+        setInfo(prevInfo => ({ ...prevInfo, status: 'completed' }));
+        setSummary(prevSummary => ({ ...prevSummary, status: 'current' }));
     };
 
     const renderInputBoxes = () => {
@@ -158,7 +166,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
             };
             const result = await addTicketBuyer(info);
             if (paymentType === 'mbway') {
-                setTimeout(async() => {
+                setTimeout(async () => {
                     if (result !== false) {
                         let ticketUpdated = await getTicketById(result);
                         if (ticketUpdated !== null && ticketUpdated.referenceCreated) {
@@ -166,13 +174,13 @@ export default function Info({ setInfo, setSummary, contribution }) {
                             setMBwayModalVisible(true);
                             return;
                         } else {
-                            setTimeout(async() => {
+                            setTimeout(async () => {
                                 ticketUpdated = await getTicketById(result);
                                 if (ticketUpdated !== null && ticketUpdated.referenceCreated) {
                                     setBlockButton(false);
                                     setMBwayModalVisible(true);
                                     return;
-                                } 
+                                }
                                 if (ticketUpdated !== null && ticketUpdated.error !== false) {
                                     setInternalError(true);
                                     setBlockButton(false);
@@ -188,7 +196,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     }
                 }, 7000);
             } else if (paymentType === 'multibanco') {
-                setTimeout(async() => {
+                setTimeout(async () => {
                     if (result !== false) {
                         let ticketUpdated = await getTicketById(result);
                         if (ticketUpdated !== null && ticketUpdated.referenceCreated) {
@@ -201,7 +209,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                             setMBModalVisible(true);
                             return;
                         } else {
-                            setTimeout(async() => {
+                            setTimeout(async () => {
                                 ticketUpdated = await getTicketById(result);
                                 if (ticketUpdated !== null && ticketUpdated.referenceCreated) {
                                     setBlockButton(false);
@@ -212,7 +220,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                     })
                                     setMBModalVisible(true);
                                     return;
-                                } 
+                                }
                                 if (ticketUpdated !== null && ticketUpdated.error !== false) {
                                     setInternalError(true);
                                     setBlockButton(false);
@@ -237,8 +245,8 @@ export default function Info({ setInfo, setSummary, contribution }) {
 
     const handleNifChange = () => {
         setIsNif(!isNif);
-        setNif({nif: '', name: '', address: ''});
-        setNifError({nif: false, name: false, address: false});
+        setNif({ nif: '', name: '', address: '' });
+        setNifError({ nif: false, name: false, address: false });
     }
 
     const handleTermsChange = () => {
@@ -247,7 +255,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
 
     const handleKeyPress = (event) => {
         if (event.key === 'e') {
-          event.preventDefault();
+            event.preventDefault();
         }
     };
 
@@ -262,25 +270,10 @@ export default function Info({ setInfo, setSummary, contribution }) {
     return (
         <Container className="container">
             <div className="row-ticket">
-                <h3 className="title-ticket">INSIRA O SEU CÓDIGO PROMOCIONAL</h3>
-                <div className="container-contribution">
-                    <input
-                        type="text"
-                        name="promoCode"
-                        id="promoCode"
-                        className="input-contribution2"
-                        placeholder="Código promocional"
-                        value={promoCode}
-                        onChange={handlePromoCodeChange}
-                    />
-                    <Button className="button" onClick={applyPromoCode}>
-                    Aplicar Código
-                    </Button>
-                </div>
                 <h3 className="title-ticket">
                     COMPLETE COM A SUA INFORMAÇÃO
                 </h3>
-                <div className="line"/>
+                <div className="line" />
                 <div>
                     <div className="container-contribuition">
                         <input
@@ -367,17 +360,78 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     <h3 className="title-ticket">
                         VALOR A PAGAR
                     </h3>
-                    <div className="line"/>
-                    <p className="amount">
-                        EUR€ {contribution.total ? contribution.total : contribution.tickets * 25}
-                    </p>
+                    <div className="line" />
+                    <table className="summary-table">
+                <thead>
+                    <tr>
+                        <th>QTD</th>
+                        <th>Item</th>
+                        <th>Valor Unitário</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {updatedTickets > 0 && (
+                        <tr>
+                            <td className="info-text">{updatedTickets}</td>
+                            <td className="info-text">Ticket</td>
+                            <td className="info-text">EUR€ 85</td>
+                            <td className="info-text">EUR€ {updatedTickets * 85}</td>
+                        </tr>
+                    )}
+                    {promoApplied && (
+                        <tr>
+                            <td className="info-text">1</td>
+                            <td className="info-text">PROMO</td>
+                            <td className="info-text">
+                                <s style={{ color: 'red' }}>EUR€ {promoDetails.originalPrice}</s> EUR€ {promoDetails.discountedPrice}
+                            </td>
+                            <td className="info-text">EUR€ {promoDetails.discountedPrice}</td>
+                        </tr>
+                    )}
+                    {contribution.total > 0 && (
+                        <tr>
+                            <td className="info-text">1</td>
+                            <td className="info-text">Contribuição</td>
+                            <td className="info-text">-</td>
+                            <td className="info-text">EUR€ {contribution.total}</td>
+                        </tr>
+                    )}
+                    <tr className="line-row">
+                        <td colSpan="4">
+                            <hr className="summary-divider" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="info-text"></td>
+                        <td className="info-text"></td>
+                        <td className="info-text"></td>
+                        <td className="total-amount">EUR€ {(updatedTickets * 85) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total}</td>
+                    </tr>
+                </tbody>
+            </table>
+                </div>
+                <h3 className="title-ticket">INSIRA O SEU CÓDIGO PROMOCIONAL</h3>
+                <div className="container-contribution">
+                    <input
+                        type="text"
+                        name="promoCode"
+                        id="promoCode"
+                        className="input-contribution2"
+                        placeholder="Código promocional"
+                        value={promoCode}
+                        onChange={handlePromoCodeChange}
+                    />
+                    <Button className="button" onClick={applyPromoCode}>
+                        Aplicar Código
+                    </Button>
                 </div>
             </div>
             <div className="row-ticket">
                 <h3 className="title-ticket">
                     PAGAMENTO - SELECIONE O MÉTODO
                 </h3>
-                <div className="line"/>
+                <div className="line" />
                 <div className="payment-methods-container">
                     <div className="payment-methods">
                         <Button
@@ -389,7 +443,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         <Button
                             className={`flex items-center ${paymentType === 'mbway' ? 'bg-[#17CACE]' : 'bg-white/10'} me-3 rounded-lg p-1`}
                             onClick={() => { setPaymentType('mbway'); if (paymentTypeError) setPaymentTypeError(false); }}
-                            >
+                        >
                             <Image src={mbway} alt="mbway" width={40} height={40} />
                         </Button>
                     </div>
@@ -420,10 +474,10 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 onChange={(e) => { setPhone(e.target.value); if (phoneError) setPhoneError(false); }}
                             />
                             {phoneError && (
-                                    <div className="error-container">
-                                        <ExclamationCircleIcon className="error-icon" aria-hidden="true" />
-                                    </div>
-                                )}
+                                <div className="error-container">
+                                    <ExclamationCircleIcon className="error-icon" aria-hidden="true" />
+                                </div>
+                            )}
                         </div>
                         {phoneError && (
                             <p className="error-text" id="name-error">
@@ -461,7 +515,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 placeholder="Nome de emissão da fatura"
                                 aria-describedby="name"
                                 value={nif.name}
-                                onChange={(e) => { setNif(prevName => ({...prevName, name: e.target.value })); if (nifError.address) setNifError(prevName => ({...prevName, name: false })); }}
+                                onChange={(e) => { setNif(prevName => ({ ...prevName, name: e.target.value })); if (nifError.address) setNifError(prevName => ({ ...prevName, name: false })); }}
                             />
                             {nifError.name && (
                                 <div className="error-container">
@@ -484,7 +538,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 aria-describedby="nif"
                                 value={nif.nif}
                                 onKeyPress={handleKeyPress}
-                                onChange={(e) => { setNif(prevNif => ({...prevNif, nif: e.target.value })); if (nifError.nif) setNifError(prevNif => ({...prevNif, nif: false })); }}
+                                onChange={(e) => { setNif(prevNif => ({ ...prevNif, nif: e.target.value })); if (nifError.nif) setNifError(prevNif => ({ ...prevNif, nif: false })); }}
                             />
                             {nifError.nif && (
                                 <div className="error-container">
@@ -506,7 +560,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 placeholder="Morada"
                                 aria-describedby="address"
                                 value={nif.address}
-                                onChange={(e) => { setNif(prevAddress => ({...prevAddress, address: e.target.value })); if (nifError.address) setNifError(prevAddress => ({...prevAddress, address: false })); }}
+                                onChange={(e) => { setNif(prevAddress => ({ ...prevAddress, address: e.target.value })); if (nifError.address) setNifError(prevAddress => ({ ...prevAddress, address: false })); }}
                             />
                             {nifError.address && (
                                 <div className="error-container">
@@ -521,8 +575,8 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         )}
                     </>
                 )}
-                
-                <div className="container-checkbox">
+
+                <div className="container-checkbox-term">
                     <div className="container-checkbox-part">
                         <input
                             id="nif"
@@ -536,16 +590,16 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     </div>
                     <div className="container-checkbox-part">
                         <label htmlFor="email" className="select-text">
-                        ACEITO OS TERMOS E CONDIÇÕES DA GALA DO THIRST PROJECT PORTUGAL
+                            ACEITO OS TERMOS E CONDIÇÕES DA GALA DO THIRST PROJECT PORTUGAL
                         </label>
                         {termsError && (
-                         <p className="error-text" id="address-error">
-                            Aceite os termos e condições
-                        </p>
+                            <p className="error-text" id="address-error">
+                                Aceite os termos e condições
+                            </p>
                         )}
                     </div>
                 </div>
-               
+
                 <div className="button-box">
                     <Button
                         className="button"
@@ -569,5 +623,5 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 <TermsModal setTermsVisible={setTermsVisible} setTermsAccepted={setTermsAccepted} setTermsError={setTermsError} />
             )}
         </Container>
-    ) 
+    )
 }

@@ -146,3 +146,25 @@
       padding-right: 40px;
     }
   }
+
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.total-amount{
+    font-size: large;
+    font-weight: bold;
+    color:black
+}
+
+.line-row hr.summary-divider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    width: 100%;
+    margin: 10px 0;
+}
