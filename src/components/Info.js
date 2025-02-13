@@ -126,7 +126,6 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 setPhoneError(true);
                 setBlockButton(false);
             }
-            console.log(contribution.total)
         }
         if (isNif) {
             if (nif.nif.length !== 9 || !/^\d+$/.test(nif.nif)) {
@@ -154,7 +153,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
             const info = {
                 names: names,
                 tickets: contribution.tickets,
-                total: contribution.total,
+                total: (promoApplied ? promoDetails.discountedPrice : contribution.total) || (contribution.total),
                 nif: nif,
                 email: email,
                 phone: phone,
