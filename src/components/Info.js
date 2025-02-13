@@ -126,6 +126,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 setPhoneError(true);
                 setBlockButton(false);
             }
+            console.log(contribution.total)
         }
         if (isNif) {
             if (nif.nif.length !== 9 || !/^\d+$/.test(nif.nif)) {
