@@ -244,11 +244,11 @@ export default function Donation({ setDonation, setPayment }) {
                 <div className="container-button">
                     <div className="buttons-group">
                         <div className="cheaper">
-                            <Button className="custom-button-amount" onClick={() => prepareAmount(1)}>€1</Button>
-                            <Button className="custom-button-amount" onClick={() => prepareAmount(5)}>€5</Button>
-                            <Button className="custom-button-amount" onClick={() => prepareAmount(10)}>€10</Button>
+                            <Button className="custom-button-amount" onClick={() => prepareAmount(25)}>€25</Button>
+                            <Button className="custom-button-amount" onClick={() => prepareAmount(50)}>€50</Button>
+                            <Button className="custom-button-amount" onClick={() => prepareAmount(100)}>€100</Button>
                         </div>
-                        <Button className="custom-button-amount" onClick={() => prepareAmount(25)}>€25</Button>
+                        <Button className="custom-button-amount" onClick={() => prepareAmount(150)}>€150</Button>
                     </div>
                 </div>
                 <div className="container-contribuition">
