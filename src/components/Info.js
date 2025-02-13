@@ -153,7 +153,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
             const info = {
                 names: names,
                 tickets: contribution.tickets,
-                total: contribution.total ? contribution.total : contribution.tickets * 25,
+                total: contribution.total,
                 nif: nif,
                 email: email,
                 phone: phone,
