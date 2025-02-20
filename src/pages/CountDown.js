@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Image, Button } from 'react-bootstrap';
+import { Image, Button, Alert } from 'react-bootstrap';
 import logo from '../assets/gala_logo2025.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import backgroundImage from '../assets/container1.png';
 import '../style/pCountDown.css'
 
@@ -10,8 +10,27 @@ export default function CountDown({ unavailable }) {
   const [hours, setHours] = useState('00');
   const [minutes, setMinutes] = useState('00');
   const [seconds, setSeconds] = useState('00');
+  const [alertMessage, setAlertMessage] = useState(null); // Estado para exibir a notificação
 
+  const location = useLocation(); // Obtém os parâmetros da URL
   const countdownDate = new Date('2025-03-22 20:00:00').getTime();
+
+
+  useEffect(() => {
+    // Capturar status da URL
+    const searchParams = new URLSearchParams(location.search);
+    const status = searchParams.get("status");
+
+    if (status === "success") {
+      setAlertMessage({ type: "success", text: "✅ Compra efetuada com sucesso!" });
+    } else if (status === "fail") {
+      setAlertMessage({ type: "danger", text: "❌ Ocorreu um erro no pagamento. Tente novamente!" });
+    }
+
+    if (status) {
+      setTimeout(() => setAlertMessage(null), 5000); // Esconde a notificação após 5 segundos
+    }
+  }, [location]);
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -52,6 +71,12 @@ export default function CountDown({ unavailable }) {
       }}
     >
       <div className='overlay' />
+      {/* Notificação de pagamento */}
+      {alertMessage && (
+        <Alert variant={alertMessage.type} className="alert-top">
+          {alertMessage.text}
+        </Alert>
+      )}
       <div className='row1'>
         <div className="countdown">
           <div className="countdown-box">
