@@ -1,10 +1,80 @@
+/* eslint-disable max-len */
 const {defineSecret} = require("firebase-functions/params");
 const axios = require("axios");
-const {
-  onDocumentCreated,
-} = require("firebase-functions/v2/firestore");
 
 const EUPAGO_KEY = defineSecret("EUPAGO_KEY");
+
+const {onDocumentWritten} = require("firebase-functions/v2/firestore");
+const nodemailer = require("nodemailer");
+const {onDocumentCreated} = require("firebase-functions/v2/firestore");
+// Credenciais do email de onde serão enviados os emails de compra de bilhetes
+const EMAIL_USER = defineSecret("EMAIL_USER");
+const EMAIL_PASS = defineSecret("EMAIL_PASS");
+
+
+exports.enviarBilhete = onDocumentWritten({
+  document: "ticketBuyer/{ticketId}",
+  secrets: [EMAIL_USER, EMAIL_PASS],
+}, async (event) => {
+  const before = event.data?.before?.data();
+  const after = event.data?.after?.data();
+
+  if (!before || !after) {
+    console.error("❌ Erro: Dados do documento ausentes.");
+    return;
+  }
+
+  // Só envia e-mail se "paid" mudou de false para true
+  if (before.paid === false && after.paid === false) {
+    const email = after.email;
+    const name = after.names && after.names.length > 0 ? after.names[0] : "Cliente";
+    const phone = after.phone || "Não fornecido";
+    const tickets = after.tickets || 1;
+    const total = after.total || 0;
+    const paymentType = after.type || "Desconhecido";
+
+    if (!email) {
+      console.error("❌ Erro: O campo 'email' não está definido no documento.");
+      return;
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: await EMAIL_USER.value(),
+        pass: await EMAIL_PASS.value(),
+      },
+    });
+
+    const mailOptions = {
+      from: await EMAIL_USER.value(),
+      to: email,
+      subject: "Confirmação da sua compra de bilhetes",
+      html: `
+      <p>Olá <strong>${name}</strong>,</p>
+      <p>O seu pagamento foi confirmado com sucesso!</p>
+      <p><strong>Detalhes da Compra:</strong></p>
+      <ul>
+        <li><strong>Nome:</strong> ${name}</li>
+        <li><strong>E-mail:</strong> ${email}</li>
+        <li><strong>Telefone:</strong> ${phone}</li>
+        <li><strong>Quantidade de bilhetes:</strong> ${tickets}</li>
+        <li><strong>Total pago:</strong> €${total.toFixed(2)}</li>
+        <li><strong>Método de pagamento:</strong> ${paymentType.toUpperCase()}</li>
+      </ul>
+      <p>Apresente este e-mail no evento como prova de compra.</p>
+      <p>Obrigado pela sua compra!</p>
+    `,
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log(`✅ E-mail enviado para ${email}`);
+    } catch (error) {
+      console.error(`❌ Erro ao enviar e-mail: ${error}`);
+    }
+  }
+});
 
 
 exports.moneyRequestFinal = onDocumentCreated({
@@ -81,8 +151,7 @@ exports.moneyRequestFinal = onDocumentCreated({
       });
       console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
     }
-  } 
-  else if (data.type === "multibanco") {
+  } else if (data.type === "multibanco") {
     const eupagoKeyValue = await EUPAGO_KEY.value(); // <====
     const options = {
       method: "POST",
@@ -97,6 +166,7 @@ exports.moneyRequestFinal = onDocumentCreated({
         id: docId,
         descricao: "Compra de bilhetes Gala Thirst Project",
         per_dup: 1, // Permitir duplicidade, ajuste conforme sua necessidade
+        // eslint-disable-next-line max-len
         data_fim: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split("T")[0], // Validade de 24 horas
         email: data.email,
       },

@@ -1,0 +1,549 @@
+[debug] [2025-02-20T15:24:19.412Z] ----------------------------------------------------------------------
+[debug] [2025-02-20T15:24:19.414Z] Command:       /usr/local/bin/node /Users/catarinacapinha/.npm-global/bin/firebase deploy --only functions
+[debug] [2025-02-20T15:24:19.415Z] CLI Version:   13.29.3
+[debug] [2025-02-20T15:24:19.415Z] Platform:      darwin
+[debug] [2025-02-20T15:24:19.415Z] Node Version:  v22.12.0
+[debug] [2025-02-20T15:24:19.416Z] Time:          Thu Feb 20 2025 15:24:19 GMT+0000 (Western European Standard Time)
+[debug] [2025-02-20T15:24:19.416Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-20T15:24:19.558Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-20T15:24:19.559Z] > authorizing via signed-in user (dtsi@thirstproject.pt)
+[debug] [2025-02-20T15:24:19.559Z] [iam] checking project gala-thirst for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-02-20T15:24:19.560Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:19.560Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:19.560Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions [none]
+[debug] [2025-02-20T15:24:19.560Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:19.560Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-02-20T15:24:19.926Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions 200
+[debug] [2025-02-20T15:24:19.927Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-02-20T15:24:19.927Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:19.927Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:19.927Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/gala-thirst/serviceAccounts/gala-thirst@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-02-20T15:24:19.928Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/gala-thirst/serviceAccounts/gala-thirst@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-02-20T15:24:20.707Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/gala-thirst/serviceAccounts/gala-thirst@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-02-20T15:24:20.707Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/gala-thirst/serviceAccounts/gala-thirst@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'gala-thirst'...
+[info] 
+[info] i  deploying functions 
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2025-02-20T15:24:20.709Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.709Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.709Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst [none]
+[debug] [2025-02-20T15:24:20.937Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst 200
+[debug] [2025-02-20T15:24:20.937Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst {"projectNumber":"551601274824","projectId":"gala-thirst","lifecycleState":"ACTIVE","name":"gala-thirst","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-01-17T12:09:30.385618Z","parent":{"type":"organization","id":"500501231854"}}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:20.939Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.939Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.939Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.939Z] Checked if tokens are valid: true, expires at: 1740067378865
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:20.939Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.939Z] Checked if tokens are valid: true, expires at: 1740067378865
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:20.940Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.940Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:20.940Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-02-20T15:24:20.940Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:20.942Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-02-20T15:24:20.942Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:20.943Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudbuild.googleapis.com [none]
+[debug] [2025-02-20T15:24:20.943Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudbuild.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:20.944Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/artifactregistry.googleapis.com [none]
+[debug] [2025-02-20T15:24:20.944Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/artifactregistry.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:21.877Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudfunctions.googleapis.com 200
+[debug] [2025-02-20T15:24:21.877Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-02-20T15:24:21.879Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudbuild.googleapis.com 200
+[debug] [2025-02-20T15:24:21.879Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-02-20T15:24:21.879Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/artifactregistry.googleapis.com 200
+[debug] [2025-02-20T15:24:21.879Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-02-20T15:24:21.911Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/runtimeconfig.googleapis.com 200
+[debug] [2025-02-20T15:24:21.911Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-02-20T15:24:21.912Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:21.912Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:21.912Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig [none]
+[debug] [2025-02-20T15:24:22.316Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig 200
+[debug] [2025-02-20T15:24:22.317Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig {"projectId":"gala-thirst","storageBucket":"gala-thirst.firebasestorage.app"}
+[debug] [2025-02-20T15:24:22.318Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.318Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.318Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs [none]
+[debug] [2025-02-20T15:24:22.696Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs 200
+[debug] [2025-02-20T15:24:22.696Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs {"configs":[{"name":"projects/gala-thirst/configs/email"},{"name":"projects/gala-thirst/configs/eupago"}]}
+[debug] [2025-02-20T15:24:22.697Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.697Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.697Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.697Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.697Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables [none]
+[debug] [2025-02-20T15:24:22.698Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/eupago/variables [none]
+[debug] [2025-02-20T15:24:22.957Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables 200
+[debug] [2025-02-20T15:24:22.957Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables {"variables":[{"name":"projects/gala-thirst/configs/email/variables/auth","updateTime":"2025-02-20T15:03:19.808012603Z"},{"name":"projects/gala-thirst/configs/email/variables/pass","updateTime":"2025-02-20T15:03:20.457639363Z"}]}
+[debug] [2025-02-20T15:24:22.958Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.958Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.958Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.958Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:22.958Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables/auth [none]
+[debug] [2025-02-20T15:24:22.958Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables/pass [none]
+[debug] [2025-02-20T15:24:23.081Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/eupago/variables 200
+[debug] [2025-02-20T15:24:23.081Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/eupago/variables {}
+[debug] [2025-02-20T15:24:23.190Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables/auth 200
+[debug] [2025-02-20T15:24:23.190Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables/auth {"name":"projects/gala-thirst/configs/email/variables/auth","updateTime":"2025-02-20T15:03:19.808012603Z","text":"dtsi@thirstproject.pt"}
+[debug] [2025-02-20T15:24:23.304Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables/pass 200
+[debug] [2025-02-20T15:24:23.304Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/gala-thirst/configs/email/variables/pass {"name":"projects/gala-thirst/configs/email/variables/pass","updateTime":"2025-02-20T15:03:20.457639363Z","text":"ComputadoreseInovacao2022"}
+[debug] [2025-02-20T15:24:23.305Z] Validating nodejs source
+[debug] [2025-02-20T15:24:24.195Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^13.1.0",
+    "firebase-functions": "^6.3.2",
+    "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-20T15:24:24.195Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-02-20T15:24:24.196Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-20T15:24:24.201Z] Found firebase-functions binary at '/Users/catarinacapinha/Desktop/THIRST/gala-thirst/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8951
+
+[error] (node:5627) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-20T15:24:25.576Z] Got response from /__/functions.yaml {"endpoints":{"enviarBilhete":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EMAIL_USER"},{"key":"EMAIL_PASS"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.written","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"ticketBuyer/{ticketId}"},"retry":false},"entryPoint":"enviarBilhete"},"moneyRequestFinal":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EUPAGO_KEY"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"ticketBuyer/{id}"},"retry":false},"entryPoint":"moneyRequestFinal"},"moneyDonationFinal":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EUPAGO_KEY"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"afterGala/{id}"},"retry":false},"entryPoint":"moneyDonationFinal"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{},"params":[{"type":"secret","name":"EUPAGO_KEY"},{"type":"secret","name":"EMAIL_USER"},{"type":"secret","name":"EMAIL_PASS"}]}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:29.609Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:29.609Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:29.609Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/firebaseextensions.googleapis.com [none]
+[debug] [2025-02-20T15:24:29.609Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/firebaseextensions.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:30.580Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/firebaseextensions.googleapis.com 200
+[debug] [2025-02-20T15:24:30.581Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/firebaseextensions.googleapis.com [omitted]
+[info] ✔  extensions: required API firebaseextensions.googleapis.com is enabled 
+[debug] [2025-02-20T15:24:30.581Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-20T15:24:30.581Z] > authorizing via signed-in user (dtsi@thirstproject.pt)
+[debug] [2025-02-20T15:24:30.582Z] [iam] checking project gala-thirst for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2025-02-20T15:24:30.582Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:30.582Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:30.582Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions [none]
+[debug] [2025-02-20T15:24:30.582Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:30.582Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-02-20T15:24:31.337Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions 200
+[debug] [2025-02-20T15:24:31.337Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-02-20T15:24:31.338Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:31.338Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:31.338Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/gala-thirst/instances pageSize=100&pageToken=
+[debug] [2025-02-20T15:24:32.200Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/gala-thirst/instances 200
+[debug] [2025-02-20T15:24:32.201Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/gala-thirst/instances {}
+[debug] [2025-02-20T15:24:32.204Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:32.204Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:32.204Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY [none]
+[debug] [2025-02-20T15:24:32.579Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY 200
+[debug] [2025-02-20T15:24:32.579Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY {"name":"projects/551601274824/secrets/EUPAGO_KEY","replication":{"automatic":{}},"createTime":"2025-02-19T21:50:25.443998Z","labels":{"firebase-managed":"functions"},"etag":"\"162e85beb6d09e\""}
+[debug] [2025-02-20T15:24:32.580Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:32.580Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:32.580Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest [none]
+[debug] [2025-02-20T15:24:32.813Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest 200
+[debug] [2025-02-20T15:24:32.813Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest {"name":"projects/551601274824/secrets/EUPAGO_KEY/versions/2","createTime":"2025-02-20T15:24:12.504222Z","state":"ENABLED","replicationStatus":{"automatic":{}},"etag":"\"162e947757309e\""}
+[debug] [2025-02-20T15:24:32.814Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:32.814Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:32.814Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER [none]
+[debug] [2025-02-20T15:24:33.018Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER 200
+[debug] [2025-02-20T15:24:33.018Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER {"name":"projects/551601274824/secrets/EMAIL_USER","replication":{"automatic":{}},"createTime":"2025-02-20T15:11:00.296582Z","labels":{"firebase-managed":"functions"},"etag":"\"162e94481f0f86\""}
+[debug] [2025-02-20T15:24:33.019Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.019Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.019Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER/versions/latest [none]
+[debug] [2025-02-20T15:24:33.247Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER/versions/latest 200
+[debug] [2025-02-20T15:24:33.248Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER/versions/latest {"name":"projects/551601274824/secrets/EMAIL_USER/versions/1","createTime":"2025-02-20T15:11:14.951649Z","state":"ENABLED","replicationStatus":{"automatic":{}},"etag":"\"162e9448feade1\""}
+[debug] [2025-02-20T15:24:33.248Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.248Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.248Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS [none]
+[debug] [2025-02-20T15:24:33.447Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS 200
+[debug] [2025-02-20T15:24:33.447Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS {"name":"projects/551601274824/secrets/EMAIL_PASS","replication":{"automatic":{}},"createTime":"2025-02-20T15:11:30.598542Z","labels":{"firebase-managed":"functions"},"etag":"\"162e9449ed6e8e\""}
+[debug] [2025-02-20T15:24:33.448Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.448Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.448Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS/versions/latest [none]
+[debug] [2025-02-20T15:24:33.664Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS/versions/latest 200
+[debug] [2025-02-20T15:24:33.664Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS/versions/latest {"name":"projects/551601274824/secrets/EMAIL_PASS/versions/1","createTime":"2025-02-20T15:11:36.746429Z","state":"ENABLED","replicationStatus":{"automatic":{}},"etag":"\"162e944a4b3dbd\""}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/catarinacapinha/Desktop/THIRST/gala-thirst/functions (74.33 KB) for uploading 
+[debug] [2025-02-20T15:24:33.712Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.712Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:33.712Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/gala-thirst/locations/-/functions [none]
+[debug] [2025-02-20T15:24:34.398Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/gala-thirst/locations/-/functions 200
+[debug] [2025-02-20T15:24:34.399Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/gala-thirst/locations/-/functions {}
+[debug] [2025-02-20T15:24:34.399Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:34.399Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:34.399Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2025-02-20T15:24:35.420Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/-/functions 200
+[debug] [2025-02-20T15:24:35.420Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/-/functions {"functions":[{"name":"projects/gala-thirst/locations/us-central1/functions/enviarBilhete","buildConfig":{"build":"projects/551601274824/locations/us-central1/builds/fc39bf4e-339e-4843-a6c4-c4beed2aa3bd","runtime":"nodejs22","entryPoint":"enviarBilhete","source":{"storageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"enviarBilhete/function-source.zip","generation":"1740064883531795"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"enviarBilhete/function-source.zip","generation":"1740064883531795"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/gala-thirst/serviceAccounts/551601274824-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/gala-thirst/locations/us-central1/services/enviarbilhete","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"gala-thirst\",\"storageBucket\":\"gala-thirst.firebasestorage.app\"}","GCLOUD_PROJECT":"gala-thirst","EVENTARC_CLOUD_EVENT_SOURCE":"projects/gala-thirst/locations/us-central1/services/enviarBilhete","FUNCTION_SIGNATURE_TYPE":"cloudevent","FUNCTION_TARGET":"enviarBilhete","LOG_EXECUTION_ID":"true"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://enviarbilhete-l252xlafcq-uc.a.run.app","serviceAccountEmail":"551601274824-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"secretEnvironmentVariables":[{"key":"EMAIL_USER","projectId":"gala-thirst","secret":"EMAIL_USER","version":"1"},{"key":"EMAIL_PASS","projectId":"gala-thirst","secret":"EMAIL_PASS","version":"1"}],"revision":"enviarbilhete-00001-dub","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"eventTrigger":{"trigger":"projects/gala-thirst/locations/nam5/triggers/enviarbilhete-492203","triggerRegion":"nam5","eventType":"google.cloud.firestore.document.v1.written","eventFilters":[{"attribute":"namespace","value":"(default)"},{"attribute":"document","value":"ticketBuyer/{ticketId}","operator":"match-path-pattern"},{"attribute":"database","value":"(default)"}],"pubsubTopic":"projects/gala-thirst/topics/eventarc-nam5-enviarbilhete-492203-336","serviceAccountEmail":"551601274824-compute@developer.gserviceaccount.com","retryPolicy":"RETRY_POLICY_DO_NOT_RETRY"},"state":"ACTIVE","updateTime":"2025-02-20T15:22:52.841343530Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"351426ce5e2cdc68cfa2dabab038194b9c3e7059"},"environment":"GEN_2","url":"https://us-central1-gala-thirst.cloudfunctions.net/enviarBilhete","createTime":"2025-02-20T15:21:23.825025306Z","satisfiesPzi":true},{"name":"projects/gala-thirst/locations/us-central1/functions/helloWorldOnCreate","buildConfig":{"build":"projects/551601274824/locations/us-central1/builds/301ddcb5-82e2-40ca-a482-4116085c4d8c","runtime":"nodejs22","entryPoint":"helloWorldOnCreate","source":{"storageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"helloWorldOnCreate/function-source.zip","generation":"1738959029295838"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"helloWorldOnCreate/function-source.zip","generation":"1738959029295838"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/gala-thirst/serviceAccounts/551601274824-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"state":"FAILED","updateTime":"2025-02-07T20:11:29.472571126Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"f0fbf9d68821cf985e127feb1cdc6a42b27d9854"},"stateMessages":[{"severity":"ERROR","type":"CloudRunServiceNotFound","message":"Cloud Run service projects/gala-thirst/locations/us-central1/services/helloworldoncreate for the function was not found. The function will not work correctly. Please redeploy."},{"severity":"ERROR","type":"EventarcTriggerNotFound","message":"Eventarc trigger projects/gala-thirst/locations/nam5/triggers/helloworldoncreate-711011 for the function was not found. The function may not work correctly. Please redeploy."}],"environment":"GEN_2","url":"https://us-central1-gala-thirst.cloudfunctions.net/helloWorldOnCreate","createTime":"2025-02-07T20:10:29.561268974Z","satisfiesPzi":true},{"name":"projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal","buildConfig":{"build":"projects/551601274824/locations/us-central1/builds/089af2f2-1146-4910-a161-bc8100d10968","runtime":"nodejs22","entryPoint":"moneyRequestFinal","source":{"storageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"moneyRequestFinal/function-source.zip","generation":"1740003100432167"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"moneyRequestFinal/function-source.zip","generation":"1740003100432167"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/gala-thirst/serviceAccounts/551601274824-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/gala-thirst/locations/us-central1/services/moneyrequestfinal","timeoutSeconds":60,"environmentVariables":{"EUPAGO_KEY":"4f28-e58a-f00e-8f85-9517","FIREBASE_CONFIG":"{\"projectId\":\"gala-thirst\",\"storageBucket\":\"gala-thirst.firebasestorage.app\"}","GCLOUD_PROJECT":"gala-thirst","EVENTARC_CLOUD_EVENT_SOURCE":"projects/gala-thirst/locations/us-central1/services/moneyRequestFinal","FUNCTION_SIGNATURE_TYPE":"cloudevent","FUNCTION_TARGET":"moneyRequestFinal","LOG_EXECUTION_ID":"true"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://moneyrequestfinal-l252xlafcq-uc.a.run.app","serviceAccountEmail":"551601274824-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"secretEnvironmentVariables":[{"key":"EUPAGOKEY","projectId":"gala-thirst","secret":"EUPAGOKEY","version":"1"}],"revision":"moneyrequestfinal-00001-fed","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"eventTrigger":{"trigger":"projects/gala-thirst/locations/nam5/triggers/moneyrequestfinal-164303","triggerRegion":"nam5","eventType":"google.cloud.firestore.document.v1.created","eventFilters":[{"attribute":"database","value":"(default)"},{"attribute":"namespace","value":"(default)"},{"attribute":"document","value":"ticketBuyer/{id}","operator":"match-path-pattern"}],"pubsubTopic":"projects/gala-thirst/topics/eventarc-nam5-moneyrequestfinal-164303-508","serviceAccountEmail":"551601274824-compute@developer.gserviceaccount.com","retryPolicy":"RETRY_POLICY_DO_NOT_RETRY"},"state":"ACTIVE","updateTime":"2025-02-19T22:13:12.208434946Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"54fcf5a3afd2f5b635a3b1b9fab0570194f2ad25"},"environment":"GEN_2","url":"https://us-central1-gala-thirst.cloudfunctions.net/moneyRequestFinal","createTime":"2025-02-19T22:11:40.726657493Z","satisfiesPzi":true},{"name":"projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal","buildConfig":{"build":"projects/551601274824/locations/us-central1/builds/6dc2dfbc-643d-48b9-be5a-94ae2b92afbe","runtime":"nodejs22","entryPoint":"moneyDonationFinal","source":{"storageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"moneyDonationFinal/function-source.zip","generation":"1740003240116969"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-551601274824-us-central1","object":"moneyDonationFinal/function-source.zip","generation":"1740003240116969"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/gala-thirst/serviceAccounts/551601274824-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/gala-thirst/locations/us-central1/services/moneydonationfinal","timeoutSeconds":60,"environmentVariables":{"EUPAGO_KEY":"4f28-e58a-f00e-8f85-9517","FIREBASE_CONFIG":"{\"projectId\":\"gala-thirst\",\"storageBucket\":\"gala-thirst.firebasestorage.app\"}","GCLOUD_PROJECT":"gala-thirst","EVENTARC_CLOUD_EVENT_SOURCE":"projects/gala-thirst/locations/us-central1/services/moneyDonationFinal","FUNCTION_SIGNATURE_TYPE":"cloudevent","FUNCTION_TARGET":"moneyDonationFinal","LOG_EXECUTION_ID":"true"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://moneydonationfinal-l252xlafcq-uc.a.run.app","serviceAccountEmail":"551601274824-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"secretEnvironmentVariables":[{"key":"EUPAGOKEY","projectId":"gala-thirst","secret":"EUPAGOKEY","version":"1"}],"revision":"moneydonationfinal-00001-piz","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"eventTrigger":{"trigger":"projects/gala-thirst/locations/nam5/triggers/moneydonationfinal-778680","triggerRegion":"nam5","eventType":"google.cloud.firestore.document.v1.created","eventFilters":[{"attribute":"database","value":"(default)"},{"attribute":"namespace","value":"(default)"},{"attribute":"document","value":"afterGala/{id}","operator":"match-path-pattern"}],"pubsubTopic":"projects/gala-thirst/topics/eventarc-nam5-moneydonationfinal-778680-091","serviceAccountEmail":"551601274824-compute@developer.gserviceaccount.com","retryPolicy":"RETRY_POLICY_DO_NOT_RETRY"},"state":"ACTIVE","updateTime":"2025-02-19T22:15:26.622561252Z","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"54fcf5a3afd2f5b635a3b1b9fab0570194f2ad25"},"environment":"GEN_2","url":"https://us-central1-gala-thirst.cloudfunctions.net/moneyDonationFinal","createTime":"2025-02-19T22:14:00.512241984Z","satisfiesPzi":true}]}
+[debug] [2025-02-20T15:24:35.421Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:35.421Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:35.421Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:35.421Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:35.422Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:35.422Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:35.422Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) [none]
+[debug] [2025-02-20T15:24:35.422Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) [none]
+[debug] [2025-02-20T15:24:35.423Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) [none]
+[debug] [2025-02-20T15:24:36.271Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) 200
+[debug] [2025-02-20T15:24:36.271Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) {"name":"projects/gala-thirst/databases/(default)","uid":"05c1bd89-e25d-4338-b7cd-a6f9f5d709e9","createTime":"2025-01-29T10:45:16.942459Z","updateTime":"2025-01-29T10:45:16.942459Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2025-02-20T14:24:36.506994Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","etag":"INDdlcbH0osDML3kkJXgmosD"}
+[debug] [2025-02-20T15:24:36.886Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) 200
+[debug] [2025-02-20T15:24:36.887Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) {"name":"projects/gala-thirst/databases/(default)","uid":"05c1bd89-e25d-4338-b7cd-a6f9f5d709e9","createTime":"2025-01-29T10:45:16.942459Z","updateTime":"2025-01-29T10:45:16.942459Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2025-02-20T14:24:37.116327Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","etag":"IMT3usbH0osDML3kkJXgmosD"}
+[debug] [2025-02-20T15:24:36.888Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) 200
+[debug] [2025-02-20T15:24:36.888Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/gala-thirst/databases/(default) {"name":"projects/gala-thirst/databases/(default)","uid":"05c1bd89-e25d-4338-b7cd-a6f9f5d709e9","createTime":"2025-01-29T10:45:16.942459Z","updateTime":"2025-01-29T10:45:16.942459Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2025-02-20T14:24:37.125044Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","etag":"IL25u8bH0osDML3kkJXgmosD"}
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:36.891Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:36.891Z] Checked if tokens are valid: true, expires at: 1740067378865
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:36.891Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:36.891Z] Checked if tokens are valid: true, expires at: 1740067378865
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:36.891Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:36.891Z] Checked if tokens are valid: true, expires at: 1740067378865
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2025-02-20T15:24:36.892Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:36.892Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:36.892Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/run.googleapis.com [none]
+[debug] [2025-02-20T15:24:36.892Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/run.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:36.894Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/eventarc.googleapis.com [none]
+[debug] [2025-02-20T15:24:36.894Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/eventarc.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:36.896Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/pubsub.googleapis.com [none]
+[debug] [2025-02-20T15:24:36.896Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/pubsub.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:36.898Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/storage.googleapis.com [none]
+[debug] [2025-02-20T15:24:36.898Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/storage.googleapis.com x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T15:24:37.827Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/run.googleapis.com 200
+[debug] [2025-02-20T15:24:37.827Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/run.googleapis.com [omitted]
+[info] ✔  functions: required API run.googleapis.com is enabled 
+[debug] [2025-02-20T15:24:37.838Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/eventarc.googleapis.com 200
+[debug] [2025-02-20T15:24:37.838Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/eventarc.googleapis.com [omitted]
+[info] ✔  functions: required API eventarc.googleapis.com is enabled 
+[debug] [2025-02-20T15:24:37.840Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/pubsub.googleapis.com 200
+[debug] [2025-02-20T15:24:37.840Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/pubsub.googleapis.com [omitted]
+[info] ✔  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2025-02-20T15:24:37.848Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/storage.googleapis.com 200
+[debug] [2025-02-20T15:24:37.848Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/gala-thirst/services/storage.googleapis.com [omitted]
+[info] ✔  functions: required API storage.googleapis.com is enabled 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[debug] [2025-02-20T15:24:37.849Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:37.849Z] Checked if tokens are valid: true, expires at: 1740067378865
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2025-02-20T15:24:37.849Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:37.849Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:37.849Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/551601274824/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-02-20T15:24:37.849Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/551601274824/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-02-20T15:24:38.684Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/551601274824/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2025-02-20T15:24:38.684Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/551601274824/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-551601274824@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"103300744408314570370"}}
+[debug] [2025-02-20T15:24:38.726Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/551601274824/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2025-02-20T15:24:38.726Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/551601274824/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-551601274824@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"112341334386500716335"}}
+[debug] [2025-02-20T15:24:38.727Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:38.727Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:38.727Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:38.727Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:38.727Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:38.727Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:38.727Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER/versions/latest [none]
+[debug] [2025-02-20T15:24:38.728Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS/versions/latest [none]
+[debug] [2025-02-20T15:24:38.729Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest [none]
+[debug] [2025-02-20T15:24:39.003Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS/versions/latest 200
+[debug] [2025-02-20T15:24:39.003Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_PASS/versions/latest {"name":"projects/551601274824/secrets/EMAIL_PASS/versions/1","createTime":"2025-02-20T15:11:36.746429Z","state":"ENABLED","replicationStatus":{"automatic":{}},"etag":"\"162e944a4b3dbd\""}
+[debug] [2025-02-20T15:24:39.003Z] Resolved secret version of EMAIL_PASS to 1.
+[debug] [2025-02-20T15:24:39.044Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER/versions/latest 200
+[debug] [2025-02-20T15:24:39.045Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EMAIL_USER/versions/latest {"name":"projects/551601274824/secrets/EMAIL_USER/versions/1","createTime":"2025-02-20T15:11:14.951649Z","state":"ENABLED","replicationStatus":{"automatic":{}},"etag":"\"162e9448feade1\""}
+[debug] [2025-02-20T15:24:39.045Z] Resolved secret version of EMAIL_USER to 1.
+[debug] [2025-02-20T15:24:39.128Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest 200
+[debug] [2025-02-20T15:24:39.128Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY/versions/latest {"name":"projects/551601274824/secrets/EUPAGO_KEY/versions/2","createTime":"2025-02-20T15:24:12.504222Z","state":"ENABLED","replicationStatus":{"automatic":{}},"etag":"\"162e947757309e\""}
+[debug] [2025-02-20T15:24:39.128Z] Resolved secret version of EUPAGO_KEY to 2.
+[debug] [2025-02-20T15:24:39.130Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:39.130Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:39.130Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst [none]
+[debug] [2025-02-20T15:24:39.934Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst 200
+[debug] [2025-02-20T15:24:39.934Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst {"projectNumber":"551601274824","projectId":"gala-thirst","lifecycleState":"ACTIVE","name":"gala-thirst","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-01-17T12:09:30.385618Z","parent":{"type":"organization","id":"500501231854"}}
+[info] i  functions: ensuring 551601274824-compute@developer.gserviceaccount.com access to secret EUPAGO_KEY. 
+[debug] [2025-02-20T15:24:39.935Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:39.935Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:39.935Z] >>> [apiv2][query] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY:getIamPolicy [none]
+[debug] [2025-02-20T15:24:40.297Z] <<< [apiv2][status] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY:getIamPolicy 200
+[debug] [2025-02-20T15:24:40.297Z] <<< [apiv2][body] GET https://secretmanager.googleapis.com/v1/projects/gala-thirst/secrets/EUPAGO_KEY:getIamPolicy {"version":1,"etag":"BwYuhgHpteo=","bindings":[{"role":"roles/secretmanager.secretAccessor","members":["serviceAccount:551601274824-compute@developer.gserviceaccount.com"]}]}
+[info] ✔  secretmanager: Granted roles/secretmanager.secretAccessor on projects/gala-thirst/secrets/EUPAGO_KEY to 551601274824-compute@developer.gserviceaccount.com 
+[info] ✔  functions: ensured 551601274824-compute@developer.gserviceaccount.com access to EUPAGO_KEY. 
+[debug] [2025-02-20T15:24:40.299Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:40.299Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:40.299Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/gala-thirst/billingInfo [none]
+[debug] [2025-02-20T15:24:40.775Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/gala-thirst/billingInfo 200
+[debug] [2025-02-20T15:24:40.775Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/gala-thirst/billingInfo {"name":"projects/gala-thirst/billingInfo","projectId":"gala-thirst","billingAccountName":"billingAccounts/014E26-B836FC-D94A27","billingEnabled":true}
+[debug] [2025-02-20T15:24:40.776Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:40.776Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:40.776Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2025-02-20T15:24:41.739Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2025-02-20T15:24:41.739Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com/ea3cacae-925e-47ce-b23d-b084a133d001.zip?GoogleAccessId=service-551601274824@gcf-admin-robot.iam.gserviceaccount.com&Expires=1740066881&Signature=sD9om%2FGDsBY%2BY79dOvqWqQ2282ntg64UH2XPK8G4yuPS%2FJMPbdP3MiXAKQ1TGrwGuVq1YsIojpmfC9%2FmTwXnBRJSg5uRT6aPYqaqgKEawQElvErGRIEDmO7AOxGJzo3KR8M3c%2FsBxwDv8NqpCRrT87gKHFXz3yYqUGJ1iQAroFslDzKlGq7%2BQdLi9jAPSIUeiyUacehJ7PgFFgTmhweQ0KAVzuzW3WCPwNPJIfQqzWYwT6UciAaEfwzvWg8CPrUKb3hsvHC3wfW7z2e6UGra87bX0809AM1Y9Y%2FhlAHZrIxPhYebXqYsjgHZiuqs1T9mcoKzje5Qv2DD0VVe5%2FacUQ%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com","object":"ea3cacae-925e-47ce-b23d-b084a133d001.zip"}}
+[debug] [2025-02-20T15:24:41.740Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com/ea3cacae-925e-47ce-b23d-b084a133d001.zip GoogleAccessId=service-551601274824%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1740066881&Signature=sD9om%2FGDsBY%2BY79dOvqWqQ2282ntg64UH2XPK8G4yuPS%2FJMPbdP3MiXAKQ1TGrwGuVq1YsIojpmfC9%2FmTwXnBRJSg5uRT6aPYqaqgKEawQElvErGRIEDmO7AOxGJzo3KR8M3c%2FsBxwDv8NqpCRrT87gKHFXz3yYqUGJ1iQAroFslDzKlGq7%2BQdLi9jAPSIUeiyUacehJ7PgFFgTmhweQ0KAVzuzW3WCPwNPJIfQqzWYwT6UciAaEfwzvWg8CPrUKb3hsvHC3wfW7z2e6UGra87bX0809AM1Y9Y%2FhlAHZrIxPhYebXqYsjgHZiuqs1T9mcoKzje5Qv2DD0VVe5%2FacUQ%3D%3D
+[debug] [2025-02-20T15:24:41.740Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com/ea3cacae-925e-47ce-b23d-b084a133d001.zip [stream]
+[debug] [2025-02-20T15:24:42.408Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com/ea3cacae-925e-47ce-b23d-b084a133d001.zip 200
+[debug] [2025-02-20T15:24:42.408Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com/ea3cacae-925e-47ce-b23d-b084a133d001.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: Skipping the deploy of unchanged functions. 
+[info] ✔  functions[enviarBilhete(us-central1)] Skipped (No changes detected) 
+[info] i  functions: updating Node.js 22 (2nd Gen) function moneyRequestFinal(us-central1)... 
+[info] i  functions: updating Node.js 22 (2nd Gen) function moneyDonationFinal(us-central1)... 
+[debug] [2025-02-20T15:24:42.413Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:42.413Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:42.413Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal updateMask=name%2CbuildConfig.runtime%2CbuildConfig.entryPoint%2CbuildConfig.source.storageSource.bucket%2CbuildConfig.source.storageSource.object%2CbuildConfig.environmentVariables%2CbuildConfig.sourceToken%2CserviceConfig.environmentVariables%2CserviceConfig.secretEnvironmentVariables%2CserviceConfig.ingressSettings%2CserviceConfig.timeoutSeconds%2CserviceConfig.serviceAccountEmail%2CserviceConfig.availableMemory%2CserviceConfig.minInstanceCount%2CserviceConfig.maxInstanceCount%2CserviceConfig.maxInstanceRequestConcurrency%2CserviceConfig.availableCpu%2CserviceConfig.vpcConnector%2CserviceConfig.vpcConnectorEgressSettings%2Clabels%2CeventTrigger.eventType%2CeventTrigger.retryPolicy%2CeventTrigger.eventFilters%2CeventTrigger.triggerRegion%2CbuildConfig.buildEnvironmentVariables
+[debug] [2025-02-20T15:24:42.413Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal {"name":"projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal","buildConfig":{"runtime":"nodejs22","entryPoint":"moneyRequestFinal","source":{"storageSource":{"bucket":"gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com","object":"ea3cacae-925e-47ce-b23d-b084a133d001.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"EUPAGO_KEY":"4f28-e58a-f00e-8f85-9517","FIREBASE_CONFIG":"{\"projectId\":\"gala-thirst\",\"storageBucket\":\"gala-thirst.firebasestorage.app\"}","GCLOUD_PROJECT":"gala-thirst","EVENTARC_CLOUD_EVENT_SOURCE":"projects/gala-thirst/locations/us-central1/services/moneyRequestFinal","FUNCTION_SIGNATURE_TYPE":"cloudevent","FUNCTION_TARGET":"moneyRequestFinal","LOG_EXECUTION_ID":"true"},"secretEnvironmentVariables":[{"key":"EUPAGO_KEY","secret":"EUPAGO_KEY","projectId":"gala-thirst","version":"2"}],"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"8f0961a462ebea93f1cadea78a9f1ccf33399660"},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","retryPolicy":"RETRY_POLICY_DO_NOT_RETRY","eventFilters":[{"attribute":"database","value":"(default)"},{"attribute":"namespace","value":"(default)"},{"attribute":"document","value":"ticketBuyer/{id}","operator":"match-path-pattern"}],"triggerRegion":"nam5"}}
+[debug] [2025-02-20T15:24:43.650Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal 400
+[debug] [2025-02-20T15:24:43.650Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal {"error":{"code":400,"message":"Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneyrequestfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY","status":"INVALID_ARGUMENT"}}
+[warn] ⚠  functions: Request to https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal?updateMask=name%2CbuildConfig.runtime%2CbuildConfig.entryPoint%2CbuildConfig.source.storageSource.bucket%2CbuildConfig.source.storageSource.object%2CbuildConfig.environmentVariables%2CbuildConfig.sourceToken%2CserviceConfig.environmentVariables%2CserviceConfig.secretEnvironmentVariables%2CserviceConfig.ingressSettings%2CserviceConfig.timeoutSeconds%2CserviceConfig.serviceAccountEmail%2CserviceConfig.availableMemory%2CserviceConfig.minInstanceCount%2CserviceConfig.maxInstanceCount%2CserviceConfig.maxInstanceRequestConcurrency%2CserviceConfig.availableCpu%2CserviceConfig.vpcConnector%2CserviceConfig.vpcConnectorEgressSettings%2Clabels%2CeventTrigger.eventType%2CeventTrigger.retryPolicy%2CeventTrigger.eventFilters%2CeventTrigger.triggerRegion%2CbuildConfig.buildEnvironmentVariables had HTTP Error: 400, Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneyrequestfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY 
+[warn] ⚠  functions:  failed to update function projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal 
+[error] Failed to update function projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal
+[debug] [2025-02-20T15:24:43.653Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:43.653Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:43.654Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal updateMask=name%2CbuildConfig.runtime%2CbuildConfig.entryPoint%2CbuildConfig.source.storageSource.bucket%2CbuildConfig.source.storageSource.object%2CbuildConfig.environmentVariables%2CbuildConfig.sourceToken%2CserviceConfig.environmentVariables%2CserviceConfig.secretEnvironmentVariables%2CserviceConfig.ingressSettings%2CserviceConfig.timeoutSeconds%2CserviceConfig.serviceAccountEmail%2CserviceConfig.availableMemory%2CserviceConfig.minInstanceCount%2CserviceConfig.maxInstanceCount%2CserviceConfig.maxInstanceRequestConcurrency%2CserviceConfig.availableCpu%2CserviceConfig.vpcConnector%2CserviceConfig.vpcConnectorEgressSettings%2Clabels%2CeventTrigger.eventType%2CeventTrigger.retryPolicy%2CeventTrigger.eventFilters%2CeventTrigger.triggerRegion%2CbuildConfig.buildEnvironmentVariables
+[debug] [2025-02-20T15:24:43.654Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal {"name":"projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal","buildConfig":{"runtime":"nodejs22","entryPoint":"moneyDonationFinal","source":{"storageSource":{"bucket":"gcf-v2-uploads-551601274824.us-central1.cloudfunctions.appspot.com","object":"ea3cacae-925e-47ce-b23d-b084a133d001.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"EUPAGO_KEY":"4f28-e58a-f00e-8f85-9517","FIREBASE_CONFIG":"{\"projectId\":\"gala-thirst\",\"storageBucket\":\"gala-thirst.firebasestorage.app\"}","GCLOUD_PROJECT":"gala-thirst","EVENTARC_CLOUD_EVENT_SOURCE":"projects/gala-thirst/locations/us-central1/services/moneyDonationFinal","FUNCTION_SIGNATURE_TYPE":"cloudevent","FUNCTION_TARGET":"moneyDonationFinal","LOG_EXECUTION_ID":"true"},"secretEnvironmentVariables":[{"key":"EUPAGO_KEY","secret":"EUPAGO_KEY","projectId":"gala-thirst","version":"2"}],"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null},"labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"8f0961a462ebea93f1cadea78a9f1ccf33399660"},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","retryPolicy":"RETRY_POLICY_DO_NOT_RETRY","eventFilters":[{"attribute":"database","value":"(default)"},{"attribute":"namespace","value":"(default)"},{"attribute":"document","value":"afterGala/{id}","operator":"match-path-pattern"}],"triggerRegion":"nam5"}}
+[debug] [2025-02-20T15:24:44.774Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal 400
+[debug] [2025-02-20T15:24:44.774Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal {"error":{"code":400,"message":"Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneydonationfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY","status":"INVALID_ARGUMENT"}}
+[warn] ⚠  functions: Request to https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal?updateMask=name%2CbuildConfig.runtime%2CbuildConfig.entryPoint%2CbuildConfig.source.storageSource.bucket%2CbuildConfig.source.storageSource.object%2CbuildConfig.environmentVariables%2CbuildConfig.sourceToken%2CserviceConfig.environmentVariables%2CserviceConfig.secretEnvironmentVariables%2CserviceConfig.ingressSettings%2CserviceConfig.timeoutSeconds%2CserviceConfig.serviceAccountEmail%2CserviceConfig.availableMemory%2CserviceConfig.minInstanceCount%2CserviceConfig.maxInstanceCount%2CserviceConfig.maxInstanceRequestConcurrency%2CserviceConfig.availableCpu%2CserviceConfig.vpcConnector%2CserviceConfig.vpcConnectorEgressSettings%2Clabels%2CeventTrigger.eventType%2CeventTrigger.retryPolicy%2CeventTrigger.eventFilters%2CeventTrigger.triggerRegion%2CbuildConfig.buildEnvironmentVariables had HTTP Error: 400, Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneydonationfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY 
+[warn] ⚠  functions:  failed to update function projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal 
+[error] Failed to update function projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal
+[debug] [2025-02-20T15:24:44.780Z] Total Function Deployment time: 2363
+[debug] [2025-02-20T15:24:44.780Z] 2 Functions Deployed
+[debug] [2025-02-20T15:24:44.780Z] 2 Functions Errored
+[debug] [2025-02-20T15:24:44.780Z] 0 Function Deployments Aborted
+[debug] [2025-02-20T15:24:44.780Z] Average Function Deployment time: 1801.5
+[info] 
+[info] Functions deploy had errors with the following functions:
+	moneyDonationFinal(us-central1)
+	moneyRequestFinal(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2025-02-20T15:24:45.046Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.046Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.046Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.046Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.046Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.046Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.047Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.047Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.047Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/enviar_bilhete [none]
+[debug] [2025-02-20T15:24:45.047Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_request_final [none]
+[debug] [2025-02-20T15:24:45.048Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_donation_final [none]
+[debug] [2025-02-20T15:24:45.048Z] >>> [apiv2][query] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list [none]
+[debug] [2025-02-20T15:24:45.599Z] <<< [apiv2][status] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list 404
+[debug] [2025-02-20T15:24:45.599Z] <<< [apiv2][body] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2025-02-20T15:24:45.599Z] Failed docker command with error  Request to https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list had HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"Request to https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list had HTTP Error: 404, Not Found","status":404}
+[debug] [2025-02-20T15:24:45.604Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.604Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:45.604Z] >>> [apiv2][query] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list [none]
+[debug] [2025-02-20T15:24:45.897Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_request_final 404
+[debug] [2025-02-20T15:24:45.897Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_request_final {"error":{"code":404,"message":"Package \"projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_request_final\" was not found.","status":"NOT_FOUND"}}
+[debug] [2025-02-20T15:24:45.907Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/enviar_bilhete 404
+[debug] [2025-02-20T15:24:45.907Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/enviar_bilhete {"error":{"code":404,"message":"Package \"projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/enviar_bilhete\" was not found.","status":"NOT_FOUND"}}
+[debug] [2025-02-20T15:24:45.914Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_donation_final 404
+[debug] [2025-02-20T15:24:45.914Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_donation_final {"error":{"code":404,"message":"Package \"projects/gala-thirst/locations/us-central1/repositories/gcf-artifacts/packages/money_donation_final\" was not found.","status":"NOT_FOUND"}}
+[debug] [2025-02-20T15:24:45.919Z] <<< [apiv2][status] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list 404
+[debug] [2025-02-20T15:24:45.919Z] <<< [apiv2][body] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2025-02-20T15:24:45.919Z] Failed docker command with error  Request to https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list had HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"Request to https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list had HTTP Error: 404, Not Found","status":404}
+[debug] [2025-02-20T15:24:46.020Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:46.020Z] Checked if tokens are valid: true, expires at: 1740067378865
+[debug] [2025-02-20T15:24:46.021Z] >>> [apiv2][query] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list [none]
+[debug] [2025-02-20T15:24:46.350Z] <<< [apiv2][status] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list 404
+[debug] [2025-02-20T15:24:46.350Z] <<< [apiv2][body] GET https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2025-02-20T15:24:46.350Z] Failed docker command with error  Request to https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list had HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"Request to https://us.gcr.io/v2/gala-thirst/gcf/us-central1/tags/list had HTTP Error: 404, Not Found","status":404}
+[warn] ⚠  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/gcr/images/gala-thirst/us/gcf 
+[debug] [2025-02-20T15:24:46.350Z] Functions deploy failed.
+[debug] [2025-02-20T15:24:46.350Z] {
+  "endpoint": {
+    "id": "moneyRequestFinal",
+    "project": "gala-thirst",
+    "region": "us-central1",
+    "entryPoint": "moneyRequestFinal",
+    "platform": "gcfv2",
+    "runtime": "nodejs22",
+    "eventTrigger": {
+      "eventType": "google.cloud.firestore.document.v1.created",
+      "retry": false,
+      "eventFilters": {
+        "database": "(default)",
+        "namespace": "(default)"
+      },
+      "eventFilterPathPatterns": {
+        "document": "ticketBuyer/{id}"
+      },
+      "region": "nam5"
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "secretEnvironmentVariables": [
+      {
+        "key": "EUPAGO_KEY",
+        "secret": "EUPAGO_KEY",
+        "projectId": "gala-thirst",
+        "version": "2"
+      }
+    ],
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "serviceAccount": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "EUPAGO_KEY": "4f28-e58a-f00e-8f85-9517",
+      "FIREBASE_CONFIG": "{\"projectId\":\"gala-thirst\",\"storageBucket\":\"gala-thirst.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "gala-thirst",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/gala-thirst/locations/us-central1/services/moneyRequestFinal",
+      "FUNCTION_SIGNATURE_TYPE": "cloudevent",
+      "FUNCTION_TARGET": "moneyRequestFinal",
+      "LOG_EXECUTION_ID": "true"
+    },
+    "codebase": "default",
+    "runServiceId": "moneyrequestfinal",
+    "cpu": 1,
+    "securityLevel": "SECURE_ALWAYS",
+    "targetedByOnly": false,
+    "hash": "8f0961a462ebea93f1cadea78a9f1ccf33399660"
+  },
+  "op": "update",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal"
+    },
+    "exit": 1,
+    "message": "Failed to update function projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneyrequestfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY",
+            "status": "INVALID_ARGUMENT"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "Request to https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyRequestFinal?updateMask=name%2CbuildConfig.runtime%2CbuildConfig.entryPoint%2CbuildConfig.source.storageSource.bucket%2CbuildConfig.source.storageSource.object%2CbuildConfig.environmentVariables%2CbuildConfig.sourceToken%2CserviceConfig.environmentVariables%2CserviceConfig.secretEnvironmentVariables%2CserviceConfig.ingressSettings%2CserviceConfig.timeoutSeconds%2CserviceConfig.serviceAccountEmail%2CserviceConfig.availableMemory%2CserviceConfig.minInstanceCount%2CserviceConfig.maxInstanceCount%2CserviceConfig.maxInstanceRequestConcurrency%2CserviceConfig.availableCpu%2CserviceConfig.vpcConnector%2CserviceConfig.vpcConnectorEgressSettings%2Clabels%2CeventTrigger.eventType%2CeventTrigger.retryPolicy%2CeventTrigger.eventFilters%2CeventTrigger.triggerRegion%2CbuildConfig.buildEnvironmentVariables had HTTP Error: 400, Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneyrequestfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY",
+      "status": 400
+    },
+    "status": 400,
+    "code": 400
+  }
+}
+[debug] [2025-02-20T15:24:46.350Z] {
+  "endpoint": {
+    "id": "moneyDonationFinal",
+    "project": "gala-thirst",
+    "region": "us-central1",
+    "entryPoint": "moneyDonationFinal",
+    "platform": "gcfv2",
+    "runtime": "nodejs22",
+    "eventTrigger": {
+      "eventType": "google.cloud.firestore.document.v1.created",
+      "retry": false,
+      "eventFilters": {
+        "database": "(default)",
+        "namespace": "(default)"
+      },
+      "eventFilterPathPatterns": {
+        "document": "afterGala/{id}"
+      },
+      "region": "nam5"
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "secretEnvironmentVariables": [
+      {
+        "key": "EUPAGO_KEY",
+        "secret": "EUPAGO_KEY",
+        "projectId": "gala-thirst",
+        "version": "2"
+      }
+    ],
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "serviceAccount": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "EUPAGO_KEY": "4f28-e58a-f00e-8f85-9517",
+      "FIREBASE_CONFIG": "{\"projectId\":\"gala-thirst\",\"storageBucket\":\"gala-thirst.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "gala-thirst",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/gala-thirst/locations/us-central1/services/moneyDonationFinal",
+      "FUNCTION_SIGNATURE_TYPE": "cloudevent",
+      "FUNCTION_TARGET": "moneyDonationFinal",
+      "LOG_EXECUTION_ID": "true"
+    },
+    "codebase": "default",
+    "runServiceId": "moneydonationfinal",
+    "cpu": 1,
+    "securityLevel": "SECURE_ALWAYS",
+    "targetedByOnly": false,
+    "hash": "8f0961a462ebea93f1cadea78a9f1ccf33399660"
+  },
+  "op": "update",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal"
+    },
+    "exit": 1,
+    "message": "Failed to update function projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneydonationfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY",
+            "status": "INVALID_ARGUMENT"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "Request to https://cloudfunctions.googleapis.com/v2/projects/gala-thirst/locations/us-central1/functions/moneyDonationFinal?updateMask=name%2CbuildConfig.runtime%2CbuildConfig.entryPoint%2CbuildConfig.source.storageSource.bucket%2CbuildConfig.source.storageSource.object%2CbuildConfig.environmentVariables%2CbuildConfig.sourceToken%2CserviceConfig.environmentVariables%2CserviceConfig.secretEnvironmentVariables%2CserviceConfig.ingressSettings%2CserviceConfig.timeoutSeconds%2CserviceConfig.serviceAccountEmail%2CserviceConfig.availableMemory%2CserviceConfig.minInstanceCount%2CserviceConfig.maxInstanceCount%2CserviceConfig.maxInstanceRequestConcurrency%2CserviceConfig.availableCpu%2CserviceConfig.vpcConnector%2CserviceConfig.vpcConnectorEgressSettings%2Clabels%2CeventTrigger.eventType%2CeventTrigger.retryPolicy%2CeventTrigger.eventFilters%2CeventTrigger.triggerRegion%2CbuildConfig.buildEnvironmentVariables had HTTP Error: 400, Could not update Cloud Run service projects/gala-thirst/locations/us-central1/services/moneydonationfinal. spec.template.spec.containers[0].env: Secret environment variable overlaps non secret environment variable: EUPAGO_KEY",
+      "status": 400
+    },
+    "status": 400,
+    "code": 400
+  }
+}
+[error] Error: There was an error deploying functions:
+[error] - Error Failed to update function moneyRequestFinal in region us-central1
+[error] - Error Failed to update function moneyDonationFinal in region us-central1
