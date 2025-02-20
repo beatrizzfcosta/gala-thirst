@@ -8,6 +8,7 @@ import multibanco from '../assets/multibanco.png';
 import MultibancoModel from '../modals/MultibancoModel';
 import MbwayModel from '../modals/MbwayModel';
 import '../style/info.css';
+import credit from '../assets/credit.png';
 
 export default function Info({ setInfo, setSummary, contribution }) {
     const [emailError, setEmailError] = useState(false);
@@ -31,8 +32,10 @@ export default function Info({ setInfo, setSummary, contribution }) {
     const [mbModalVisible, setMBModalVisible] = useState(false);
     const [mbwayModalVisible, setMBwayModalVisible] = useState(false);
     const [paymentTypeError, setPaymentTypeError] = useState(false);
-    const [total, setTotal] = useState(contribution.total - 
+    const [total, setTotal] = useState(contribution.total -
         contribution.tickets * 85);
+    const [creditCardLink, setCreditCardLink] = useState(null);
+
 
     // Adicione um estado para o código promocional
     const [promoCode, setPromoCode] = useState('');
@@ -70,7 +73,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
             }
         }
     };
-    
+
 
     useEffect(() => {
         // Aplicar o código promocional automaticamente ao alterar o código
@@ -240,7 +243,72 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     }
                 }, 10000);
             }
-        }
+            else if (paymentType === 'creditcard') {
+                console.log("🛠 Iniciando processo de pagamento com Cartão de Crédito...");
+                setBlockButton(true);
+                setInternalError(false);
+            
+                const info = {
+                    names: names,
+                    tickets: contribution.tickets,
+                    total: (promoApplied ? promoDetails.discountedPrice : contribution.total) || (contribution.total),
+                    nif: nif,
+                    email: email,
+                    phone: phone,
+                    futureContact: futureContact,
+                    termsAccepted: termsAccepted,
+                    paid: false,
+                    referenceCreated: false,
+                    error: false,
+                    type: "creditcard",
+                    referencia: null,
+                    entidade: null,
+                    paymentUrl: null,
+                };
+            
+                console.log("📡 Enviando dados para o backend:", info);
+                const result = await addTicketBuyer(info);
+            
+                if (result !== false) {
+                    console.log("✅ Pedido enviado com sucesso. Aguardando resposta...");
+                    let ticketUpdated = await getTicketById(result);
+            
+                    if (ticketUpdated !== null) {
+                        console.log("🔄 Dados do pagamento recebidos:", ticketUpdated);
+            
+                        if (ticketUpdated.referenceCreated && ticketUpdated.paymentUrl) {
+                            console.log(`✅ Link de pagamento gerado com sucesso: ${ticketUpdated.paymentUrl}`);
+                            setCreditCardLink(ticketUpdated.paymentUrl); // Armazena o link de pagamento
+                            setBlockButton(false);
+                            return;
+                        } else {
+                            console.log("⌛ Aguardando confirmação do link de pagamento...");
+                            setTimeout(async () => {
+                                ticketUpdated = await getTicketById(result);
+                                console.log("🔄 Segunda tentativa de obtenção do link de pagamento:", ticketUpdated);
+            
+                                if (ticketUpdated !== null && ticketUpdated.referenceCreated && ticketUpdated.paymentUrl) {
+                                    console.log(`✅ Link de pagamento confirmado: ${ticketUpdated.paymentUrl}`);
+                                    setCreditCardLink(ticketUpdated.paymentUrl);
+                                    setBlockButton(false);
+                                    return;
+                                }
+                                if (ticketUpdated !== null && ticketUpdated.error !== false) {
+                                    console.error(`❌ Erro ao processar pagamento: ${ticketUpdated.error}`);
+                                    setInternalError(true);
+                                    setBlockButton(false);
+                                    return;
+                                }
+                            }, 10000);
+                        }
+                    }
+                } else {
+                    console.error("❌ Erro ao enviar o pedido ao backend.");
+                    setInternalError(true);
+                    setBlockButton(false);
+                }
+            }
+        }            
     }
 
     const handleContactChange = () => {
@@ -366,54 +434,54 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     </h3>
                     <div className="line" />
                     <table className="summary-table">
-                <thead>
-                    <tr>
-                        <th>QTD</th>
-                        <th>Item</th>
-                        <th>Valor Unitário</th>
-                        <th>Valor Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {updatedTickets > 0 && (
-                        <tr>
-                            <td className="info-text">{updatedTickets}</td>
-                            <td className="info-text">Ticket</td>
-                            <td className="info-text">EUR€ 85</td>
-                            <td className="info-text">EUR€ {updatedTickets * 85}</td>
-                        </tr>
-                    )}
-                    {promoApplied && (
-                        <tr>
-                            <td className="info-text">1</td>
-                            <td className="info-text">PROMO</td>
-                            <td className="info-text">
-                                <s style={{ color: 'red' }}>EUR€ {promoDetails.originalPrice}</s> EUR€ {promoDetails.discountedPrice}
-                            </td>
-                            <td className="info-text">EUR€ {promoDetails.discountedPrice}</td>
-                        </tr>
-                    )}
-                    {contribution.total > 0 && (
-                        <tr>
-                            <td className="info-text">1</td>
-                            <td className="info-text">Contribuição</td>
-                            <td className="info-text">-</td>
-                            <td className="info-text">EUR€ {contribution.total}</td>
-                        </tr>
-                    )}
-                    <tr className="line-row">
-                        <td colSpan="4">
-                            <hr className="summary-divider" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="info-text"></td>
-                        <td className="info-text"></td>
-                        <td className="info-text"></td>
-                        <td className="total-amount">EUR€ {(updatedTickets * 85) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total}</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <thead>
+                            <tr>
+                                <th>QTD</th>
+                                <th>Item</th>
+                                <th>Valor Unitário</th>
+                                <th>Valor Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {updatedTickets > 0 && (
+                                <tr>
+                                    <td className="info-text">{updatedTickets}</td>
+                                    <td className="info-text">Ticket</td>
+                                    <td className="info-text">EUR€ 85</td>
+                                    <td className="info-text">EUR€ {updatedTickets * 85}</td>
+                                </tr>
+                            )}
+                            {promoApplied && (
+                                <tr>
+                                    <td className="info-text">1</td>
+                                    <td className="info-text">PROMO</td>
+                                    <td className="info-text">
+                                        <s style={{ color: 'red' }}>EUR€ {promoDetails.originalPrice}</s> EUR€ {promoDetails.discountedPrice}
+                                    </td>
+                                    <td className="info-text">EUR€ {promoDetails.discountedPrice}</td>
+                                </tr>
+                            )}
+                            {contribution.total > 0 && (
+                                <tr>
+                                    <td className="info-text">1</td>
+                                    <td className="info-text">Contribuição</td>
+                                    <td className="info-text">-</td>
+                                    <td className="info-text">EUR€ {contribution.total}</td>
+                                </tr>
+                            )}
+                            <tr className="line-row">
+                                <td colSpan="4">
+                                    <hr className="summary-divider" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="info-text"></td>
+                                <td className="info-text"></td>
+                                <td className="info-text"></td>
+                                <td className="total-amount">EUR€ {(updatedTickets * 85) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <h3 className="title-ticket">INSIRA O SEU CÓDIGO PROMOCIONAL</h3>
                 <div className="container-contribution">
@@ -450,6 +518,12 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         >
                             <Image src={mbway} alt="mbway" width={40} height={40} />
                         </Button>
+                        <Button
+                            className={`flex items-center ${paymentType === 'creditcard' ? 'bg-[#17CACE]' : 'bg-white/10'} me-3 rounded-lg p-1`}
+                            onClick={() => { setPaymentType('creditcard'); if (paymentTypeError) setPaymentTypeError(false); }}
+                        >
+                            <Image src={credit} alt="creditcard" width={40} height={40} style={{ borderRadius: "5px" }} />
+                        </Button>
                     </div>
                     {paymentTypeError && (
                         <p className="error-text" id="name-error">
@@ -463,6 +537,15 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 {mbwayModalVisible && (
                     <MbwayModel setMBwayModalVisible={setMBwayModalVisible} changeFromMultibanco={changeFromMultibanco} />
                 )}
+                {creditCardLink && (
+                    <div className="payment-link-container">
+                        <p className="info-text">Clique no botão abaixo para concluir seu pagamento com Cartão de Crédito:</p>
+                        <a href={creditCardLink} target="_blank" rel="noopener noreferrer">
+                            <Button className="button">Finalizar Pagamento</Button>
+                        </a>
+                    </div>
+                )}
+
                 {paymentType === 'mbway' && (
                     <>
                         <div className="container-contribuition">

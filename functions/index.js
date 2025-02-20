@@ -1,11 +1,10 @@
-const {defineSecret} = require("firebase-functions/params");
+const { defineSecret } = require("firebase-functions/params");
 const axios = require("axios");
 const {
   onDocumentCreated,
 } = require("firebase-functions/v2/firestore");
 
-const EUPAGO_KEY = defineSecret("EUPAGO_KEY");
-
+const EUPAGO_KEY = defineSecret("EUPAGOKEY");
 
 exports.moneyRequestFinal = onDocumentCreated({
   document: "ticketBuyer/{id}",
@@ -81,7 +80,7 @@ exports.moneyRequestFinal = onDocumentCreated({
       });
       console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
     }
-  } 
+  }
   else if (data.type === "multibanco") {
     const eupagoKeyValue = await EUPAGO_KEY.value(); // <====
     const options = {
@@ -131,11 +130,77 @@ exports.moneyRequestFinal = onDocumentCreated({
       });
       console.error(`❌ Erro ao processar pagamento Multibanco para ${docId}:`, errorMessage);
     }
+  } else if (data.type === "creditcard") {
+    const eupagoKeyValue = await EUPAGO_KEY.value();
+    const options = {
+      method: "POST",
+      url: "https://clientes.eupago.pt/api/v1.02/creditcard/create",
+      headers: {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "Authorization": `ApiKey ${eupagoKeyValue}`,
+      },
+      data: {
+        payment: {
+          amount: {
+            currency: "EUR",
+            value: data.total
+          },
+          lang: "PT",
+          identifier: docId,
+          description: "Doação com Cartão de Crédito",
+          successUrl: "https://seusite.com/sucesso",
+          failUrl: "https://seusite.com/falha",
+          backUrl: "https://seusite.com",
+        },
+        customer: {
+          notify: true,
+          email: data.email,
+        },
+      },
+    };
+
+    try {
+      console.log(`📡 Enviando requisição para EuPago...`);
+      console.log("🔍 Dados enviados:", JSON.stringify(options.data));
+
+      const response = await axios.request(options);
+
+      console.log("🔍 Resposta da EuPago:", JSON.stringify(response.data));
+
+      if (response.data.sucesso === true && response.data.redirectUrl) {
+        await snapshot.ref.update({
+          referenceCreated: true,
+          paymentUrl: response.data.redirectUrl, // ✅ Usando 'redirectUrl' corretamente
+          error: null,
+        });   
+
+        console.log(`✅ Link de pagamento gerado com sucesso: ${response.data.redirectUrl}`);
+      } else {
+        await snapshot.ref.update({
+          referenceCreated: false,
+          error: response.data.resposta || "Erro desconhecido",
+        });
+
+        console.warn(`❌ Erro ao gerar link de pagamento: ${response.data.resposta}`);
+      }
+    } catch (error) {
+      const errorMessage = error.response
+        ? `Erro: ${error.response.status} - ${JSON.stringify(error.response.data)}`
+        : error.message;
+
+      await snapshot.ref.update({
+        referenceCreated: false,
+        error: errorMessage,
+      });
+
+      console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
+    }
   }
 });
 
 
-exports.moneyDonationFinal = onDocumentCreated( {
+exports.moneyDonationFinal = onDocumentCreated({
   document: "afterGala/{id}",
   secrets: [EUPAGO_KEY], // <====
 }, async (event) => {
@@ -202,9 +267,9 @@ exports.moneyDonationFinal = onDocumentCreated( {
       }
     } catch (error) {
       const errorMessage = error.response ?
-              `Erro: ${error.response.status} - 
+        `Erro: ${error.response.status} - 
               ${JSON.stringify(error.response.data)}` :
-              error.message;
+        error.message;
 
       await snapshot.ref.update({
         referenceCreated: false,
@@ -226,7 +291,7 @@ exports.moneyDonationFinal = onDocumentCreated( {
         chave: eupagoKeyValue,
         valor: data.total,
         id: docId,
-        descricao: "Compra de bilhetes Gala Thirst Project",
+        descricao: "Doação Gala Thirst Project",
         per_dup: 1, // Permitir duplicidade, ajuste conforme sua necessidade
         data_fim: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split("T")[0], // Validade de 24 horas
         email: data.email,
@@ -262,5 +327,72 @@ exports.moneyDonationFinal = onDocumentCreated( {
       });
       console.error(`❌ Erro ao processar pagamento Multibanco para ${docId}:`, errorMessage);
     }
+  } else if (data.type === "creditcard") {
+    const eupagoKeyValue = await EUPAGO_KEY.value();
+    const options = {
+      method: "POST",
+      url: "https://clientes.eupago.pt/api/v1.02/creditcard/create",
+      headers: {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "Authorization": `ApiKey ${eupagoKeyValue}`,
+      },
+      data: {
+        payment: {
+          amount: {
+            currency: "EUR",
+            value: data.total
+          },
+          lang: "PT",
+          identifier: docId,
+          description: "Doação com Cartão de Crédito",
+          successUrl: "https://seusite.com/sucesso",
+          failUrl: "https://seusite.com/falha",
+          backUrl: "https://seusite.com",
+        },
+        customer: {
+          notify: true,
+          email: data.email,
+        },
+      },
+    };
+
+    try {
+      console.log(`📡 Enviando requisição para EuPago...`);
+      console.log("🔍 Dados enviados:", JSON.stringify(options.data));
+
+      const response = await axios.request(options);
+
+      console.log("🔍 Resposta da EuPago:", JSON.stringify(response.data));
+
+      if (response.data.transactionStatus === "Success" && response.data.redirectUrl) {
+        await snapshot.ref.update({
+          referenceCreated: true,
+          paymentUrl: response.data.redirectUrl, // ✅ Usando 'redirectUrl' corretamente
+          error: null,
+        });
+
+        console.log(`✅ Link de pagamento gerado com sucesso: ${response.data.redirectUrl}`);
+      } else {
+        await snapshot.ref.update({
+          referenceCreated: false,
+          error: response.data.resposta || "Erro desconhecido",
+        });
+
+        console.warn(`❌ Erro ao gerar link de pagamento: ${response.data.resposta}`);
+      }
+    } catch (error) {
+      const errorMessage = error.response
+        ? `Erro: ${error.response.status} - ${JSON.stringify(error.response.data)}`
+        : error.message;
+
+      await snapshot.ref.update({
+        referenceCreated: false,
+        error: errorMessage,
+      });
+
+      console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
+    }
   }
+
 });
