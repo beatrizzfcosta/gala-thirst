@@ -25,7 +25,7 @@ exports.enviarBilhete = onDocumentWritten({
   }
 
   // Só envia e-mail se "paid" mudou de false para true
-  if (before.paid === false && after.paid === false) {
+  if (before.paid === false && after.paid === true) {
     const email = after.email;
     const name = after.names && after.names.length > 0 ? after.names[0] : "Cliente";
     const phone = after.phone || "Não fornecido";
