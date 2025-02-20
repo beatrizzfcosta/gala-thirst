@@ -3,6 +3,7 @@ import { Image, Button } from 'react-bootstrap';
 import { ExclamationCircleIcon } from '@heroicons/react/outline';
 import mbway from '../assets/mbway.png';
 import multibanco from '../assets/multibanco.png';
+import credit from '../assets/credit.png';
 import MultibancoModel from '../modals/MultibancoModel';
 import MbwayModel from '../modals/MbwayModel';
 import { addDoc, doc, collection, getDoc } from "firebase/firestore";
@@ -21,10 +22,19 @@ export default function Payment({ setPayment, setSummary, payment }) {
     const [mbwayModalVisible, setMBwayModalVisible] = useState(false);
     const [mbInfo, setMBInfo] = useState({});
     const [referenceCreated, setReferenceCreated] = useState(false); // Estado para evitar fechamento antecipado
+    const [paymentUrl, setPaymentUrl] = useState(null); // Adicionando estado para cartão de crédito
 
     useEffect(() => {
         console.log("📌 Estado atualizado do modal MBWAY:", mbwayModalVisible);
     }, [mbwayModalVisible]);
+
+    useEffect(() => {
+        console.log("🔄 Atualizando paymentUrl:", paymentUrl);
+        if (paymentUrl) {
+            window.location.href = paymentUrl; // Redireciona para a página de pagamento
+        }
+    }, [paymentUrl]);
+    
 
     const changeFromMultibanco = () => {
         setPayment(prevInfo => ({ ...prevInfo, status: 'completed' }));
@@ -32,6 +42,8 @@ export default function Payment({ setPayment, setSummary, payment }) {
     };
 
     const validateDonation = async () => {
+
+        console.log ("Tipo de pagamento selecionado:", paymentType)
         setBlockButton(true);
         setInternalError(false);
 
@@ -49,140 +61,78 @@ export default function Payment({ setPayment, setSummary, payment }) {
             }
         }
 
-        if (!phoneError && paymentType === "mbway") {
-            try {
-                const updatedInfo = {
-                    ...payment.info,
-                    type: "mbway",
-                    phone: phone || "",
-                    createdAt: new Date(),
-                    referenceCreated: false,
-                    error: false,
-                    referencia: null,
-                    entidade: null,
-                };
+        try {
+            const updatedInfo = {
+                ...payment.info,
+                type: paymentType,
+                phone: paymentType === "mbway" ? phone : null,
+                createdAt: new Date(),
+                referenceCreated: false,
+                error: false,
+                referencia: null,
+                entidade: null,
+                paymentUrl: null,
+            };
 
-                console.log("🔍 Detalhes de updatedInfo antes de salvar:", updatedInfo);
+            console.log("🔍 Detalhes de updatedInfo antes de salvar:", updatedInfo);
 
-                const docRef = await addDoc(collection(db, "afterGala"), updatedInfo);
-                console.log("🔍 docRef retornado pelo Firestore:", docRef);
+            const docRef = await addDoc(collection(db, "afterGala"), updatedInfo);
+            if (!docRef || !docRef.id) {
+                console.error("❌ docRef ou ID está indefinido. Verifique a criação do documento.");
+                setInternalError("Erro ao criar a doação. Tente novamente.");
+                setBlockButton(false);
+                return;
+            }
 
-                if (!docRef || !docRef.id) {
-                    console.error("❌ docRef ou ID está indefinido. Verifique a criação do documento.");
-                    setInternalError("Erro ao criar a doação. Tente novamente.");
-                    setBlockButton(false);
-                    return;
-                }
+            console.log("✅ Pagamento criado no Firestore:", updatedInfo);
 
-                console.log("✅ Doação criada com sucesso no Firestore:", updatedInfo);
+            let donationStatus = { ...updatedInfo, id: docRef.id };
+            for (let i = 0; i < 5; i++) {
+                const docSnapshot = await getDoc(doc(db, "afterGala", donationStatus.id));
+                if (docSnapshot.exists()) {
+                    donationStatus = { ...docSnapshot.data(), id: donationStatus.id };
+                    console.log("🔄 Atualização do documento:", donationStatus);
 
-                let donationStatus = { ...updatedInfo, id: docRef.id };
-                for (let i = 0; i < 5; i++) {
-                    const docSnapshot = await getDoc(doc(db, "afterGala", donationStatus.id));
-                    if (docSnapshot.exists()) {
-                        donationStatus = { ...docSnapshot.data(), id: donationStatus.id };
-                        console.log("🔄 Atualização do documento:", donationStatus);
+                    if (donationStatus.referenceCreated) {
+                        console.log("✅ Referência criada com sucesso!");
 
-                        if (donationStatus.referenceCreated) {
-                            console.log("✅ Referência criada com sucesso!");
-
-                            // Atualiza estado e evita fechamento precoce
+                        if (paymentType === "mbway") {
                             setReferenceCreated(true);
                             setMBwayModalVisible(true);
-
-                            setTimeout(() => {
-                                console.log("📌 Estado do modal MBWAY atualizado:", mbwayModalVisible);
-                            }, 100);
-
-                            return;
-                        }
-
-                        if (donationStatus.error) {
-                            console.error("❌ Erro na criação da referência:", donationStatus.error);
-                            setInternalError("Erro ao criar a referência. Verifique os dados.");
-                            setBlockButton(false);
-                            return;
-                        }
-                    }
-
-                    await new Promise((resolve) => setTimeout(resolve, 7000));
-                }
-
-                console.error("❌ Referência não foi criada no tempo esperado.");
-                setInternalError("Ocorreu um problema ao criar a referência.");
-            } catch (error) {
-                console.error("❌ Erro ao criar/verificar a doação no Firestore:", error);
-                setInternalError(`Erro inesperado: ${error.message}`);
-            } finally {
-                setBlockButton(false);
-            }
-        }
-
-        if (paymentType === "multibanco") {
-            try {
-                const updatedInfo = {
-                    ...payment.info,
-                    type: "multibanco",
-                    createdAt: new Date(),
-                    referenceCreated: false,
-                    error: false,
-                    referencia: null,
-                    entidade: null,
-                };
-    
-                console.log("🔍 Detalhes de updatedInfo antes de salvar (Multibanco):", updatedInfo);
-    
-                const docRef = await addDoc(collection(db, "afterGala"), updatedInfo);
-                if (!docRef || !docRef.id) {
-                    console.error("❌ docRef ou ID está indefinido. Verifique a criação do documento.");
-                    setInternalError("Erro ao criar o pagamento Multibanco. Tente novamente.");
-                    setBlockButton(false);
-                    return;
-                }
-    
-                console.log("✅ Pagamento Multibanco criado com sucesso no Firestore:", updatedInfo);
-    
-                let donationStatus = { ...updatedInfo, id: docRef.id };
-                for (let i = 0; i < 5; i++) {
-                    const docSnapshot = await getDoc(doc(db, "afterGala", donationStatus.id));
-                    if (docSnapshot.exists()) {
-                        donationStatus = { ...docSnapshot.data(), id: donationStatus.id };
-                        console.log("🔄 Atualização do documento (Multibanco):", donationStatus);
-    
-                        if (donationStatus.referenceCreated) {
-                            console.log("✅ Referência Multibanco criada com sucesso!");
-    
-                            setMBModalVisible(true); // Exibir modal Multibanco
+                        } else if (paymentType === "multibanco") {
+                            setMBModalVisible(true);
                             setMBInfo({
                                 referencia: donationStatus.referencia,
                                 entidade: donationStatus.entidade,
                                 valor: donationStatus.valor,
                             });
-    
-                            return;
+                        } else if (paymentType === "creditcard") {
+                            console.log("entrei aqui")
+                            setPaymentUrl(donationStatus.paymentUrl);
                         }
-    
-                        if (donationStatus.error) {
-                            console.error("❌ Erro na criação da referência Multibanco:", donationStatus.error);
-                            setInternalError("Erro ao criar a referência Multibanco. Verifique os dados.");
-                            setBlockButton(false);
-                            return;
-                        }
-                    }
-    
-                    await new Promise((resolve) => setTimeout(resolve, 7000));
-                }
-    
-                console.error("❌ Referência Multibanco não foi criada no tempo esperado.");
-                setInternalError("Ocorreu um problema ao criar a referência Multibanco.");
-            } catch (error) {
-                console.error("❌ Erro ao criar/verificar a referência Multibanco no Firestore:", error);
-                setInternalError(`Erro inesperado: ${error.message}`);
-            } finally {
-                setBlockButton(false);
-            }
-        }
 
+                        return;
+                    }
+
+                    if (donationStatus.error) {
+                        console.error("❌ Erro na criação da referência:", donationStatus.error);
+                        setInternalError("Erro ao criar a referência. Verifique os dados.");
+                        setBlockButton(false);
+                        return;
+                    }
+                }
+
+                await new Promise((resolve) => setTimeout(resolve, 7000));
+            }
+
+            console.error("❌ Referência não foi criada no tempo esperado.");
+            setInternalError("Ocorreu um problema ao criar a referência.");
+        } catch (error) {
+            console.error("❌ Erro ao criar/verificar a doação no Firestore:", error);
+            setInternalError(`Erro inesperado: ${error.message}`);
+        } finally {
+            setBlockButton(false);
+        }
     };
 
     return (
@@ -205,6 +155,12 @@ export default function Payment({ setPayment, setSummary, payment }) {
                             onClick={() => { setPaymentType('mbway'); setPaymentTypeError(false); }}
                         >
                             <Image src={mbway} alt="mbway" width={40} height={40} />
+                        </Button>
+                        <Button
+                            className={`flex items-center ${paymentType === 'creditcard' ? 'bg-[#17CACE]' : 'bg-white/10'} me-3 rounded-lg p-1`}
+                            onClick={() => { setPaymentType('creditcard'); setPaymentTypeError(false); }}
+                        >
+                            <Image src={credit} alt="creditcard" width={40} height={40} style={{borderRadius:"5px"}} />
                         </Button>
                     </div>
                     {paymentTypeError && (

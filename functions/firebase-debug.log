@@ -1,0 +1,74 @@
+[debug] [2025-02-20T16:15:21.960Z] ----------------------------------------------------------------------
+[debug] [2025-02-20T16:15:21.962Z] Command:       /usr/local/bin/node /Users/catarinacapinha/.npm-global/bin/firebase functions:shell
+[debug] [2025-02-20T16:15:21.963Z] CLI Version:   13.29.3
+[debug] [2025-02-20T16:15:21.963Z] Platform:      darwin
+[debug] [2025-02-20T16:15:21.963Z] Node Version:  v22.12.0
+[debug] [2025-02-20T16:15:21.963Z] Time:          Thu Feb 20 2025 16:15:21 GMT+0000 (Western European Standard Time)
+[debug] [2025-02-20T16:15:21.963Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-20T16:15:22.095Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-20T16:15:22.096Z] > authorizing via signed-in user (dtsi@thirstproject.pt)
+[debug] [2025-02-20T16:15:22.096Z] [iam] checking project gala-thirst for permissions ["firebase.projects.get"]
+[debug] [2025-02-20T16:15:22.097Z] Checked if tokens are valid: true, expires at: 1740070579580
+[debug] [2025-02-20T16:15:22.097Z] Checked if tokens are valid: true, expires at: 1740070579580
+[debug] [2025-02-20T16:15:22.097Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions [none]
+[debug] [2025-02-20T16:15:22.097Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions x-goog-quota-user=projects/gala-thirst
+[debug] [2025-02-20T16:15:22.097Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-02-20T16:15:22.490Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions 200
+[debug] [2025-02-20T16:15:22.490Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/gala-thirst:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-02-20T16:15:22.549Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-20T16:15:22.550Z] defaultcredentials: writing to file /Users/catarinacapinha/.config/firebase/dtsi_thirstproject_pt_application_default_credentials.json
+[debug] [2025-02-20T16:15:22.551Z] DEBUG: Setting GAC to /Users/catarinacapinha/.config/firebase/dtsi_thirstproject_pt_application_default_credentials.json
+[debug] [2025-02-20T16:15:22.551Z] Checked if tokens are valid: true, expires at: 1740070579580
+[debug] [2025-02-20T16:15:22.551Z] Checked if tokens are valid: true, expires at: 1740070579580
+[debug] [2025-02-20T16:15:22.551Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig [none]
+[debug] [2025-02-20T16:15:22.958Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig 200
+[debug] [2025-02-20T16:15:22.959Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gala-thirst/adminSdkConfig {"projectId":"gala-thirst","storageBucket":"gala-thirst.firebasestorage.app"}
+[debug] [2025-02-20T16:15:22.969Z] [functions] Watching "/Users/catarinacapinha/Desktop/THIRST/gala-thirst/functions" for Cloud Functions...
+[debug] [2025-02-20T16:15:22.971Z] Validating nodejs source
+[debug] [2025-02-20T16:15:23.636Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "firebase-admin": "^13.1.0",
+    "firebase-functions": "^6.3.2",
+    "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-02-20T16:15:23.636Z] Building nodejs source
+[debug] [2025-02-20T16:15:23.637Z] Failed to find version of module node: reached end of search path /Users/catarinacapinha/Desktop/THIRST/gala-thirst/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-02-20T16:15:23.639Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-20T16:15:23.643Z] Found firebase-functions binary at '/Users/catarinacapinha/Desktop/THIRST/gala-thirst/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8614
+
+[error] (node:8203) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+[debug] [2025-02-20T16:15:24.040Z] Got response from /__/functions.yaml {"endpoints":{"enviarBilhete":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EMAIL_USER"},{"key":"EMAIL_PASS"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.written","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"ticketBuyer/{ticketId}"},"retry":false},"entryPoint":"enviarBilhete"},"moneyRequestFinal":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EUPAGOKEY"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"ticketBuyer/{id}"},"retry":false},"entryPoint":"moneyRequestFinal"},"moneyDonationFinal":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","secretEnvironmentVariables":[{"key":"EUPAGOKEY"}],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"afterGala/{id}"},"retry":false},"entryPoint":"moneyDonationFinal"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{},"params":[{"type":"secret","name":"EUPAGOKEY"},{"type":"secret","name":"EMAIL_USER"},{"type":"secret","name":"EMAIL_PASS"}]}
+[debug] [2025-02-20T16:15:28.075Z] [functions] Loaded functions definitions from source: enviarBilhete, moneyRequestFinal, moneyDonationFinal.
+[debug] [2025-02-20T16:15:28.076Z] [functions[us-central1-enviarBilhete]] function ignored because the firestore emulator does not exist or is not running.
+[debug] [2025-02-20T16:15:28.076Z] [functions[us-central1-moneyRequestFinal]] function ignored because the firestore emulator does not exist or is not running.
+[debug] [2025-02-20T16:15:28.076Z] [functions[us-central1-moneyDonationFinal]] function ignored because the firestore emulator does not exist or is not running.
+[info] i  functions: Loaded functions: enviarBilhete, moneyRequestFinal, moneyDonationFinal 
+[warn] ⚠  functions: The following emulators are not running, calls to these services will affect production: firestore, database, pubsub, storage, eventarc, tasks 
