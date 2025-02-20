@@ -2,7 +2,7 @@
 const {defineSecret} = require("firebase-functions/params");
 const axios = require("axios");
 
-const EUPAGO_KEY = defineSecret("EUPAGO_KEY");
+const EUPAGO_KEY = defineSecret("EUPAGOKEY");
 
 const {onDocumentWritten} = require("firebase-functions/v2/firestore");
 const nodemailer = require("nodemailer");
@@ -25,7 +25,7 @@ exports.enviarBilhete = onDocumentWritten({
   }
 
   // Só envia e-mail se "paid" mudou de false para true
-  if (before.paid === false && after.paid === true) {
+  if (before.paid === false && after.paid === false) {
     const email = after.email;
     const name = after.names && after.names.length > 0 ? after.names[0] : "Cliente";
     const phone = after.phone || "Não fornecido";
