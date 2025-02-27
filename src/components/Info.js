@@ -32,14 +32,12 @@ export default function Info({ setInfo, setSummary, contribution }) {
     const [mbModalVisible, setMBModalVisible] = useState(false);
     const [mbwayModalVisible, setMBwayModalVisible] = useState(false);
     const [paymentTypeError, setPaymentTypeError] = useState(false);
-    const [total, setTotal] = useState(contribution.total -
-        contribution.tickets * 85);
     const [creditCardLink, setCreditCardLink] = useState(null);
 
 
     // Adicione um estado para o código promocional
     const [promoCode, setPromoCode] = useState('');
-    const [discountedPrice, setDiscountedPrice] = useState(contribution.total || 85);
+    const [discountedPrice, setDiscountedPrice] = useState(contribution.total || 50);
     const [updatedTickets, setUpdatedTickets] = useState(contribution.tickets);
     const [promoApplied, setPromoApplied] = useState(false);
     const [promoDetails, setPromoDetails] = useState({});
@@ -53,22 +51,15 @@ export default function Info({ setInfo, setSummary, contribution }) {
 
     const applyPromoCode = () => {
         if (!promoApplied) {
-            if (promoCode === 'TOTAL') {
-                setDiscountedPrice(0);
+            if (promoCode === 'PARCIAL') {
+                setDiscountedPrice(25);
                 if (updatedTickets > 0) {
-                    setPromoDetails({ originalPrice: 85, discountedPrice: 0 });
-                    setUpdatedTickets(updatedTickets - 1);
-                    setPromoApplied(true);
-                }
-            } else if (promoCode === 'PARCIAL') {
-                setDiscountedPrice(35);
-                if (updatedTickets > 0) {
-                    setPromoDetails({ originalPrice: 85, discountedPrice: 35 });
+                    setPromoDetails({ originalPrice: 50, discountedPrice: 25 });
                     setUpdatedTickets(updatedTickets - 1);
                     setPromoApplied(true);
                 }
             } else {
-                setDiscountedPrice(contribution.total || contribution.tickets * 85);
+                setDiscountedPrice(contribution.total || contribution.tickets * 50);
                 setPromoApplied(false);
             }
         }
@@ -447,8 +438,8 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 <tr>
                                     <td className="info-text">{updatedTickets}</td>
                                     <td className="info-text">Ticket</td>
-                                    <td className="info-text">EUR€ 85</td>
-                                    <td className="info-text">EUR€ {updatedTickets * 85}</td>
+                                    <td className="info-text">EUR€ 50</td>
+                                    <td className="info-text">EUR€ {updatedTickets * 50}</td>
                                 </tr>
                             )}
                             {promoApplied && (
@@ -478,7 +469,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 <td className="info-text"></td>
                                 <td className="info-text"></td>
                                 <td className="info-text"></td>
-                                <td className="total-amount">EUR€ {(updatedTickets * 85) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total}</td>
+                                <td className="total-amount">EUR€ {(updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -48,12 +48,12 @@ export default function Contribution({ contribution, setContribution, setInfo })
 
     const validateDonation = () => {
         if (total > 250) {
-            setTotal(85 * (contribution.tickets) + total);
+            setTotal(50 * (contribution.tickets) + total);
             setModalVisible(true);
             inputRef.current.value = '';
             return;
         }
-        setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: total + contribution.tickets * 85, futureDonation: false, futureDonationAmount: null }));
+        setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: total + contribution.tickets * 50, futureDonation: false, futureDonationAmount: null }));
         setInfo(prevInfo => ({ ...prevInfo, status: 'current' }));
     }
 
@@ -271,8 +271,8 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                     <tr>
                                         <td className="info-text">{contribution.tickets}</td>
                                         <td className="info-text">Ticket</td>
-                                        <td className="info-text">EUR€ 85</td>
-                                        <td className="info-text">EUR€ {contribution.tickets * 85}</td>
+                                        <td className="info-text">EUR€ 50</td>
+                                        <td className="info-text">EUR€ {contribution.tickets * 50}</td>
                                     </tr>
                                     {total > 0 && (
                                         <tr>
@@ -291,7 +291,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                         <td className="info-text"></td>
                                         <td className="info-text"></td>
                                         <td className="info-text"></td>
-                                        <td className="total-amount">EUR€ {otherContribution === 1 ? amount : contribution.tickets * 85 + contributionAmount}</td>
+                                        <td className="total-amount">EUR€ {otherContribution === 1 ? amount : contribution.tickets * 50 + contributionAmount}</td>
                                     </tr>
                                 </tbody>
                             </table>
