@@ -85,9 +85,9 @@ export default function Ticket({ setTicket, setContribution }) {
                 <h3 className="title-ticket">VALOR A PAGAR</h3>
                 <div className="line" />
                 <p className="amount">
-                    EUR€ {tickets * 85}
+                    EUR€ {tickets * 50}
                 </p>
-                <h3 className="info-text-2">A SUA PRESENÇA PERMITE SALVAR <span className="vidas">{tickets * 3}</span> VIDAS!</h3>
+                <h3 className="info-text-2">A SUA PRESENÇA PERMITE SALVAR <span className="vidas">{tickets * 2}</span> VIDAS!</h3>
 
                 <div className="button-box">
                     
