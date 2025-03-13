@@ -108,7 +108,7 @@ export default function CountDown({ unavailable }) {
         <h3 className="subtext">A MAIOR ORGANIZAÇÃO JOVEM DO MUNDO COM A MISSÃO DE ACABAR COM A CRISE MUNDIAL DE ÁGUA APRESENTA</h3>
         <h1 className="text">II GALA THIRST PROJECT PORTUGAL</h1>
         <h3 className="date">
-          22 de março | 20:00
+          24 de maio | 20:00
         </h3>
         {unavailable ? (
           <div className="countdown-button" >
