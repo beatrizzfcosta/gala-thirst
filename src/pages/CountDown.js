@@ -13,7 +13,7 @@ export default function CountDown({ unavailable }) {
   const [alertMessage, setAlertMessage] = useState(null); // Estado para exibir a notificação
 
   const location = useLocation(); // Obtém os parâmetros da URL
-  const countdownDate = new Date('2025-03-22 20:00:00').getTime();
+  const countdownDate = new Date('2025-05-24 20:00:00').getTime();
 
 
   useEffect(() => {
