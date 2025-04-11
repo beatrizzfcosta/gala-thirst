@@ -147,7 +147,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
             const info = {
                 names: names,
                 tickets: contribution.tickets,
-                total: (promoApplied ? promoDetails.discountedPrice : contribution.total) || (contribution.total),
+                total: (updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total,
                 nif: nif,
                 email: email,
                 phone: phone,
@@ -242,7 +242,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 const info = {
                     names: names,
                     tickets: contribution.tickets,
-                    total: (promoApplied ? promoDetails.discountedPrice : contribution.total) || (contribution.total),
+                    total: (updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total,
                     nif: nif,
                     email: email,
                     phone: phone,
@@ -256,6 +256,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     entidade: null,
                     paymentUrl: null,
                 };
+ 
             
                 console.log("📡 Enviando dados para o backend:", info);
                 const result = await addTicketBuyer(info);
