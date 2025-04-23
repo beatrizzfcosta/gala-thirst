@@ -50,7 +50,7 @@ export default function Ticket({ setTicket, setContribution }) {
                 </h3>
                 <div className="line" />
                 <h3 className="date-text">
-                    22 de Março | 20:00
+                    24 de Maio | 20:00
                 </h3>
                 <Col className="select-col" >
                     <Row className="select-row">
