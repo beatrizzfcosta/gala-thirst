@@ -79,8 +79,8 @@ export default function Ticket({ setTicket, setContribution }) {
                     )}
                 </Col>
                 <div className="text-box">
-                    <h3 className="info-text">CADA BILHETE TEM UM PREÇO MÍNIMO DE 85€,</h3>
-                    <h3 className="info-text">O EQUIVALENTE A DAR ÁGUA A MAIS DE 3 PESSOAS O RESTO DA SUA VIDA.</h3>
+                    <h3 className="info-text">CADA BILHETE TEM UM PREÇO MÍNIMO DE 50€,</h3>
+                    <h3 className="info-text">O EQUIVALENTE A DAR ÁGUA A 2 PESSOAS PARA O RESTO DA SUA VIDA.</h3>
                 </div>
                 <h3 className="title-ticket">VALOR A PAGAR</h3>
                 <div className="line" />
