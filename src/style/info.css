@@ -38,6 +38,7 @@
 }
 
 .container-checkbox-part{
+    margin-top: 8px;
     display: flex;
     height: 24px;
     align-items: center;

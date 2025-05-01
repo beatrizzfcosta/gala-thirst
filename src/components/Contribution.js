@@ -202,7 +202,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                     <Container className="container">
                         <div className="row-ticket">
                             <h3 className="title-ticket">
-                                ALÉM DOS SEUS BILHETES, QUANTAS VIDAS A MAIS QUERES SALVAR?
+                                ALÉM DO/S SEU/S BILHETE/S, QUANTAS VIDAS A MAIS QUER SALVAR?
                             </h3>
                             <div className="line" />
                             <Col className="select-col">
@@ -232,7 +232,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                 )}
                             </Col>
                             <h3 className="info-text">
-                                MAS QUALQUER GOTA CONTA! SE NÃO PRETENDER ADICIONAR O PROPORCIONAL A UMA VIDA, SABIA QUE COM APENAS <strong>1€</strong> PODE DAR ÁGUA A DUAS PESSOAS DURANTE UM ANO?
+                                É POSSÍVEL PERSONALIZAR O MONTANTE A DOAR, CADA GOTA CONTA! 1€ DÁ ÁGUA POTÁVEL A DUAS PESSOAS POR UM ANO.
                             </h3>
                             <div className="container-contribuition">
                                 <div className="box-eur">
@@ -270,7 +270,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                                 <tbody>
                                     <tr>
                                         <td className="info-text">{contribution.tickets}</td>
-                                        <td className="info-text">Ticket</td>
+                                        <td className="info-text">Bilhete</td>
                                         <td className="info-text">EUR€ 50</td>
                                         <td className="info-text">EUR€ {contribution.tickets * 50}</td>
                                     </tr>
@@ -387,9 +387,13 @@ export default function Contribution({ contribution, setContribution, setInfo })
                         <p
                             className="info-text2"
                         >
-                            Durante o decorrer da gala, desenrolar-se-á um momento para a realização de doações por parte da plateia presente. Este momento será previamente identificado pelos apresentadores do evento, pelo que estará ao dispor de cada individualidade da plateia a realização de doações de um montante selecionado por cada uma.<br></br>
-                            Para que a sua doação seja correntemente realizada deve, no momento que considerar oportuno, levantar a sua mão, para que a doação seja válida. Caso prefira uma doação mais “silenciosa” e discreta, poderá usar a nossa plataforma de doações online, que será disponibilizada durante o dia da gala.<br></br>
-                            Para a realização do pagamento da respetiva doação, no final da gala, caso possível, será abordado por um membro do Thirst Project Portugal, para que este o auxilie no pagamento da doação ou ser-lhe-á enviado um email com o todas as instruções, para a realização do pagamento da mesma.
+                            A Gala Thirst Project Portugal terá um momento de doações ao vivo, onde os convidados terão oportunidade de contribuir para a missão da Organização.
+                        </p>
+                        <p className="info-text2">
+                            Existe, também, a possibilidade de contribuir previamente, atribuindo um montante adicional ao seu bilhete.
+                        </p>
+                        <p className="info-text2">
+                            DAR ÁGUA É DAR VIDA
                         </p>
                         <div className="container-buttons-contribution">
                             <Button

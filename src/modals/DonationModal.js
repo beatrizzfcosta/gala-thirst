@@ -64,16 +64,10 @@ export default function DonationModal({setDonationModalVisible, validateDonation
                              <div className="container-modal">
                                 <Dialog.Panel className="dialog-panel">
                                     <div>
-                                        <div className="bell-icon-container">
-                                            <FontAwesomeIcon icon={faBell} size="3x" style={{color: "#17CACE"}} />
-                                        </div>
                                         <div className="attention-container">
-                                            <Dialog.Title as="h3" className="attention">
-                                                ATENÇÃO!
-                                            </Dialog.Title>
                                             <div className="info-text-container">
                                                 <p className="info-text-modal">
-                                                    É A NOSSA SEGUNDA GALA... CONSEGUE DIZER-NOS O MONTANTE COM QUE PODERÁ CONTRIBUIR?
+                                                    É POSSÍVEL PARTILHAR CONNOSCO O MONTANTE QUE PREVÊ DOAR?
                                                 </p>
                                             </div>
                                         </div>

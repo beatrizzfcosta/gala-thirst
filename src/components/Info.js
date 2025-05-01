@@ -416,7 +416,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         </div>
                         <div className="container-checkbox-part">
                             <label htmlFor="email" className="select-text">
-                                GOSTARIA DE SER CONTACTADO(A) NO FUTURO
+                                GOSTARIA DE SER CONTACTADO/A NO FUTURO
                             </label>
                         </div>
                     </div>
@@ -438,7 +438,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                             {updatedTickets > 0 && (
                                 <tr>
                                     <td className="info-text">{updatedTickets}</td>
-                                    <td className="info-text">Ticket</td>
+                                    <td className="info-text">Bilhete</td>
                                     <td className="info-text">EUR€ 50</td>
                                     <td className="info-text">EUR€ {updatedTickets * 50}</td>
                                 </tr>
