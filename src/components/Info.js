@@ -416,7 +416,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         </div>
                         <div className="container-checkbox-part">
                             <label htmlFor="email" className="select-text">
-                                GOSTARIA DE SER CONTACTADO NO FUTURO
+                                GOSTARIA DE SER CONTACTADO(A) NO FUTURO
                             </label>
                         </div>
                     </div>
