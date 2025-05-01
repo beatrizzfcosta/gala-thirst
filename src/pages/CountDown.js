@@ -105,7 +105,7 @@ export default function CountDown({ unavailable }) {
             <span className="title">SEGUNDOS</span>
           </div>
         </div>
-        <h3 className="subtext">A MAIOR ORGANIZAÇÃO JOVEM DO MUNDO COM A MISSÃO DE ACABAR COM A CRISE MUNDIAL DE ÁGUA APRESENTA</h3>
+        <h3 className="subtext">A MAIOR ORGANIZAÇÃO JOVEM DO MUNDO COM A MISSÃO DE ACABAR COM A CRISE MUNDIAL DA ÁGUA APRESENTA</h3>
         <h1 className="text">II GALA THIRST PROJECT PORTUGAL</h1>
         <h3 className="date">
           24 de maio | 20:00
