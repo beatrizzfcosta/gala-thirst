@@ -302,7 +302,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                             <div className="button-box">
                                 {generateTicketIcons()}
                                 <p className="info-text">
-                                    EQUIVALE A {Math.floor(total / 25)} {Math.floor(total / 25) === 1 ? "VIDA" : "VIDAS"}
+                                    EQUIVALE A MAIS {Math.floor(total / 25)} {Math.floor(total / 25) === 1 ? "VIDA SALVADA PELO/S SEU/S BILHETE/S" : "VIDAS SALVADAS PELO/S SEU/S BILHETE/S"}
                                 </p>
                             </div>
                             <Button
@@ -398,7 +398,7 @@ export default function Contribution({ contribution, setContribution, setInfo })
                         <div className="container-buttons-contribution">
                             <Button
                                 className="button"
-                                onClick={() => setDonationModalVisible(true)}
+                                onClick={() => validateDonationOnGala(0)}
                             >
                                 DOAR NA GALA
                             </Button>

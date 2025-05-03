@@ -498,24 +498,33 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 <div className="line" />
                 <div className="payment-methods-container">
                     <div className="payment-methods">
-                        <Button
-                            className={`flex items-center ${paymentType === 'multibanco' ? 'bg-[#17CACE]' : 'bg-white/10'} me-3 rounded-lg p-1`}
-                            onClick={() => { setPaymentType('multibanco'); if (paymentTypeError) setPaymentTypeError(false); }}
-                        >
-                            <Image src={multibanco} alt="multibanco" width={40} height={40} />
-                        </Button>
-                        <Button
-                            className={`flex items-center ${paymentType === 'mbway' ? 'bg-[#17CACE]' : 'bg-white/10'} me-3 rounded-lg p-1`}
-                            onClick={() => { setPaymentType('mbway'); if (paymentTypeError) setPaymentTypeError(false); }}
-                        >
-                            <Image src={mbway} alt="mbway" width={40} height={40} />
-                        </Button>
-                        <Button
-                            className={`flex items-center ${paymentType === 'creditcard' ? 'bg-[#17CACE]' : 'bg-white/10'} me-3 rounded-lg p-1`}
-                            onClick={() => { setPaymentType('creditcard'); if (paymentTypeError) setPaymentTypeError(false); }}
-                        >
-                            <Image src={credit} alt="creditcard" width={40} height={40} style={{ borderRadius: "5px" }} />
-                        </Button>
+                        <div className="flex flex-col items-center me-5">
+                            <Button
+                                className={`flex items-center ${paymentType === 'mbway' ? 'bg-[#17CACE]' : 'bg-white/10'} rounded-lg p-1`}
+                                onClick={() => { setPaymentType('mbway'); if (paymentTypeError) setPaymentTypeError(false); }}
+                            >
+                                <Image src={mbway} alt="mbway" width={40} height={40} />
+                            </Button>
+                            <span className="text-black text-sm mt-1">MBWay</span>
+                        </div>
+                        <div className="flex flex-col items-center me-5">
+                            <Button
+                                className={`flex items-center ${paymentType === 'creditcard' ? 'bg-[#17CACE]' : 'bg-white/10'} rounded-lg p-1`}
+                                onClick={() => { setPaymentType('creditcard'); if (paymentTypeError) setPaymentTypeError(false); }}
+                            >
+                                <Image src={credit} alt="creditcard" width={40} height={40} style={{ borderRadius: "5px" }} />
+                            </Button>
+                            <span className="text-black text-sm mt-1">Cartão de Crédito</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <Button
+                                className={`flex items-center ${paymentType === 'multibanco' ? 'bg-[#17CACE]' : 'bg-white/10'} rounded-lg p-1`}
+                                onClick={() => { setPaymentType('multibanco'); if (paymentTypeError) setPaymentTypeError(false); }}
+                            >
+                                <Image src={multibanco} alt="multibanco" width={40} height={40} />
+                            </Button>
+                            <span className="text-black text-sm mt-1">Multibanco</span>
+                        </div>
                     </div>
                     {paymentTypeError && (
                         <p className="error-text" id="name-error">
@@ -579,7 +588,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     </div>
                     <div className="container-checkbox-part">
                         <label htmlFor="email" className="select-text">
-                            DESEJO EMITIR FATURA
+                            EMITIR FATURA
                         </label>
                     </div>
                 </div>
