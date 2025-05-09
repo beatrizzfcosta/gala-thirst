@@ -53,7 +53,13 @@ export default function Contribution({ contribution, setContribution, setInfo })
             inputRef.current.value = '';
             return;
         }
-        setContribution(prevContribution => ({ ...prevContribution, status: 'completed', total: total + contribution.tickets * 50, futureDonation: false, futureDonationAmount: null }));
+        setContribution(prevContribution => ({ 
+            ...prevContribution, 
+            status: 'completed', 
+            total: total,  // Removendo a soma com contribution.tickets * 50
+            futureDonation: false, 
+            futureDonationAmount: null 
+        }));
         setInfo(prevInfo => ({ ...prevInfo, status: 'current' }));
     }
 
