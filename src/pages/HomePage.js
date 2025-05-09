@@ -17,9 +17,9 @@ export default function HomePage() {
                 <Image className="logo" src={logo} alt="Thirst Gala" width={350} height={350} />
             </div>
             <div className="container-button-homePage">
-                <Link to="/doacoes/doar">
+                //<Link to="/doacoes/doar">
                     <Button className='button'>DOAR</Button>
-                </Link>
+                //</Link>
             </div>
         </div>
     )
