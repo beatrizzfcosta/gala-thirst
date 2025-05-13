@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useRef, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,6 +7,13 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 
 export default function TermsModal({ setTermsVisible, setTermsAccepted, setTermsError }) {
     const [open, setOpen] = useState(true)
+    const contentRef = useRef(null)
+
+    useEffect(() => {
+        if (open && contentRef.current) {
+            contentRef.current.scrollTo(0, 0)
+        }
+    }, [open])
 
     const closeModal = () => {
         setOpen(false)
@@ -62,10 +69,10 @@ export default function TermsModal({ setTermsVisible, setTermsAccepted, setTerms
                                         </div>
                                         <div className="attention-container">
                                             <Dialog.Title as="h3" className="attention-terms">
-                                                TERMOS!
+                                                Termos e Condições!
                                             </Dialog.Title>
                                             <div className="modal-body">
-                                                <p className="modal-text">
+                                                <p className="modal-text" ref={contentRef}>
                                                     <span className="type-text1">1. Introdução</span><br></br><br></br>
                                                     Os presentes Termos e Condições regem a compra de bilhete(s) para a Gala do 5º Aniversário da Associação Water Warriors, TWPT, doravante designada por Thirst Project Portugal ou TPP, incluindo 1) a regulamentação para a compra de bilhete(s), 2) autorização de captação de imagem durante todo o evento e transmissão e utilização da mesma para os fins destinados e abrangidos pela Gala e 3) os métodos estipulados para as doações monetárias.<br></br><br></br>
                                                     Ao proceder à compra do(s) bilhete(s) para a Gala do 5º Aniversário do TPP, o presente utilizador concorda em ficar vinculado pelos presentes Termos e Condições. Caso não concorde com os Termos e Condições plasmados, não prossiga com a compra do(s) bilhete(s) para a Gala do 5º Aniversário do TPP.<br></br><br></br><br></br>

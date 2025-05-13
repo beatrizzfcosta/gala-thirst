@@ -335,7 +335,7 @@ export default function Donation({ setDonation, setPayment }) {
                     </div>
                     <div className="container-checkbox-part">
                         <label htmlFor="email" className="select-text">
-                            DESEJO EMITIR FATURA
+                            DESEJO FATURA
                         </label>
                     </div>
                 </div>

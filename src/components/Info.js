@@ -588,7 +588,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     </div>
                     <div className="container-checkbox-part">
                         <label htmlFor="email" className="select-text">
-                            EMITIR FATURA
+                            DESEJO FATURA
                         </label>
                     </div>
                 </div>
