@@ -235,7 +235,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 }, 10000);
             }
             else if (paymentType === 'creditcard') {
-                console.log("🛠 Iniciando processo de pagamento com Cartão de Crédito...");
+                //console.log("🛠 Iniciando processo de pagamento com Cartão de Crédito...");
                 setBlockButton(true);
                 setInternalError(false);
             
@@ -258,35 +258,35 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 };
  
             
-                console.log("📡 Enviando dados para o backend:", info);
+                //console.log("📡 Enviando dados para o backend:", info);
                 const result = await addTicketBuyer(info);
             
                 if (result !== false) {
-                    console.log("✅ Pedido enviado com sucesso. Aguardando resposta...");
+                    //console.log("✅ Pedido enviado com sucesso. Aguardando resposta...");
                     let ticketUpdated = await getTicketById(result);
             
                     if (ticketUpdated !== null) {
-                        console.log("🔄 Dados do pagamento recebidos:", ticketUpdated);
+                        //console.log("🔄 Dados do pagamento recebidos:", ticketUpdated);
             
                         if (ticketUpdated.referenceCreated && ticketUpdated.paymentUrl) {
-                            console.log(`✅ Link de pagamento gerado com sucesso: ${ticketUpdated.paymentUrl}`);
+                            //console.log(`✅ Link de pagamento gerado com sucesso: ${ticketUpdated.paymentUrl}`);
                             setCreditCardLink(ticketUpdated.paymentUrl); // Armazena o link de pagamento
                             setBlockButton(false);
                             return;
                         } else {
-                            console.log("⌛ Aguardando confirmação do link de pagamento...");
+                            //console.log("⌛ Aguardando confirmação do link de pagamento...");
                             setTimeout(async () => {
                                 ticketUpdated = await getTicketById(result);
-                                console.log("🔄 Segunda tentativa de obtenção do link de pagamento:", ticketUpdated);
+                                //console.log("🔄 Segunda tentativa de obtenção do link de pagamento:", ticketUpdated);
             
                                 if (ticketUpdated !== null && ticketUpdated.referenceCreated && ticketUpdated.paymentUrl) {
-                                    console.log(`✅ Link de pagamento confirmado: ${ticketUpdated.paymentUrl}`);
+                                    //console.log(`✅ Link de pagamento confirmado: ${ticketUpdated.paymentUrl}`);
                                     setCreditCardLink(ticketUpdated.paymentUrl);
                                     setBlockButton(false);
                                     return;
                                 }
                                 if (ticketUpdated !== null && ticketUpdated.error !== false) {
-                                    console.error(`❌ Erro ao processar pagamento: ${ticketUpdated.error}`);
+                                    //console.error(`❌ Erro ao processar pagamento: ${ticketUpdated.error}`);
                                     setInternalError(true);
                                     setBlockButton(false);
                                     return;
@@ -295,7 +295,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                         }
                     }
                 } else {
-                    console.error("❌ Erro ao enviar o pedido ao backend.");
+                    //console.error("❌ Erro ao enviar o pedido ao backend.");
                     setInternalError(true);
                     setBlockButton(false);
                 }

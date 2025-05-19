@@ -11,19 +11,19 @@ exports.moneyRequestFinal = onDocumentCreated({
   secrets: [EUPAGO_KEY], // <====
 }, async (event) => {
   const docId = event.params.id;
-  console.log(`🔔 Evento recebido para documento: ${docId}`);
+  //console.log(`🔔 Evento recebido para documento: ${docId}`);
 
   const snapshot = event.data;
   if (!snapshot) {
-    console.log("⚠️ Nenhum dado associado ao evento.");
+    //console.log("⚠️ Nenhum dado associado ao evento.");
     return;
   }
 
   const data = snapshot.data();
-  console.log("📄 Dados recebidos:", JSON.stringify(data));
+  //console.log("📄 Dados recebidos:", JSON.stringify(data));
 
   if (data.referenceCreated) {
-    console.log("✅ Pagamento já processado. Ignorando...");
+    //console.log("✅ Pagamento já processado. Ignorando...");
     return;
   }
 
@@ -61,13 +61,13 @@ exports.moneyRequestFinal = onDocumentCreated({
           referenceCreated: true,
           error: null,
         });
-        console.log(`✅ Pagamento processado com sucesso para ${docId}`);
+        //console.log(`✅ Pagamento processado com sucesso para ${docId}`);
       } else {
         await snapshot.ref.update({
           referenceCreated: false,
           error: response.data.resposta || "Erro desconhecido",
         });
-        console.warn(`❌ Erro no pagamento para ${docId}: ${response.data.resposta}`);
+        //console.warn(`❌ Erro no pagamento para ${docId}: ${response.data.resposta}`);
       }
     } catch (error) {
       const errorMessage = error.response ?
@@ -78,7 +78,7 @@ exports.moneyRequestFinal = onDocumentCreated({
         referenceCreated: false,
         error: errorMessage,
       });
-      console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
+      //console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
     }
   }
   else if (data.type === "multibanco") {
@@ -111,13 +111,13 @@ exports.moneyRequestFinal = onDocumentCreated({
           valor: response.data.valor,
           error: null,
         });
-        console.log(`✅ Pagamento Multibanco processado com sucesso para ${docId}`);
+        //console.log(`✅ Pagamento Multibanco processado com sucesso para ${docId}`);
       } else {
         await snapshot.ref.update({
           referenceCreated: false,
           error: response.data.resposta || "Erro desconhecido",
         });
-        console.warn(`❌ Erro no pagamento Multibanco para ${docId}: ${response.data.resposta}`);
+        //console.warn(`❌ Erro no pagamento Multibanco para ${docId}: ${response.data.resposta}`);
       }
     } catch (error) {
       const errorMessage = error.response ?
@@ -128,7 +128,7 @@ exports.moneyRequestFinal = onDocumentCreated({
         referenceCreated: false,
         error: errorMessage,
       });
-      console.error(`❌ Erro ao processar pagamento Multibanco para ${docId}:`, errorMessage);
+      //console.error(`❌ Erro ao processar pagamento Multibanco para ${docId}:`, errorMessage);
     }
   } else if (data.type === "creditcard") {
     const eupagoKeyValue = await EUPAGO_KEY.value();
@@ -161,12 +161,12 @@ exports.moneyRequestFinal = onDocumentCreated({
     };
 
     try {
-      console.log(`📡 Enviando requisição para EuPago...`);
-      console.log("🔍 Dados enviados:", JSON.stringify(options.data));
+      //console.log(`📡 Enviando requisição para EuPago...`);
+      //console.log("🔍 Dados enviados:", JSON.stringify(options.data));
 
       const response = await axios.request(options);
 
-      console.log("🔍 Resposta da EuPago:", JSON.stringify(response.data));
+      //console.log("🔍 Resposta da EuPago:", JSON.stringify(response.data));
 
       if (response.data.sucesso === true && response.data.redirectUrl) {
         await snapshot.ref.update({
@@ -175,14 +175,14 @@ exports.moneyRequestFinal = onDocumentCreated({
           error: null,
         });   
 
-        console.log(`✅ Link de pagamento gerado com sucesso: ${response.data.redirectUrl}`);
+        //console.log(`✅ Link de pagamento gerado com sucesso: ${response.data.redirectUrl}`);
       } else {
         await snapshot.ref.update({
           referenceCreated: false,
           error: response.data.resposta || "Erro desconhecido",
         });
 
-        console.warn(`❌ Erro ao gerar link de pagamento: ${response.data.resposta}`);
+        //console.warn(`❌ Erro ao gerar link de pagamento: ${response.data.resposta}`);
       }
     } catch (error) {
       const errorMessage = error.response
@@ -194,7 +194,7 @@ exports.moneyRequestFinal = onDocumentCreated({
         error: errorMessage,
       });
 
-      console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
+      //console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
     }
   }
 });
@@ -205,19 +205,19 @@ exports.moneyDonationFinal = onDocumentCreated({
   secrets: [EUPAGO_KEY], // <====
 }, async (event) => {
   const docId = event.params.id;
-  console.log(`🔔 Evento recebido para documento: ${docId}`);
+  //console.log(`🔔 Evento recebido para documento: ${docId}`);
 
   const snapshot = event.data;
   if (!snapshot) {
-    console.log("⚠️ Nenhum dado associado ao evento.");
+    //console.log("⚠️ Nenhum dado associado ao evento.");
     return;
   }
 
   const data = snapshot.data();
-  console.log("📄 Dados recebidos:", JSON.stringify(data));
+  //console.log("📄 Dados recebidos:", JSON.stringify(data));
 
   if (data.referenceCreated) {
-    console.log("✅ Pagamento já processado. Ignorando...");
+    //console.log("✅ Pagamento já processado. Ignorando...");
     return;
   }
 
@@ -255,15 +255,15 @@ exports.moneyDonationFinal = onDocumentCreated({
           referenceCreated: true,
           error: null,
         });
-        console.log(`✅ Pagamento processado
-           com sucesso para ${docId}`);
+        //console.log(`✅ Pagamento processado
+        //           com sucesso para ${docId}`);
       } else {
         await snapshot.ref.update({
           referenceCreated: false,
           error: response.data.resposta || "Erro desconhecido",
         });
-        console.warn(`❌ Erro no pagamento para 
-          ${docId}: ${response.data.resposta}`);
+        //console.warn(`❌ Erro no pagamento para 
+        //          ${docId}: ${response.data.resposta}`);
       }
     } catch (error) {
       const errorMessage = error.response ?
@@ -275,8 +275,8 @@ exports.moneyDonationFinal = onDocumentCreated({
         referenceCreated: false,
         error: errorMessage,
       });
-      console.error(`❌ Erro ao processar pagamento para 
-        ${docId}:`, errorMessage);
+      //console.error(`❌ Erro ao processar pagamento para 
+      //        ${docId}:`, errorMessage);
     }
   } else if (data.type === "multibanco") {
     const eupagoKeyValue = await EUPAGO_KEY.value(); // <====
@@ -308,13 +308,13 @@ exports.moneyDonationFinal = onDocumentCreated({
           valor: response.data.valor,
           error: null,
         });
-        console.log(`✅ Pagamento Multibanco processado com sucesso para ${docId}`);
+        //console.log(`✅ Pagamento Multibanco processado com sucesso para ${docId}`);
       } else {
         await snapshot.ref.update({
           referenceCreated: false,
           error: response.data.resposta || "Erro desconhecido",
         });
-        console.warn(`❌ Erro no pagamento Multibanco para ${docId}: ${response.data.resposta}`);
+        //console.warn(`❌ Erro no pagamento Multibanco para ${docId}: ${response.data.resposta}`);
       }
     } catch (error) {
       const errorMessage = error.response ?
@@ -325,7 +325,7 @@ exports.moneyDonationFinal = onDocumentCreated({
         referenceCreated: false,
         error: errorMessage,
       });
-      console.error(`❌ Erro ao processar pagamento Multibanco para ${docId}:`, errorMessage);
+      //console.error(`❌ Erro ao processar pagamento Multibanco para ${docId}:`, errorMessage);
     }
   } else if (data.type === "creditcard") {
     const eupagoKeyValue = await EUPAGO_KEY.value();
@@ -358,12 +358,12 @@ exports.moneyDonationFinal = onDocumentCreated({
     };
 
     try {
-      console.log(`📡 Enviando requisição para EuPago...`);
-      console.log("🔍 Dados enviados:", JSON.stringify(options.data));
+      //console.log(`📡 Enviando requisição para EuPago...`);
+      //console.log("🔍 Dados enviados:", JSON.stringify(options.data));
 
       const response = await axios.request(options);
 
-      console.log("🔍 Resposta da EuPago:", JSON.stringify(response.data));
+      //console.log("🔍 Resposta da EuPago:", JSON.stringify(response.data));
 
       if (response.data.transactionStatus === "Success" && response.data.redirectUrl) {
         await snapshot.ref.update({
@@ -372,14 +372,14 @@ exports.moneyDonationFinal = onDocumentCreated({
           error: null,
         });
 
-        console.log(`✅ Link de pagamento gerado com sucesso: ${response.data.redirectUrl}`);
+        //console.log(`✅ Link de pagamento gerado com sucesso: ${response.data.redirectUrl}`);
       } else {
         await snapshot.ref.update({
           referenceCreated: false,
           error: response.data.resposta || "Erro desconhecido",
         });
 
-        console.warn(`❌ Erro ao gerar link de pagamento: ${response.data.resposta}`);
+        //console.warn(`❌ Erro ao gerar link de pagamento: ${response.data.resposta}`);
       }
     } catch (error) {
       const errorMessage = error.response
@@ -391,7 +391,7 @@ exports.moneyDonationFinal = onDocumentCreated({
         error: errorMessage,
       });
 
-      console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
+      //console.error(`❌ Erro ao processar pagamento para ${docId}:`, errorMessage);
     }
   }
 

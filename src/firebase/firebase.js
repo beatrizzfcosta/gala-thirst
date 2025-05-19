@@ -16,10 +16,10 @@ const db = getFirestore(app);
 const addTicketBuyer = async (ticketBuyer) => {
   try {
     const docRef = await addDoc(collection(db, 'ticketBuyer'), { ...ticketBuyer, referenceCreated: false });
-    console.log('Pedido adicionado ao Firebase:', docRef.id);
+    //console.log('Pedido adicionado ao Firebase:', docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error('Erro ao adicionar documento:', error);
+    //console.error('Erro ao adicionar documento:', error);
     return false;
   }
 };
@@ -27,10 +27,10 @@ const addTicketBuyer = async (ticketBuyer) => {
 const addDonation = async (donation) => {
   try {
     const docRef = await addDoc(collection(db, 'afterGala'), donation);
-    console.log('Doação adicionada:', docRef.id);
+    //console.log('Doação adicionada:', docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error('Erro ao adicionar doação:', error);
+    //console.error('Erro ao adicionar doação:', error);
     return false;
   }
 };
@@ -39,10 +39,10 @@ const updatePaymentReference = async (ticketId, referenceData) => {
   try {
     const docRef = doc(db, 'ticketBuyer', ticketId);
     await updateDoc(docRef, { ...referenceData, referenceCreated: true });
-    console.log('Referência de pagamento atualizada:', referenceData);
+    //console.log('Referência de pagamento atualizada:', referenceData);
     return true;
   } catch (error) {
-    console.error('Erro ao atualizar referência:', error);
+    //console.error('Erro ao atualizar referência:', error);
     return false;
   }
 };
@@ -54,7 +54,7 @@ const getTicketById = async (ticketId) => {
     if (!ticket.exists()) return null;
     return ticket.data();
   } catch (error) {
-    console.error('Erro ao obter ticket:', error, ticketId);
+    //console.error('Erro ao obter ticket:', error, ticketId);
     return null;
   }
 };
@@ -64,14 +64,14 @@ const editDonation = async (donationId, type, phone) => {
     const docRef = doc(db, 'afterGala', donationId);
     const updateData = { type, phone, error: false, updatedAt: new Date(), forceUpdate: Math.random(), } 
     
-    console.log('🔍 Atualizando doação:', updateData); // Log para verificar a atualização
+    //console.log('🔍 Atualizando doação:', updateData); // Log para verificar a atualização
     
     await updateDoc(docRef, updateData);
-    console.log('✅ Doação editada com sucesso:', donationId);
+    //console.log('✅ Doação editada com sucesso:', donationId);
     
     return true;
   } catch (error) {
-    console.error('❌ Erro ao atualizar doação:', error);
+    //console.error('❌ Erro ao atualizar doação:', error);
     return false;
   }
 };
@@ -84,7 +84,7 @@ const getDonationById = async (donationId) => {
     if (!donation.exists()) return null;
     return donation.data();
   } catch (error) {
-    console.error('Erro ao obter doação:', error, donationId);
+    //console.error('Erro ao obter doação:', error, donationId);
     return null;
   }
 };
@@ -98,7 +98,7 @@ const validatePromoCode = async (promoCode) => {
     if (promoData.used) return { valid: false, discount: 0 };
     return { valid: true, discount: promoData.discount };
   } catch (error) {
-    console.error('Erro ao validar código promocional:', error);
+    //console.error('Erro ao validar código promocional:', error);
     return { valid: false, discount: 0 };
   }
 };
@@ -126,7 +126,7 @@ export const checkPromoCode = async (promoCode, numTickets) => {
       return null;  // Código promocional não encontrado
     }
   } catch (error) {
-    console.error("Erro ao verificar o código promocional:", error);
+    // console.error("Erro ao verificar o código promocional:", error);
     return null;
   }
 };

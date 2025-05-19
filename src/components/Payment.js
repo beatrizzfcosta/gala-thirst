@@ -25,11 +25,11 @@ export default function Payment({ setPayment, setSummary, payment }) {
     const [paymentUrl, setPaymentUrl] = useState(null); // Adicionando estado para cartão de crédito
 
     useEffect(() => {
-        console.log("📌 Estado atualizado do modal MBWAY:", mbwayModalVisible);
+        //console.log("📌 Estado atualizado do modal MBWAY:", mbwayModalVisible);
     }, [mbwayModalVisible]);
 
     useEffect(() => {
-        console.log("🔄 Atualizando paymentUrl:", paymentUrl);
+        //console.log("🔄 Atualizando paymentUrl:", paymentUrl);
         if (paymentUrl) {
             window.location.href = paymentUrl; // Redireciona para a página de pagamento
         }
@@ -43,7 +43,7 @@ export default function Payment({ setPayment, setSummary, payment }) {
 
     const validateDonation = async () => {
 
-        console.log ("Tipo de pagamento selecionado:", paymentType)
+        //console.log ("Tipo de pagamento selecionado:", paymentType)
         setBlockButton(true);
         setInternalError(false);
 
@@ -74,7 +74,7 @@ export default function Payment({ setPayment, setSummary, payment }) {
                 paymentUrl: null,
             };
 
-            console.log("🔍 Detalhes de updatedInfo antes de salvar:", updatedInfo);
+            //console.log("🔍 Detalhes de updatedInfo antes de salvar:", updatedInfo);
 
             const docRef = await addDoc(collection(db, "afterGala"), updatedInfo);
             if (!docRef || !docRef.id) {
@@ -84,17 +84,17 @@ export default function Payment({ setPayment, setSummary, payment }) {
                 return;
             }
 
-            console.log("✅ Pagamento criado no Firestore:", updatedInfo);
+            //console.log("✅ Pagamento criado no Firestore:", updatedInfo);
 
             let donationStatus = { ...updatedInfo, id: docRef.id };
             for (let i = 0; i < 5; i++) {
                 const docSnapshot = await getDoc(doc(db, "afterGala", donationStatus.id));
                 if (docSnapshot.exists()) {
                     donationStatus = { ...docSnapshot.data(), id: donationStatus.id };
-                    console.log("🔄 Atualização do documento:", donationStatus);
+                    //console.log("🔄 Atualização do documento:", donationStatus);
 
                     if (donationStatus.referenceCreated) {
-                        console.log("✅ Referência criada com sucesso!");
+                        //console.log("✅ Referência criada com sucesso!");
 
                         if (paymentType === "mbway") {
                             setReferenceCreated(true);
@@ -107,7 +107,7 @@ export default function Payment({ setPayment, setSummary, payment }) {
                                 valor: donationStatus.valor,
                             });
                         } else if (paymentType === "creditcard") {
-                            console.log("entrei aqui")
+                            //console.log("entrei aqui")
                             setPaymentUrl(donationStatus.paymentUrl);
                         }
 
@@ -115,7 +115,7 @@ export default function Payment({ setPayment, setSummary, payment }) {
                     }
 
                     if (donationStatus.error) {
-                        console.error("❌ Erro na criação da referência:", donationStatus.error);
+                        //console.error("❌ Erro na criação da referência:", donationStatus.error);
                         setInternalError("Erro ao criar a referência. Verifique os dados.");
                         setBlockButton(false);
                         return;
@@ -125,10 +125,10 @@ export default function Payment({ setPayment, setSummary, payment }) {
                 await new Promise((resolve) => setTimeout(resolve, 7000));
             }
 
-            console.error("❌ Referência não foi criada no tempo esperado.");
+            //console.error("❌ Referência não foi criada no tempo esperado.");
             setInternalError("Ocorreu um problema ao criar a referência.");
         } catch (error) {
-            console.error("❌ Erro ao criar/verificar a doação no Firestore:", error);
+            //console.error("❌ Erro ao criar/verificar a doação no Firestore:", error);
             setInternalError(`Erro inesperado: ${error.message}`);
         } finally {
             setBlockButton(false);
@@ -176,12 +176,12 @@ export default function Payment({ setPayment, setSummary, payment }) {
                 {mbwayModalVisible && (
                     <MbwayModel
                         setMBwayModalVisible={(state) => {
-                            console.log("🔄 Tentativa de fechar modal:", state);
+                            //console.log("🔄 Tentativa de fechar modal:", state);
                             if (!referenceCreated) return; // Evita fechamento antes da referência ser criada
                             setMBwayModalVisible(state);
                             if (!state) {
                                 // Só vai para Summary se o modal foi fechado manualmente
-                                console.log("✅ Modal fechado, navegando para Summary");
+                                // console.log("✅ Modal fechado, navegando para Summary");
                                 setSummary(prevSummary => ({ ...prevSummary, status: 'current' }));
                             }
                         }}
