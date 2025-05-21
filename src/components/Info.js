@@ -49,27 +49,27 @@ export default function Info({ setInfo, setSummary, contribution }) {
 
     };
 
-    const applyPromoCode = () => {
-        if (!promoApplied) {
-            if (promoCode === 'PARCIAL') {
-                setDiscountedPrice(25);
-                if (updatedTickets > 0) {
-                    setPromoDetails({ originalPrice: 50, discountedPrice: 25 });
-                    setUpdatedTickets(updatedTickets - 1);
-                    setPromoApplied(true);
-                }
-            } else {
-                setDiscountedPrice(contribution.total || contribution.tickets * 50);
-                setPromoApplied(false);
-            }
-        }
-    };
+    //const applyPromoCode = () => {
+    //    if (!promoApplied) {
+    //        if (promoCode === 'PARCIAL') {
+    //            setDiscountedPrice(25);
+    //            if (updatedTickets > 0) {
+    //                setPromoDetails({ originalPrice: 50, discountedPrice: 25 });
+    //                setUpdatedTickets(updatedTickets - 1);
+    //                setPromoApplied(true);
+    //            }
+    //            } else {
+    //                setDiscountedPrice(contribution.total || contribution.tickets * 50);
+    //            setPromoApplied(false);
+    //        }
+    //    }
+    //  };
 
 
-    useEffect(() => {
-        // Aplicar o código promocional automaticamente ao alterar o código
-        applyPromoCode();
-    }, [promoCode]);
+    //useEffect(() => {
+    //    // Aplicar o código promocional automaticamente ao alterar o código
+    //    applyPromoCode();
+    //}, [promoCode]);
 
     const changeFromMultibanco = () => {
         setInfo(prevInfo => ({ ...prevInfo, status: 'completed' }));
@@ -147,7 +147,8 @@ export default function Info({ setInfo, setSummary, contribution }) {
             const info = {
                 names: names,
                 tickets: contribution.tickets,
-                total: (updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total,
+                //total: (updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total,
+                total: (updatedTickets * 50) + contribution.total,
                 nif: nif,
                 email: email,
                 phone: phone,
@@ -242,7 +243,8 @@ export default function Info({ setInfo, setSummary, contribution }) {
                 const info = {
                     names: names,
                     tickets: contribution.tickets,
-                    total: (updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total,
+                    //total: (updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total,
+                    total: (updatedTickets * 50) + contribution.total,
                     nif: nif,
                     email: email,
                     phone: phone,
@@ -443,7 +445,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                     <td className="info-text">EUR€ {updatedTickets * 50}</td>
                                 </tr>
                             )}
-                            {promoApplied && (
+                            {/*{promoApplied && (
                                 <tr>
                                     <td className="info-text">1</td>
                                     <td className="info-text">PROMO</td>
@@ -452,7 +454,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                     </td>
                                     <td className="info-text">EUR€ {promoDetails.discountedPrice}</td>
                                 </tr>
-                            )}
+                            )}*/}
                             {contribution.total > 0 && (
                                 <tr>
                                     <td className="info-text">1</td>
@@ -470,12 +472,13 @@ export default function Info({ setInfo, setSummary, contribution }) {
                                 <td className="info-text"></td>
                                 <td className="info-text"></td>
                                 <td className="info-text"></td>
-                                <td className="total-amount">EUR€ {(updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total}</td>
+                                {/*<td className="total-amount">EUR€ {(updatedTickets * 50) + (promoApplied ? promoDetails.discountedPrice : 0) + contribution.total}</td>*/}
+                                <td className="total-amount">EUR€ {(updatedTickets * 50) + contribution.total}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <h3 className="title-ticket">INSIRA O SEU CÓDIGO PROMOCIONAL</h3>
+                {/*<h3 className="title-ticket">INSIRA O SEU CÓDIGO PROMOCIONAL</h3>
                 <div className="container-contribution">
                     <input
                         type="text"
@@ -489,7 +492,7 @@ export default function Info({ setInfo, setSummary, contribution }) {
                     <Button className="button" onClick={applyPromoCode} disabled={promoApplied}>
                         Aplicar Código
                     </Button>
-                </div>
+                </div>*/}
             </div>
             <div className="row-ticket">
                 <h3 className="title-ticket">
