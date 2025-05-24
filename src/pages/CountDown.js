@@ -33,6 +33,8 @@ export default function CountDown({ available }) {
   }, [location]);
 
   useEffect(() => {
+    let countdownInterval;
+
     const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = countdownDate - now;
@@ -50,13 +52,11 @@ export default function CountDown({ available }) {
       if (distance < 0) {
         clearInterval(countdownInterval);
         // You can add an action here when the countdown reaches zero
-
       }
     };
 
     updateCountdown(); // Initial update
-
-    const countdownInterval = setInterval(updateCountdown, 1000);
+    countdownInterval = setInterval(updateCountdown, 1000);
 
     return () => {
       clearInterval(countdownInterval); // Clean up the interval when unmounting
@@ -80,28 +80,28 @@ export default function CountDown({ available }) {
       <div className='row1'>
         <div className="countdown">
           <div className="countdown-box">
-            <span className="number">{days}</span>
+            <span className="number">0</span>
             <span className="title">DIAS</span>
           </div>
           <h1 className="tab">
             :
           </h1>
           <div className="countdown-box">
-            <span className="number">{hours}</span>
+            <span className="number">0</span>
             <span className="title">HORAS</span>
           </div>
           <h1 className="tab">
             :
           </h1>
           <div className="countdown-box">
-            <span className="number">{minutes}</span>
+            <span className="number">0</span>
             <span className="title">MINUTOS</span>
           </div>
           <h1 className="tab">
             :
           </h1>
           <div className="countdown-box">
-            <span className="number">{seconds}</span>
+            <span className="number">0</span>
             <span className="title">SEGUNDOS</span>
           </div>
         </div>
