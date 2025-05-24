@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import backgroundImage from '../assets/container1.png';
 import '../style/pCountDown.css'
 
-export default function CountDown({ unavailable }) {
+export default function CountDown({ available }) {
   const [days, setDays] = useState('00');
   const [hours, setHours] = useState('00');
   const [minutes, setMinutes] = useState('00');
@@ -110,7 +110,7 @@ export default function CountDown({ unavailable }) {
         <h3 className="date">
           24 de maio | 20:00
         </h3>
-        {unavailable ? (
+        { available ? (
           <div className="countdown-button" >
             <Link to="/bilhetes/comprar">
               <Button
