@@ -92,29 +92,36 @@
     z-index: 3;
 }
 
-
-
 .button2 {
     border-radius: 5px;
     background-color: #17CACE;
     margin-top: 10px;
-    padding: 10px 10px;
-    font-size: large;
+    padding: 15px 20px;
+    font-size: x-large;
     font-weight: bold;
     color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-    width:400px;
-    max-width: 300px; /* Limita a largura máxima */
+    width: 500px;
+    max-width: 500px;
     text-align: center;
     display: block;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-   
     margin-right: auto;
+    margin-left: auto;
 }
 
 .button2:hover {
     background-color: black;
+    transform: scale(1.02);
+}
+
+.countdown-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
 }
 
 .image-countdown{
@@ -181,8 +188,10 @@
     }
 
     .button2 {
-        width: 100%; /* Botão ocupa largura total */
-        max-width: none; /* Remove limite de largura */
+        width: 90%;
+        max-width: 400px;
+        font-size: large;
+        padding: 12px 15px;
     }
 }
 
@@ -205,5 +214,12 @@
 
     .number{
         font-size: large;
+    }
+
+    .button2 {
+        width: 95%;
+        max-width: 350px;
+        font-size: medium;
+        padding: 10px 12px;
     }
 }

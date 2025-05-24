@@ -125,7 +125,7 @@ export default function CountDown({ available }) {
           </div>
         ) : (
           <div className="countdown-button" >
-            <Link to="/doacoes">
+            <Link to="/doacoes/doar">
               <Button
                 className="button2"
               >
